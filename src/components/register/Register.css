@@ -1,0 +1,269 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /* box-sizing: border-box; */
+    text-decoration: none;
+  }
+  .container{
+      max-width: 580px;
+      height: 680px;
+      margin: 0 auto;
+      padding: 100px;
+    border-radius: 16px;
+      /* text-align: center; */
+      border: 1px solid #B0B0B040;
+      background-color: #B0B0B040;
+      margin-top: 20px;
+  }
+  
+  .login_title{
+  font-family: "Manrope";
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 44.8px;
+  color: #0D0D12;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-top: 1.5rem;
+  }
+  
+  .login_text{
+  /* max-width: 212px; */
+  font-family: "Manrope";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25.6px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #666D80;
+  }
+  
+  .typography_text{
+      font-family: "Manrope";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21.7px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #0D0D12;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  }
+
+  .input_div{
+    width: 240px;
+    display: flex;
+   justify-content: space-between;
+   gap: 25px;
+   padding-top: 1.5rem;
+  }
+
+  .register_input_div{
+    width:240px;
+      height: 48px;
+      padding: 8px 12px 8px 12px;
+      gap: 8px;
+      border-radius: 100px;
+      border: 1px 0px 0px 0px;
+      opacity: 0px;
+      background-color: #F8FAFB;
+      border: 1px solid #DFE1E7;
+      align-items: center;
+      display: flex;
+      margin-bottom: 10px;
+  }
+  
+  .login_input_div{
+      width:550px;
+      height: 48px;
+      padding: 8px 12px 8px 12px;
+      gap: 8px;
+      border-radius: 100px;
+      border: 1px 0px 0px 0px;
+      opacity: 0px;
+      background-color: #F8FAFB;
+      border: 1px solid #DFE1E7;
+      align-items: center;
+      display: flex;
+      margin-bottom: 10px;
+  }
+  
+  .register_input{
+    width: 215px;
+      height: 48px;
+      padding: 8px 12px 8px 12px;
+      gap: 8px;
+      border-radius: 100px;
+      border: 1px 0px 0px 0px;
+      opacity: 0px;
+      font-family: "Manrope";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25.6px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #666D80;
+  border: none;
+  background-color: #F8FAFB;
+  outline: none;
+  }
+
+  .login_input{
+      width:550px;
+      height: 48px;
+      padding: 8px 12px 8px 12px;
+      gap: 8px;
+      border-radius: 100px;
+      border: 1px 0px 0px 0px;
+      opacity: 0px;
+      font-family: "Manrope";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25.6px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #666D80;
+  border: none;
+  background-color: #F8FAFB;
+  outline: none;
+  }
+  
+  .email_icon{
+     
+      color:#666D80 ;
+  }
+  
+  .login_input_btn{
+      width:570px;
+      height: 60px;
+      padding: 8px 12px 8px 12px;
+      gap: 8px;
+      border-radius: 100px;
+      border: 1px 0px 0px 0px;
+      opacity: 0px;
+      background-color: #F8FAFB;
+      border: 1px solid #DFE1E7;
+      
+      color: white;
+      margin-bottom: 10px;
+      background-color: #1BA98F;
+      text-align: center;
+      align-items: center;
+      margin-top: 24px;
+      
+  }
+  
+  .login_input_btn-text{
+    
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #FFFFFF;
+  
+  }
+  
+  .forgot_password{
+   
+  font-family: "Manrope";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21.7px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #C1C7D0;
+  }
+  
+  
+  
+  .checkbox_div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+    
+    .forgot_password {
+      color: #007bff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+  
+    .login_input_btn:hover {
+      background-color: #0056b3;
+    }
+    
+    .Sign_up_title{
+     
+  font-family: "Manrope";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21.7px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color:#0D0D12 ;
+  padding-top: 1.5rem;
+    }
+  
+    .btn_sign_google{
+      width: 269px;
+  height:48px;
+  padding: 12px 16px 12px 16px;
+  gap: 12px;
+  border-radius: 100px;
+  border: 1px solid #DFE1E7 ;
+  opacity: 0px;
+  background-color: #F8FAFB;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+    }
+  
+    .btn_sign_apple{
+      width: 269px;
+  height:48px;
+  padding: 12px 16px 12px 16px;
+  gap: 12px;
+  border-radius: 100px;
+  border: 1px solid #DFE1E7 ;
+  opacity: 0px;
+  background-color: #F8FAFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+    .div_btn{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      
+    }
+  
+    .sign_up_link{
+   
+  font-family: "Manrope";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24.8px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color:#1BA98F ;
+    }
+  
