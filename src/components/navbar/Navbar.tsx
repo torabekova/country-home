@@ -10,6 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import tabler from "./img/tabler.png"
 import avatar from "./img/avatar.jpg"
+import Dashboard from '../dashboard/Dashboard';
 
 const Navbar = () => {
   return (
@@ -21,11 +22,11 @@ const Navbar = () => {
         <div className="navbar_link_div">
             <div className="navbar_link_icon_div">
             <img src={tabler} alt="tabler icon" width={30} />
-            <a className="navbar_link" href="#">Dashboard</a>  
+            <a className="navbar_link" href="">Dashboard</a>  
             </div>
             <div className="navbar_link_icon_div">
             <HomeIcon  />
-            <a className="navbar_link" href="#">Properties</a>  
+            <a className="navbar_link" href="">Properties</a>  
             </div>
             <div className="navbar_link_icon_div">
             <SyncAltRoundedIcon />
