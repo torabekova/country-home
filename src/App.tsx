@@ -9,32 +9,41 @@ import Register from './components/register/Register';
 import Navbar from './components/navbar/Navbar';
 import  Dashboard from './components/dashboard/Dashboard';
 
-import Report from './components/report/Report';
+
 import PropertyCard from './components/proporties/Proporties';
 import PropertiesPage from './components/proporties/Proporties';
 import FinancialStatistics from './components/FinancialStatics/Statics';
 import SalesIndicator from './components/selesIndicotor/SalesIndicotor';
+import ForgotPassword from './components/forgot-password/ForgotPAssword';
+import {  Routes, Route} from 'react-router-dom';
+import Transaction from './components/transaction/Transaction';
+import ProfilePage from './components/Profil/Profil';
 
 function App() {
   return (
-    <div>
-      {/* <Login/>
-      <Register/>
-       <Navbar/>
+   
+  <div>
+        {/* <Login/>
+      <Register/> */}
+       {/* <Navbar/> */}
      
       
-       <Report/> 
       
-      <PropertyCard/>
-      <PropertiesPage/>
-      <FilterComponent />
-      <FilterBeds/>
-<FilterType/>
-<FinancialStatistics/>  
+      
+      {/* <PropertyCard/> */}
+      {/* <PropertiesPage/> */}
+      {/* <FilterComponent /> */}
+      {/* <FilterBeds/> */}
+{/* <FilterType/> */}
+{/* <FinancialStatistics/>   */}
 
-<SalesIndicator/> */}
- <Dashboard/> 
-    </div>
+{/* <SalesIndicator/>  */}
+ {/* <Dashboard/>  */}
+ {/* <ForgotPassword/> */}
+ {/* <Transaction/> */}
+<ProfilePage/>
+  </div>
+    
   );
 }
 

@@ -23,6 +23,7 @@ import everestplaza from "./img/everestplaza.jpg";
 import dachaturizm from "./img/dachaturizm.png";
 import SalesIndicator from "../selesIndicotor/SalesIndicotor";
 import FinancialStatistics from "../FinancialStatics/Statics";
+import Navbar from "../navbar/Navbar";
 
 const Dashboard = () => {
   const [Monthly, setMonthly] = React.useState("");
@@ -32,10 +33,15 @@ const Dashboard = () => {
   };
 
   return (
-    <div
+    <div>
+      <div style={{ maxWidth: "1360px", margin: "0 auto",  borderRadius: "20px", padding: "20px",}}>
+      <Navbar/>
+      </div>
+      
+      <div
       style={{
         maxWidth: "1360px",
-        // width:"350px",
+       
         margin: "0 auto",
         backgroundColor: "#DFE1E7",
         padding: "20px",
@@ -114,6 +120,7 @@ const Dashboard = () => {
                 gap: "0px",
                 opacity: "0px",
                 borderRadius: "20px",
+               
               }}
               src={zominMountain}
               alt="zomin mointain img"
@@ -1432,6 +1439,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
