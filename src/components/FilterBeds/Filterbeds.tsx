@@ -16,7 +16,12 @@ interface TabPanelProps {
   index: number;
 }
 
-const TabPanel: React.FC<TabPanelProps> = ({ children, value, index, ...other }) => {
+const TabPanel: React.FC<TabPanelProps> = ({
+  children,
+  value,
+  index,
+  ...other
+}) => {
   return (
     <div
       role="tabpanel"
@@ -31,7 +36,7 @@ const TabPanel: React.FC<TabPanelProps> = ({ children, value, index, ...other })
 };
 
 const FilterBeds: React.FC = () => {
-  const [value, setValue] = useState<number>(1); // Selected tab index
+  const [value, setValue] = useState<number>(1); 
   const [bedRooms, setBedRooms] = useState<string | null>("Any");
   const [bathRooms, setBathRooms] = useState<string | null>("Any");
 
@@ -39,12 +44,18 @@ const FilterBeds: React.FC = () => {
     setValue(newValue);
   };
 
-  const handleBedRoomChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
+  const handleBedRoomChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newValue: string | null
+  ) => {
     setBedRooms(newValue);
     console.log("Selected Bedrooms:", newValue);
   };
 
-  const handleBathRoomChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
+  const handleBathRoomChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newValue: string | null
+  ) => {
     setBathRooms(newValue);
     console.log("Selected Bathrooms:", newValue);
   };
@@ -72,7 +83,6 @@ const FilterBeds: React.FC = () => {
         backgroundColor: "#fff",
       }}
     >
-      {/* Header */}
       <Box
         sx={{
           display: "flex",
@@ -86,7 +96,6 @@ const FilterBeds: React.FC = () => {
         <CloseIcon />
       </Box>
 
-      {/* Tabs */}
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs value={value} onChange={handleTabChange} aria-label="filter tabs">
           <Tab label="Price" />
@@ -97,7 +106,6 @@ const FilterBeds: React.FC = () => {
         </Tabs>
       </Box>
 
-      {/* Beds Tab Content */}
       <TabPanel value={value} index={1}>
         <Typography variant="subtitle1" gutterBottom>
           Beds Room
@@ -160,12 +168,42 @@ const FilterBeds: React.FC = () => {
         </ToggleButtonGroup>
       </TabPanel>
 
-      {/* Footer Buttons */}
-      <Box sx={{ display: "flex", justifyContent: "space-between", padding: "16px" }}>
-        <Button variant="outlined" onClick={handleReset}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "16px",
+        }}
+      >
+        <Button variant="outlined" onClick={handleReset} sx={{
+            borderRadius: "20px",
+            paddingLeft: "53px",
+            paddingRight: "53px",
+            color: "#178F78",
+            borderColor:"#178F78",
+            "&:hover": {
+              backgroundColor: "#178F78",
+              color: "white",
+            },
+          }}>
           Reset
         </Button>
-        <Button variant="contained" color="primary" onClick={handleFindProperties}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleFindProperties}
+          sx={{
+            borderRadius: "20px",
+            
+            borderColor:"#178F78",
+            color:"#white",
+           
+            '&:hover': {
+              backgroundColor: "#178F78", 
+              color: "white", 
+            },
+          }}
+        >
           Find Properties
         </Button>
       </Box>

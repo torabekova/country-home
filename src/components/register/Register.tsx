@@ -25,10 +25,7 @@ const Register = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // if (!email || !password) {
-    //   alert("Please enter both email and password.");
-    //   return;
-    // }
+   
     console.log("Email:", email, "Password:", password);
   };
 

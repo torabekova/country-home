@@ -21,6 +21,8 @@ import zomindacha from "./img/zomindacha.png";
 import afishadacha from "./img/afishadacha.jpeg";
 import everestplaza from "./img/everestplaza.jpg";
 import dachaturizm from "./img/dachaturizm.png";
+import SalesIndicator from "../selesIndicotor/SalesIndicotor";
+import FinancialStatistics from "../FinancialStatics/Statics";
 
 const Dashboard = () => {
   const [Monthly, setMonthly] = React.useState("");
@@ -933,63 +935,9 @@ const Dashboard = () => {
                   padding: "20px",
                 }}
               >
-                <h5
-                  style={{
-                    fontFamily: "Manrope",
-                    fontSize: "20px",
-                    fontWeight: "600",
-                    lineHeight: "28px",
-                    textAlign: "left",
-                  }}
-                >
-                  Financial Statistics
-                </h5>
+               
 
-                <FormControl>
-                  <InputLabel
-                    style={{ alignItems: "center", display: "flex" }}
-                    id="demo-simple-select-label"
-                  >
-                    <h1
-                      style={{
-                        fontFamily: "Inter",
-                        fontSize: "14px",
-                        fontWeight: "500",
-                        lineHeight: "20px",
-                        textAlign: "center",
-                      }}
-                    >
-                      Monthly
-                    </h1>
-                  </InputLabel>
-
-                  <Select
-                    style={{
-                      width: "117px",
-                      height: "40px",
-                      color: "white",
-                      borderRadius: "20px",
-                    }}
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={Monthly}
-                    label="Monthly"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={10}>Jnuary</MenuItem>
-                    <MenuItem value={20}>February</MenuItem>
-                    <MenuItem value={30}>March</MenuItem>
-                    <MenuItem value={40}>April</MenuItem>
-                    <MenuItem value={50}>May</MenuItem>
-                    <MenuItem value={60}>June</MenuItem>
-                    <MenuItem value={70}>July</MenuItem>
-                    <MenuItem value={80}>August</MenuItem>
-                    <MenuItem value={90}>September</MenuItem>
-                    <MenuItem value={100}>Octomber</MenuItem>
-                    <MenuItem value={110}>Nomevber</MenuItem>
-                    <MenuItem value={120}>December</MenuItem>
-                  </Select>
-                </FormControl>
+               <FinancialStatistics/> 
                 
               </div>
               <div>
@@ -1001,10 +949,10 @@ const Dashboard = () => {
                     marginTop: "32px",
                     height: "186px",
                     borderRadius: "20px",
-                    backgroundColor: "white",
+                    
                     padding: "10px",
                   }}
-                ></div>
+                ><SalesIndicator/></div>
                 <div
                   style={{
                     width: "474px",
@@ -1018,7 +966,7 @@ const Dashboard = () => {
                     backgroundSize: "cover",
                   }}
                 >
-                  {/* <img src={chart} alt="chart img" width={474}/> */}
+                  
                   <h3
                     style={{
                       maxWidth: "270px",

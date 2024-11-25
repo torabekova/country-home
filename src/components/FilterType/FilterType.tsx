@@ -78,7 +78,7 @@ const FilterType: React.FC = () => {
         backgroundColor: "#fff",
       }}
     >
-      {/* Header */}
+   
       <Box
         sx={{
           display: "flex",
@@ -94,7 +94,7 @@ const FilterType: React.FC = () => {
         </IconButton>
       </Box>
 
-      {/* Tabs */}
+     
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs value={value} onChange={handleTabChange} aria-label="filter tabs">
           <Tab label="Price"  />
@@ -105,7 +105,7 @@ const FilterType: React.FC = () => {
         </Tabs>
       </Box>
 
-      {/* Type Tab Content */}
+     
       <TabPanel value={value} index={2}>
         <Typography variant="subtitle1" gutterBottom>
           Type
@@ -164,7 +164,7 @@ const FilterType: React.FC = () => {
         </Grid>
       </TabPanel>
 
-      {/* Footer Buttons */}
+     
       <Box
         sx={{
           display: "flex",

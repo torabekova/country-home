@@ -53,10 +53,10 @@ const PropertyCard = ({
 }) => (
   <div>
     <Card sx={{ borderRadius: 4, overflow: "hidden", boxShadow: 2 , maxWidth:"322px",}}>
-    {/* Card Header */}
+ 
     <Box sx={{ position: "relative", backgroundColor: "#f5f5f5", height: 160 }}>
       <CardMedia sx={{ height: "100%", width: "100%" }} image={image} title="Property" />
-      {/* Badge */}
+ 
       <Chip
         label={type}
         sx={{
@@ -68,7 +68,7 @@ const PropertyCard = ({
           fontWeight: "bold",
         }}
       />
-      {/* Rating */}
+     
       <Box
         sx={{
           position: "absolute",
@@ -87,7 +87,7 @@ const PropertyCard = ({
       </Box>
     </Box>
 
-    {/* Card Content */}
+  
     <CardContent>
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
         {location}
@@ -124,7 +124,7 @@ const PropertyCard = ({
 
       <Divider sx={{ my: 1 }} />
 
-      {/* Price */}
+     
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           {price}

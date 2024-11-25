@@ -22,7 +22,7 @@ import {
 const Report: React.FC = () => {
   return (
     <Box padding={3} bgcolor="#f9f9f9">
-      {/* Header */}
+     
       <Box
         display="flex"
         justifyContent="space-between"
@@ -37,7 +37,6 @@ const Report: React.FC = () => {
         </Button>
       </Box>
 
-      {/* Stats Cards */}
       <Grid container spacing={3}>
         {[
           { title: "Total Sales", value: "$12,450", icon: <AttachMoney /> },
@@ -63,7 +62,7 @@ const Report: React.FC = () => {
         ))}
       </Grid>
 
-      {/* Financial Statistics and Sales Indicator */}
+     
       <Grid container spacing={3} marginTop={3}>
         <Grid item xs={12} md={8}>
           <Card>
@@ -74,7 +73,7 @@ const Report: React.FC = () => {
               <Typography variant="body2" color="textSecondary" gutterBottom>
                 Monthly
               </Typography>
-              {/* Simulate chart */}
+           
               <Box
                 display="flex"
                 justifyContent="space-between"
@@ -131,7 +130,7 @@ const Report: React.FC = () => {
         </Grid>
       </Grid>
 
-      {/* Property Cards */}
+ 
       <Box marginTop={3}>
         <Typography variant="h6" fontWeight="bold">
           Property
