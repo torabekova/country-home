@@ -39,9 +39,9 @@ function App() {
 
 {/* <SalesIndicator/>  */}
  {/* <Dashboard/>  */}
- {/* <ForgotPassword/> */}
+ <ForgotPassword/>
  {/* <Transaction/> */}
-<ProfilePage/>
+{/* <ProfilePage/> */}
   </div>
     
   );

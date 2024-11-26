@@ -155,7 +155,7 @@ const Transaction = (props: Props) => {
           </div>
       </div>
       <TransactionTable/>
-      
+       
       </div>
     </div>
   )
