@@ -18,6 +18,7 @@ import ForgotPassword from './components/forgot-password/ForgotPAssword';
 import {  Routes, Route} from 'react-router-dom';
 import Transaction from './components/transaction/Transaction';
 import ProfilePage from './components/Profil/Profil';
+import Include from './components/Introduction/Introduction';
 
 function App() {
   return (
@@ -38,10 +39,11 @@ function App() {
 {/* <FinancialStatistics/>   */}
 
 {/* <SalesIndicator/>  */}
- {/* <Dashboard/>  */}
- <ForgotPassword/>
+ {/* <Dashboard/>   */}
+ {/* <ForgotPassword/> */}
  {/* <Transaction/> */}
 {/* <ProfilePage/> */}
+<Include/>
   </div>
     
   );
