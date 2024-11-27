@@ -25,9 +25,9 @@ const Navbar: React.FC = () => {
     <div className="navbar_container">
       <div className="navbar_math_div">
        
-        <div className="home_icon_div">
+        <Link to={"/"} className="home_icon_div">
           <img src={tabler} alt="tabler icon" />
-        </div>
+        </Link>
 
         <div className="navbar_link_div">
           <div className="navbar_link_icon_div">

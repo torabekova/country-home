@@ -1,53 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import FilterType from './components/FilterType/FilterType';
-import FilterBeds from './components/FilterBeds/Filterbeds';
-import FilterComponent from './components/Charts/Charts';
-import Login from './components/login/login';
-import Register from './components/register/Register';
-import Navbar from './components/navbar/Navbar';
-import  Dashboard from './components/dashboard/Dashboard';
+import "./App.css";
+import FilterType from "./components/FilterType/FilterType";
+import FilterBeds from "./components/FilterBeds/Filterbeds";
+import FilterComponent from "./components/Charts/Charts";
+import Login from "./components/login/login";
+import Register from "./components/register/Register";
+import Navbar from "./components/navbar/Navbar";
+import Dashboard from "./components/dashboard/Dashboard";
 
+import PropertyCard from "./components/proporties/Proporties";
+import PropertiesPage from "./components/proporties/Proporties";
+import FinancialStatistics from "./components/FinancialStatics/Statics";
+import SalesIndicator from "./components/selesIndicotor/SalesIndicotor";
+import ForgotPassword from "./components/forgot-password/ForgotPAssword";
+import Transaction from "./components/transaction/Transaction";
+import ProfilePage from "./components/Profil/Profil";
 
-import PropertyCard from './components/proporties/Proporties';
-import PropertiesPage from './components/proporties/Proporties';
-import FinancialStatistics from './components/FinancialStatics/Statics';
-import SalesIndicator from './components/selesIndicotor/SalesIndicotor';
-import ForgotPassword from './components/forgot-password/ForgotPAssword';
-import {  Routes, Route} from 'react-router-dom';
-import Transaction from './components/transaction/Transaction';
-import ProfilePage from './components/Profil/Profil';
-import Include from './components/Introduction/Introduction';
+import { Routes, Route } from "react-router-dom";
+import { PUBLIC_ROUTES } from "./routes";
 
 function App() {
+  console.log(PUBLIC_ROUTES);
+  
   return (
-   
-  <div>
-        {/* <Login/>
+    <div>
+      <Routes>
+        {PUBLIC_ROUTES.map((route) => (
+          <Route {...route} key={route.path} />
+        ))}
+      </Routes>
+      {/* <Login/>
       <Register/> */}
-       {/* <Navbar/> */}
-     
-      
-      
-      
+      {/* <Navbar/> */}
+
       {/* <PropertyCard/> */}
       {/* <PropertiesPage/> */}
       {/* <FilterComponent /> */}
       {/* <FilterBeds/> */}
-{/* <FilterType/> */}
-{/* <FinancialStatistics/>   */}
+      {/* <FilterType/> */}
+      {/* <FinancialStatistics/>   */}
 
-{/* <SalesIndicator/>  */}
- {/* <Dashboard/>   */}
- {/* <ForgotPassword/> */}
- {/* <Transaction/> */}
-{/* <ProfilePage/> */}
-<Include/>
-  </div>
-    
+      {/* <SalesIndicator/>  */}
+      {/* <ForgotPassword/> */}
+      {/* <Transaction/> */}
+      {/* <ProfilePage/> */}
+    </div>
   );
 }
 
 export default App;
-

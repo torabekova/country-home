@@ -14,8 +14,8 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
 import bacgroundimg from "./img/bacgroundimg.png";
-import {  Link } from "@mui/material";
-function Include() {
+import {  LinkCustom } from "./HomeStyles";
+function Home() {
   const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -57,35 +57,12 @@ function Include() {
         }}
       >
         {["Dashboard", "Properties", "Transaction", "Report"].map((text, index) => (
-          <Link
+          <LinkCustom
+            to={"/dashboard"}
             key={index}
-            href="#"
-            sx={{
-              color: "#fff",
-              textDecoration: "none",
-              fontWeight: "bold",
-              position: "relative",
-              overflow: "hidden",
-              ":before": {
-                content: '""',
-                position: "absolute",
-                width: "100%",
-                height: "3px",
-                bottom: 0,
-                left: "-100%", 
-                backgroundColor: "#FFB400", 
-                transition: "all 0.3s ease-in-out",
-              },
-              ":hover:before": {
-                left: "0",
-              },
-              ":hover": {
-                color: "#FFB400", 
-              },
-            }}
           >
             {text}
-          </Link>
+          </LinkCustom>
         ))}
       </Box>
     </Box>
@@ -179,4 +156,4 @@ function Include() {
   );
 }
 
-export default Include;
+export default Home;

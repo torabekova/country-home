@@ -49,7 +49,9 @@ justify-content: center;
 
 }
 
-.navbar_link_icon_div:hover{
+.navbar_link_icon_div:hover,
+.navbar_link_icon_div:hover .navbar_link
+{
     background-color:#1BA98F ;
     color: aliceblue;
 }
