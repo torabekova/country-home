@@ -1,5 +1,5 @@
 import Home from "pages/Home/Home";
-import Dahsboard from "pages/Dashboard/Dashboard";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 export const PUBLIC_ROUTES = [
   {
@@ -8,6 +8,6 @@ export const PUBLIC_ROUTES = [
   },
   {
     path: "/dashboard",
-    element: <Dahsboard />,
+    element: <Dashboard />,
   },
 ];

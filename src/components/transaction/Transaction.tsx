@@ -45,24 +45,28 @@ const Transaction = (props: Props) => {
               color: "#000000",
             }}
           >
-            Transaction
+            O'tkazmalar
           </Typography >
         </div>
         <div>
           <SalesIndicator/>
         </div>
-        <div
+        <div>
+          <div style={{display:"flex", gap:"5px", marginBottom:"5px"}}>
+             <div
             className="treding"
             style={{
-              backgroundColor: "white",
+              backgroundColor: "#0000000D",
               maxWidth: "237px",
-              padding: "20px",
-              borderRadius: "20px",
+              padding: "10px",
+              borderRadius: "10px",
               gap: "12px",
               paddingRight: "50px",
+              height:"130px"
+
             }}
           >
-            <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "6px", alignItems: "center", }}>
               <div
                 style={{
                   width: "40px",
@@ -87,7 +91,7 @@ const Transaction = (props: Props) => {
                   textAlign: "center",
                 }}
               >
-                Future Funds
+                Kelajakdagi mablag'lar
               </h5>
             </div>
             <h2
@@ -97,20 +101,24 @@ const Transaction = (props: Props) => {
                 fontWeight: "600",
                 lineHeight: "48px",
                 textAlign: "center",
+              
               }}
             >
-              $130.090
+              $130
             </h2>
           </div>
           <div
             className="treding"
             style={{
-              backgroundColor: "white",
+              backgroundColor: "#0000000D",
               maxWidth: "237px",
-              padding: "20px",
-              borderRadius: "20px",
+              padding: "10px",
+              borderRadius: "10px",
               gap: "12px",
-              paddingRight: "80px",
+              paddingRight: "50px",
+              height:"130px"
+
+              
             }}
           >
             <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
@@ -138,7 +146,7 @@ const Transaction = (props: Props) => {
                   textAlign: "center",
                 }}
               >
-                Agents
+                Agentlar
               </h5>
             </div>
             <h2
@@ -153,6 +161,121 @@ const Transaction = (props: Props) => {
               2500
             </h2>
           </div>
+          </div >
+          <div style={{display:"flex", gap:"5px"}}>
+             <div
+            className="treding"
+            style={{
+              backgroundColor: "#0000000D",
+              maxWidth: "237px",
+              padding: "10px",
+              borderRadius: "10px",
+              gap: "12px",
+              paddingRight: "50px",
+              height:"130px"
+
+            }}
+          >
+            <div style={{ display: "flex", gap: "6px", alignItems: "center", }}>
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "100px",
+                  backgroundColor: "#EFFEFA",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "12px",
+                }}
+              >
+                <TrendingUpIcon style={{ color: "green" }} />
+              </div>
+
+              <h5
+                style={{
+                  fontFamily: "Manrope",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  lineHeight: "28px",
+                  textAlign: "center",
+                }}
+              >
+                Kelajakdagi mablag'lar
+              </h5>
+            </div>
+            <h2
+              style={{
+                fontFamily: "Manrope",
+                fontSize: "40px",
+                fontWeight: "600",
+                lineHeight: "48px",
+                textAlign: "center",
+              
+              }}
+            >
+              $130
+            </h2>
+          </div>
+          <div
+            className="treding"
+            style={{
+              backgroundColor: "#0000000D",
+              maxWidth: "237px",
+              padding: "10px",
+              borderRadius: "10px",
+              gap: "12px",
+              paddingRight: "50px",
+              height:"130px"
+
+              
+            }}
+          >
+            <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "100px",
+                  backgroundColor: "##F0FBFF",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "12px",
+                }}
+              >
+                <PersonAddAltIcon style={{ color: "#33CFFF" }} />
+              </div>
+
+              <h5
+                style={{
+                  fontFamily: "Manrope",
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  lineHeight: "28px",
+                  textAlign: "center",
+                }}
+              >
+                Agentlar
+              </h5>
+            </div>
+            <h2
+              style={{
+                fontFamily: "Manrope",
+                fontSize: "40px",
+                fontWeight: "600",
+                lineHeight: "48px",
+                textAlign: "center",
+              }}
+            >
+              2500
+            </h2>
+          </div>
+          </div>
+          
+
+        </div>
+       
       </div>
       <TransactionTable/>
        

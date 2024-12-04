@@ -1,224 +1,91 @@
-
-
-*{
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  /* box-sizing: border-box; */
-  text-decoration: none;
-}
-.container{
-    max-width: 580px;
-    height: 680px;
-    margin: 0 auto;
-    padding: 100px;
-  border-radius: 16px;
-    /* text-align: center; */
-    border: 1px solid #B0B0B040;
-    background-color: #B0B0B040;
-    margin-top: 20px;
-}
-
-.login_title{
-font-family: "Manrope";
-font-size: 32px;
-font-weight: 600;
-line-height: 44.8px;
-color: #0D0D12;
-text-align: center;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-padding-top: 1.5rem;
-}
-
-.login_text{
-/* max-width: 212px; */
-font-family: "Manrope";
-font-size: 16px;
-font-weight: 500;
-line-height: 25.6px;
-text-align: center;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color: #666D80;
-}
-
-.typography_text{
-    font-family: "Manrope";
-font-size: 14px;
-font-weight: 500;
-line-height: 21.7px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color: #0D0D12;
-padding-top: 10px;
-padding-bottom: 15px;
-}
-
-.login_input_div{
-    width:550px;
-    height: 48px;
-    padding: 8px 12px 8px 12px;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-    background-color: #F8FAFB;
-    border: 1px solid #DFE1E7;
-    align-items: center;
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.login_input{
-    width:550px;
-    height: 48px;
-    padding: 8px 12px 8px 12px;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-    font-family: "Manrope";
-font-size: 20px;
-font-weight: 400;
-line-height: 25.6px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color: #666D80;
-border: none;
-background-color: #F8FAFB;
-outline: none;
-}
-
-.email_icon{
-   
-    color:#666D80 ;
-}
-
-.login_input_btn{
-    width:570px;
-    height: 60px;
-    padding: 8px 12px 8px 12px;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-    background-color: #F8FAFB;
-    border: 1px solid #DFE1E7;
-    
-    color: white;
-    margin-bottom: 10px;
-    background-color: #1BA98F;
-    text-align: center;
-    align-items: center;
-    margin-top: 24px;
-    
-}
-
-.login_input_btn-text{
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+  }
   
-font-family: "Inter";
-font-size: 14px;
-font-weight: 500;
-line-height: 20px;
-text-align: center;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color: #FFFFFF;
-
-}
-
-.forgot_password{
- 
-font-family: "Manrope";
-font-size: 14px;
-font-weight: 500;
-line-height: 21.7px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color: #C1C7D0;
-}
-
-
-
-.checkbox_div {
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    border-radius: 16px;
+    background-color: #1E1E1E;
+    margin-top: 50px;
+  }
+  
+  .login_title {
+    font-family: "Manrope", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 44.8px;
+    color: #FFB400;
+    text-align: center;
+  }
+  
+  .login_text {
+    font-family: "Manrope", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25.6px;
+    text-align: center;
+    color: #666D80;
+  }
+  
+  .typography_text {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21.7px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+  }
+  
+  .forgot_password {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .checkbox_div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
   }
   
-  .forgot_password {
-    color: #007bff;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-
-  .login_input_btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .Sign_up_title{
-   
-font-family: "Manrope";
-font-size: 14px;
-font-weight: 500;
-line-height: 21.7px;
-text-align: center;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color:#0D0D12 ;
-padding-top: 1.5rem;
-  }
-
-  .btn_sign_google{
-    width: 269px;
-height:48px;
-padding: 12px 16px 12px 16px;
-gap: 12px;
-border-radius: 100px;
-border: 1px solid #DFE1E7 ;
-opacity: 0px;
-background-color: #F8FAFB;
-display: flex;
-
-align-items: center;
-justify-content: center;
-  }
-
-  .btn_sign_apple{
-    width: 269px;
-height:48px;
-padding: 12px 16px 12px 16px;
-gap: 12px;
-border-radius: 100px;
-border: 1px solid #DFE1E7 ;
-opacity: 0px;
-background-color: #F8FAFB;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-  .div_btn{
+  .btn_sign_google, .btn_sign_apple {
+    width: 100%;
+    height: 48px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    background-color: #F8FAFB;
     display: flex;
-    justify-content: space-between;
-    padding-top: 1.5rem;
-    
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #DFE1E7;
+    cursor: pointer;
+    text-transform: none;
   }
-
-  .sign_up_link{
- 
-font-family: "Manrope";
-font-size: 16px;
-font-weight: 600;
-line-height: 24.8px;
-text-align: center;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color:#1BA98F ;
+  
+  .Sign_up_title {
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21.7px;
+    text-align: center;
+    color: #FFFFFF;
   }
+  
+  .sign_up_link {
+    font-family: "Manrope", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24.8px;
+    color: #1BA98F;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  

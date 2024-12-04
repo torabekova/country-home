@@ -10,7 +10,7 @@ import FilterType from '../FilterType/FilterType';
 import FinancialStatistics from '../FinancialStatics/Statics';
 import SalesIndicator from '../selesIndicotor/SalesIndicotor';
 import ForgotPassword from '../forgot-password/ForgotPAssword';
-import Dashboard from '../dashboard/Dashboard';
+import Dashboard from 'pages/Dashboard/Dashboard';
 import Transaction from '../transaction/Transaction';
 
 type RouteType = {

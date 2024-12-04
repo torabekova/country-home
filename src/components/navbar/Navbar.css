@@ -30,6 +30,7 @@ border: 1px;
 opacity: 0px;
 border: 1px solid #DFE1E7;
 padding: 8px;
+background-color: white;
 
 }
 
@@ -74,7 +75,7 @@ color: #1BA98F;
 .search_btn{
     width:86.31px;
 height: 60.15px;
-padding: 18.31px 31.38px;
+/* padding: 18.31px 31.38px; */
 gap: 15.69px;
 border-radius: 130.77px;
 opacity: 0px;
@@ -89,13 +90,17 @@ border: 1px solid #DFE1E7;
 .navbar_btn-div{
     display: flex;
    gap: 13.69px;
-background-color: #FFFFFF;
+
 outline: none;
+border: none;
+
 }
 
 .avatar{
  display: flex;
 
  justify-content: center;
+ align-items: center;
+ padding-bottom: 5px;
  
 }

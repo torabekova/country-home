@@ -30,7 +30,7 @@ import WifiIcon from "@mui/icons-material/Wifi";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Navbar from "../navbar/Navbar";
 import Header from "pages/Home/Header";
-import Footer from "components/Footer/Footer";
+// import Footer from "components/Footer/Footer";
 import Navbar2 from "components/navbar/Navbar2";
 
 const PropertyCard = ({
@@ -57,7 +57,7 @@ const PropertyCard = ({
   <div>
     <Card sx={{ borderRadius: 4, overflow: "hidden", boxShadow: 2 , maxWidth:"500px",}}>
  
-    <Box sx={{ position: "relative", backgroundColor: "#f5f5f5", height: 160 ,}}>
+    <Box sx={{ position: "relative", backgroundColor: "#f5f5f5", height: 140 ,}}>
       <CardMedia sx={{ height: "100%", width: "100%" }} image={image} title="Property" />
  
       <Chip
@@ -91,7 +91,7 @@ const PropertyCard = ({
     </Box>
 
   
-    <CardContent>
+    <CardContent style={{height:"140px"}}>
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
         {location}
       </Typography>
@@ -100,20 +100,20 @@ const PropertyCard = ({
         color="text.secondary"
         sx={{ display: "flex", alignItems: "center", mt: 0.5, gap: 0.5 }}
       >
-        <LocationOnIcon fontSize="small" />
+        <LocationOnIcon fontSize="small" style={{color:"#1BA98F"}}/>
         {address}
       </Typography>
 
       <Grid container  sx={{ mt: 1 }}>
         <Grid item xs={4} sx={{ textAlign: "center" }}>
           <Stack direction="column" alignItems="center">
-            <BedIcon fontSize="small" />
+            <BedIcon fontSize="small" style={{color:"#1BA98F"}} />
             <Typography variant="body2">{beds} Beds</Typography>
           </Stack>
         </Grid>
         <Grid item xs={4} sx={{ textAlign: "center" }}>
           <Stack direction="column" alignItems="center">
-            <BathtubIcon fontSize="small" />
+            <BathtubIcon fontSize="small" style={{color:"#1BA98F"}} />
             <Typography variant="body2">{baths} Bath</Typography>
           </Stack>
         </Grid>
@@ -128,7 +128,7 @@ const PropertyCard = ({
       <Divider sx={{ my: 1 }} />
 
      
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
+      {/* <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           {price}
           <Typography variant="body2" component="span">
@@ -149,19 +149,20 @@ const PropertyCard = ({
         >
           Detail
         </Button>
-      </Box>
+      </Box> */}
     </CardContent>
   </Card>
   </div>
 );
 
-const PropertiesPage = () => {
+const TopPropoty = () => {
   const propertyData = [
+   
     {
       type: "House",
       rating: 4.5,
-      location: "Grand Field, MN",
-      address: "Grand Galaxy Park 2, West Java",
+      location: "Everest Plaza",
+      address: "Jizzax viloyaati Zomin tumani, tog' yonbag'rida",
       beds: 3,
       baths: 2,
       hasWifi: true,
@@ -171,18 +172,7 @@ const PropertiesPage = () => {
     {
       type: "House",
       rating: 4.5,
-      location: "Grand Field, MN",
-      address: "Grand Galaxy Park 2, West Java",
-      beds: 3,
-      baths: 2,
-      hasWifi: true,
-      price: "$120",
-      image: zomindacha,
-    },
-    {
-      type: "House",
-      rating: 4.5,
-      location: "Grand Field, MN",
+      location: "Everest Plaza",
       address: "Grand Galaxy Park 2, West Java",
       beds: 3,
       baths: 2,
@@ -195,14 +185,14 @@ const PropertiesPage = () => {
   ];
 
   return (
-    <div >
-      <Header/>
-      
-    <Navbar2/>
+    <div>
+          <div >
+    
+
     
     <Box sx={{   maxWidth:"2000px", width:"100%", margin:"0 auto",}}>
       
-      <AppBar position="static"  sx={{ boxShadow: 0, backgroundColor:"white", }}>
+      {/* <AppBar position="static"  sx={{ boxShadow: 0, backgroundColor:"white", }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 , color:"black",}}>
             Properties
@@ -242,27 +232,33 @@ const PropertiesPage = () => {
             <Typography variant="body2">View Map</Typography>
           </Box>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
 
      
         <Grid  spacing={1}>
           {propertyData.map((property, index) => (
-            <Grid style={{display:"flex", justifyContent:"space-around", marginBottom:"20px", }} item xs={12} sm={6}  lg={3} key={index}>
+            <Grid style={{display:"flex",gap:"15px", marginBottom:"20px", marginLeft:"10px" }} item xs={12} sm={6}  lg={3} key={index}>
+              <PropertyCard  {...property}  />
               <PropertyCard {...property} />
               <PropertyCard {...property} />
               <PropertyCard {...property} />
+              {/* <PropertyCard {...property} />
               <PropertyCard {...property} />
               <PropertyCard {...property} />
-              <PropertyCard {...property} />
+              <PropertyCard {...property} /> */}
             </Grid>
           ))}
         </Grid>
         </Box>
      
-    <Footer/>
+    
     </div>
+
+
+    </div>
+   
     
   );
 };
 
-export default PropertiesPage;
+export default TopPropoty;

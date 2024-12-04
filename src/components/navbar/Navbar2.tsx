@@ -14,7 +14,7 @@ import avatar from "./img/avatar.jpg";
 import { PATH } from "../Types/path";
 import { Box, TextField } from "@mui/material";
 
-const Navbar: React.FC = () => {
+const Navbar2: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const handleSearchClick = () => {
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="navbar_container">
+    <div className="navbar_container" style={{maxWidth:"2000px", width:"100%", margin:"auto", padding:"25px"}}>
       <div className="navbar_math_div">
        
         <Link to={"/"} className="home_icon_div">
@@ -39,25 +39,25 @@ const Navbar: React.FC = () => {
           <div className="navbar_link_icon_div">
             <HomeIcon />
             <Link className="navbar_link" to={PATH.PROPERTIESOAGE}>
-              Xususiyatlari
+              Properties
             </Link>
           </div>
           <div className="navbar_link_icon_div">
             <SyncAltRoundedIcon />
             <Link className="navbar_link" to={PATH.TRANSACTION}>
-            O'tkazmalar
+              Transactions
             </Link>
           </div>
           <div className="navbar_link_icon_div">
             <InsertCommentRoundedIcon />
             <Link className="navbar_link" to="/messages">
-              Xabarlar
+              Messages
             </Link>
           </div>
           <div className="navbar_link_icon_div">
             <AssessmentRoundedIcon />
             <Link className="navbar_link" to={PATH.PROPERTIESOAGE}>
-              Hisobotlar
+              Reports
             </Link>
           </div>
         </div>
@@ -97,4 +97,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Navbar2;

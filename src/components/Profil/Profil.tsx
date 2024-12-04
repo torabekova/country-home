@@ -13,6 +13,10 @@ import {
 } from "@mui/material";
 import profilimg from "./img/proffilimg.jpg"
 import Navbar from "../navbar/Navbar";
+import PersonalInformationNumber from "components/PersonalnformationNumber/PersonalnformatinNumber";
+import TopPropoty from "components/TopProporty/TopProporty";
+import Footer from "components/Footer/Footer";
+import Header from "pages/Home/Header";
 
 const ProfilePage: React.FC = () => {
  
@@ -60,6 +64,7 @@ const ProfilePage: React.FC = () => {
  
   return (
    <div>
+    <Header/>
     <div style={{ maxWidth: "1360px", margin: "0 auto",  borderRadius: "20px", padding: "20px",}}>
       <Navbar/>
       </div>
@@ -75,7 +80,7 @@ const ProfilePage: React.FC = () => {
         backgroundColor: "#f8f9fa",
         borderRadius: 2,
         padding: 3,
-        marginBottom: 4,
+       
       }}
     >
       
@@ -94,7 +99,7 @@ const ProfilePage: React.FC = () => {
           </Typography>
         </Box>
         <Button variant="contained" color="primary" onClick={handleEditProfileOpen} style={{borderRadius:"100px", backgroundColor:"#1BA98F", color:"white", }}>
-          Edit Profile
+         Profilni tahrirlash
         </Button>
       </Box>
 
@@ -107,7 +112,7 @@ const ProfilePage: React.FC = () => {
           onClick={() => alert("Redirecting to upgrade...")}
           style={{borderRadius:"100px", backgroundColor:"#1BA98F", color:"white", }}
         >
-          Upgrade Now
+         Yangilash
         </Button>
         <Button
           variant="outlined"
@@ -124,14 +129,29 @@ const ProfilePage: React.FC = () => {
           }}
         
         >
-          Add New Properties
+          Yangi malumot qo'shish
         </Button>
         
       </Box>
     </Box>
+    <Box sx={{
+        maxWidth:"1360px",
+        margin:"0 auto",
+        // backgroundColor: "#f8f9fa",
+        borderRadius: 2,
+        padding: 3,
+        marginBottom: 4,
+      }}>
+        <div style={{display:"flex", gap:"40px"}}>
+          <PersonalInformationNumber/>
+          <TopPropoty/>
+        </div>
+      
+    </Box>
+    
 
  
-    <Box maxWidth={1360} margin="0 auto">
+    {/* <Box maxWidth={1360} margin="0 auto">
       <Typography variant="h6" marginBottom={2}>
         Added Properties:
       </Typography>
@@ -155,10 +175,10 @@ const ProfilePage: React.FC = () => {
           ))}
         </Grid>
       )}
-    </Box>
+    </Box> */}
 
    
-    <Dialog open={isEditDialogOpen} onClose={() => setIsEditDialogOpen(false)}>
+    {/* <Dialog open={isEditDialogOpen} onClose={() => setIsEditDialogOpen(false)}>
       <DialogTitle>Edit Profile</DialogTitle>
       <DialogContent>
         <TextField
@@ -187,10 +207,10 @@ const ProfilePage: React.FC = () => {
           Save
         </Button>
       </DialogActions>
-    </Dialog>
+    </Dialog> */}
 
  
-    <Dialog open={isAddPropertiesDialogOpen} onClose={() => setIsAddPropertiesDialogOpen(false)}>
+    {/* <Dialog open={isAddPropertiesDialogOpen} onClose={() => setIsAddPropertiesDialogOpen(false)}>
       <DialogTitle>Add New Property</DialogTitle>
       <DialogContent>
         <TextField
@@ -208,8 +228,14 @@ const ProfilePage: React.FC = () => {
           Save
         </Button>
       </DialogActions>
-    </Dialog>
+    </Dialog> */}
+
+    
   </Box>
+  <Footer/>
+  
+  
+
    </div>
   );
 };

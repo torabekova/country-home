@@ -6,11 +6,16 @@ import {
   Button,
   Tabs,
   Tab,
-  InputAdornment,
-  TextField,
-  Grid,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton,
 } from "@mui/material";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CloseIcon from "@mui/icons-material/Close";
+import FilterBeds from "components/FilterBeds/Filterbeds";
+import FilterType from "components/FilterType/FilterType";
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -40,156 +45,120 @@ const TabPanel: React.FC<TabPanelProps> = ({
 const FilterComponent = () => {
   const [value, setValue] = useState<number>(0);
   const [priceRange, setPriceRange] = useState<number[]>([120, 900]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   const handleSliderChange = (event: Event, newValue: number | number[]) => {
-    console.log("Slider Value Changed:", newValue);
     setPriceRange(newValue as number[]);
   };
 
-  const handleInputChange = (index: number, newValue: string) => {
-    console.log(
-      `TextField ${index === 0 ? "Min" : "Max"} Value Changed:`,
-      newValue
-    );
-    const updatedRange = [...priceRange];
-    updatedRange[index] = Number(newValue);
-    setPriceRange(updatedRange);
-  };
-
   const handleReset = () => {
-    console.log("Reset Button Clicked");
     setPriceRange([120, 900]);
   };
 
   const handleFindProperties = () => {
-    console.log("Find Properties Button Clicked");
     console.log("Selected Price Range:", priceRange);
+    setIsModalOpen(false); // Close the modal
   };
 
-  const valuetext = (value: number) => `$${value}`;
-
   return (
-    <Box
-      sx={{
-        width: "400px",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-        overflow: "hidden",
-        backgroundColor: "#fff",
-      }}
-    >
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs value={value} onChange={handleTabChange} aria-label="filter tabs">
-          <Tab label="Price" />
-          <Tab label="Beds" />
-          <Tab label="Type" />
-          <Tab label="Facility" />
-          <Tab label="Book Option" />
-        </Tabs>
-      </Box>
-
-      <TabPanel value={value} index={0}>
-        <Typography variant="h6" gutterBottom>
-          Price Range
-        </Typography>
-        <Box sx={{ padding: "16px" }}>
-          <Slider
-            value={priceRange}
-            onChange={handleSliderChange}
-            valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
-            min={0}
-            max={1000}
-          />
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Grid item>
-              <TextField
-                size="small"
-                label="Min"
-                variant="outlined"
-                value={priceRange[0]}
-                onChange={(e) => handleInputChange(0, e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AttachMoneyIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-            <Grid item>
-              <TextField
-                size="small"
-                label="Max"
-                variant="outlined"
-                value={priceRange[1]}
-                onChange={(e) => handleInputChange(1, e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AttachMoneyIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-          </Grid>
-        </Box>
-      </TabPanel>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "16px",
-        }}
+    <div>
+      {/* Trigger Button */}
+      <Button
+        variant="contained"
+        onClick={() => setIsModalOpen(true)}
+        sx={{ borderRadius: "20px", backgroundColor: "#178F78", color: "white" }}
       >
-        <Button
-          variant="outlined"
-          onClick={handleReset}
-          sx={{
-            borderRadius: "20px",
-            paddingLeft: "53px",
-            paddingRight: "53px",
-            color: "#178F78",
-            borderColor:"#178F78",
-            "&:hover": {
+        Open Filter
+      </Button>
+
+      {/* Modal (Dialog) */}
+      <Dialog
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle sx={{ display: "flex", justifyContent: "space-between" }}>
+          Filter Properties
+          <IconButton
+            onClick={() => setIsModalOpen(false)}
+            sx={{ color: "grey.500" }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs value={value} onChange={handleTabChange}>
+              <Tab label="Price" />
+              <Tab label="Beds" />
+              <Tab label="Type" />
+              <Tab label="Facility" />
+              <Tab label="Book Option" />
+            </Tabs>
+          </Box>
+
+          {/* Price Tab */}
+          <TabPanel value={value} index={0}>
+            <Typography variant="h6" gutterBottom>
+              Price Range
+            </Typography>
+            <Box sx={{ padding: "16px" }}>
+              <Slider
+                value={priceRange}
+                onChange={handleSliderChange}
+                valueLabelDisplay="auto"
+                min={0}
+                max={1000}
+              />
+            </Box>
+          </TabPanel>
+
+          {/* Beds Tab - Render FilterBeds Component */}
+          <TabPanel value={value} index={1}>
+            <FilterBeds />
+          
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+          
+            <FilterType/>
+          </TabPanel>
+        </DialogContent>
+
+        <DialogActions>
+          <Button
+            variant="outlined"
+            onClick={handleReset}
+            sx={{
+              borderRadius: "20px",
+              color: "#178F78",
+              borderColor: "#178F78",
+              "&:hover": {
+                backgroundColor: "#178F78",
+                color: "white",
+              },
+            }}
+          >
+            Reset
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleFindProperties}
+            sx={{
+              borderRadius: "20px",
               backgroundColor: "#178F78",
               color: "white",
-            },
-          }}
-        >
-          Reset
-        </Button>
-        <Button
-  variant="outlined"
-  onClick={handleReset}
-  sx={{
-    borderRadius: "20px",
-    
-    borderColor:"#178F78",
-    color:"#178F78",
-   
-    '&:hover': {
-      backgroundColor: "#178F78", 
-      color: "white", 
-    },
-  }}
->
-Find Properties
-</Button>
-      </Box>
-    </Box>
+            }}
+          >
+            Find Properties
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 
