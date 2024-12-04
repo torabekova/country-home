@@ -132,7 +132,7 @@ interface Property {
   };
 
   return (
-    <div style={{backgroundColor:"#333333"}}>
+    <div style={{ backgroundColor: "#F0FBFF"}} >
 <div >
   <Header/>
       <div style={{ maxWidth: "1360px", margin: "0 auto",  borderRadius: "20px", padding: "20px",}}>

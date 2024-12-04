@@ -22,7 +22,7 @@ const SalesIndicator: React.FC = () => {
   };
 
   return (
-    <Box sx={{ padding: 2, backgroundColor:'#0000000D', borderRadius:"40px"}}>
+    <Box sx={{ padding: 2, backgroundColor:'white', borderRadius:"40px", marginBottom:"30px"}}>
       <Typography variant="h6">Sotish ko'rsatgichi</Typography>
       <ButtonGroup variant="contained" sx={{ mt: 2, mb: 2 , }}>
         {["Total Sales", "Viewers", "Future Funds", "Agents"].map((metric) => (

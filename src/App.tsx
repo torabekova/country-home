@@ -33,7 +33,7 @@ function App() {
     <div>
      
       
-        {" "}
+        {/* {" "}
         <Routes>
           {" "}
           {PUBLIC_ROUTES.map((route) => (
@@ -46,7 +46,7 @@ function App() {
           <Route path="/signin" element={<Login />} />
           <Route path="/Dashboard" element={<Dashboard />} /> 
         
-        </Routes>{" "}
+        </Routes>{" "} */}
       
      
       {/* <Login/>
@@ -63,7 +63,7 @@ function App() {
         
      
         {/* <ProfilePage/>   */}
-        {/* <Transaction/>  */}
+        <Transaction/> 
         {/* <PersonalInfoForm/> */}
         {/* <TransactionTable/> */}
         {/* <AddPropertiesModal/> */}

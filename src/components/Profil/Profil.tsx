@@ -63,7 +63,7 @@ const ProfilePage: React.FC = () => {
 
  
   return (
-   <div>
+   <div style={{backgroundColor:"#F0FBFF"}}>
     <Header/>
     <div style={{ maxWidth: "1360px", margin: "0 auto",  borderRadius: "20px", padding: "20px",}}>
       <Navbar/>

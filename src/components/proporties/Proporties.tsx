@@ -100,26 +100,26 @@ const PropertyCard = ({
         color="text.secondary"
         sx={{ display: "flex", alignItems: "center", mt: 0.5, gap: 0.5 }}
       >
-        <LocationOnIcon fontSize="small" />
+        <LocationOnIcon fontSize="small" style={{color:"#1BA98F"}} />
         {address}
       </Typography>
 
       <Grid container  sx={{ mt: 1 }}>
         <Grid item xs={4} sx={{ textAlign: "center" }}>
           <Stack direction="column" alignItems="center">
-            <BedIcon fontSize="small" />
+            <BedIcon fontSize="small" style={{color:"#1BA98F"}} />
             <Typography variant="body2">{beds} Beds</Typography>
           </Stack>
         </Grid>
         <Grid item xs={4} sx={{ textAlign: "center" }}>
           <Stack direction="column" alignItems="center">
-            <BathtubIcon fontSize="small" />
+            <BathtubIcon fontSize="small" style={{color:"#1BA98F"}} />
             <Typography variant="body2">{baths} Bath</Typography>
           </Stack>
         </Grid>
         <Grid item xs={4} sx={{ textAlign: "center" }}>
           <Stack direction="column" alignItems="center">
-            <WifiIcon fontSize="small" color={hasWifi ? "success" : "disabled"} />
+            <WifiIcon fontSize="small" color={hasWifi ? "success" : "disabled"} style={{color:"#1BA98F"}} />
             <Typography variant="body2">{hasWifi ? "WiFi" : "No WiFi"}</Typography>
           </Stack>
         </Grid>
@@ -195,14 +195,14 @@ const PropertiesPage = () => {
   ];
 
   return (
-    <div >
+    <div style={{backgroundColor: "#F0FBFF"}}>
       <Header/>
       
     <Navbar2/>
     
-    <Box sx={{   maxWidth:"2000px", width:"100%", margin:"0 auto",}}>
+    <Box sx={{   maxWidth:"2000px", width:"100%", margin:"0 auto", }}>
       
-      <AppBar position="static"  sx={{ boxShadow: 0, backgroundColor:"white", }}>
+      <AppBar position="static"  sx={{ boxShadow: 0, backgroundColor:"#F0FBFF", }}>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 , color:"black",}}>
             Properties
