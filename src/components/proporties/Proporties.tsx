@@ -31,7 +31,9 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Navbar from "../navbar/Navbar";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
-import Navbar2 from "components/navbar/Navbar2";
+
+import FilterComponent from "components/Charts/Charts";
+import AddPropertiesModal from "components/AddProporties/AddProporties";
 
 const PropertyCard = ({
   type,
@@ -194,13 +196,16 @@ const PropertiesPage = () => {
    
   ];
 
+
+  
+
   return (
     <div style={{backgroundColor: "#F0FBFF"}}>
       <Header/>
       
-    <Navbar2/>
+    <Navbar/>
     
-    <Box sx={{   maxWidth:"2000px", width:"100%", margin:"0 auto", }}>
+    <Box sx={{   maxWidth:"1360px", width:"100%", margin:"0 auto", }}>
       
       <AppBar position="static"  sx={{ boxShadow: 0, backgroundColor:"#F0FBFF", }}>
         <Toolbar>
@@ -216,26 +221,18 @@ const PropertiesPage = () => {
               endAdornment: <SearchIcon />,
             }}
           />
-          <IconButton
-            sx={{
-              borderRadius: "20px",
-              color: "white",
-              backgroundColor: "black",
-              padding: "5px 16px",
-            }}
+          <div
+            
           >
-            <FilterAltIcon />
+           
             <Typography variant="body2" sx={{ ml: 1 }}>
-              Filter
+            <FilterComponent/>
             </Typography>
-          </IconButton>
+          </div>
           <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddIcon />}
-            sx={{ ml: 2, borderRadius: "20px", backgroundColor: "#1BA98F" }}
+           
           >
-            Add New Properties
+             <AddPropertiesModal/>
           </Button>
           <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
             <Switch defaultChecked color="primary" />
@@ -253,7 +250,7 @@ const PropertiesPage = () => {
               <PropertyCard {...property} />
               <PropertyCard {...property} />
               <PropertyCard {...property} />
-              <PropertyCard {...property} />
+              {/* <PropertyCard {...property} /> */}
             </Grid>
           ))}
         </Grid>
