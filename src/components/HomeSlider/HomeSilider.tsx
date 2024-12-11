@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./HomeSilider.css";
 import villa1 from "./img/villa1.jpg";
 import villa3 from "./img/villa3.jpg";
-import villa5 from "./img/villa5.jpg";
+import yangivilla2 from "./img/yangivilla2.jpg"
+import yangivilla3 from "./img/villayangi3.webp"
 
 const SliderSection = () => {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ const SliderSection = () => {
 
   const slides: Slide[] = [
     { id: 1, content: "Slide 1", bgImage: villa1 },
-    { id: 2, content: "Slide 2", bgImage: villa5 },
-    { id: 3, content: "Slide 3", bgImage: villa3 },
+    { id: 2, content: "Slide 2", bgImage: yangivilla2 },
+    { id: 3, content: "Slide 3", bgImage: yangivilla3 },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -31,7 +32,7 @@ const SliderSection = () => {
   }, [slides.length]);
 
   return (
-    <div className="slider-section" style={{ maxWidth: "2000px", width: "100%", margin: "auto", display: "flex", justifyContent: "space-around" }}>
+    <div id="about" className="slider-section" style={{ maxWidth: "2000px", width: "100%", margin: "auto", display: "flex", justifyContent: "space-around" }}>
       <div className="slider">
         <div
           className="slide"
