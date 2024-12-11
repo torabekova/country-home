@@ -21,16 +21,18 @@
 }
 
 .navbar_link_div{
+   
     display: flex;
 justify-content: space-between;
     width:807px;
-height: 68px;
+height: 60px;
 border-radius: 100px;
 border: 1px;
 opacity: 0px;
 border: 1px solid #DFE1E7;
 padding: 8px;
 background-color: white;
+/* padding-bottom: 8px; */
 
 }
 
@@ -102,5 +104,4 @@ border: none;
  justify-content: center;
  align-items: center;
  padding-bottom: 5px;
- 
 }
