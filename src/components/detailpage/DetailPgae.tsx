@@ -13,22 +13,20 @@ const DetailPage: React.FC = () => {
     reset();
   };
 
+  
+
   return (
 <div style={{backgroundColor:"black"}}>
 <Box sx={{ maxWidth: "1200px", margin: "auto", padding: 2,}}>
-      <Header handleScroll={function (id: string): void {
-        throw new Error("Function not implemented.");
-      } } handleSignInClick={function (): void {
-        throw new Error("Function not implemented.");
-      } }/>
+     
       <Typography variant="h3" align="center" sx={{ my: 4, fontWeight: "bold" }}>
         About Us
       </Typography>
-      <Card sx={{ mb: 4 }}>
+      <Card sx={{ mb: 4, borderRadius:"10px" }}>
         <CardMedia
           component="img"
           height="400"
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPQ4rsmDCcZyN0bxDo5BZesf7xitRJdRL9a6q11cG82VozjiSusbADtPocghh40nCogkY&usqp=CAU" // Replace with your image URL
+          image="https://plus.unsplash.com/premium_photo-1661964071015-d97428970584?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWx8ZW58MHx8MHx8fDA%3D" // Replace with your image URL
           alt="About Us Image"
         />
         <CardContent>
@@ -41,15 +39,18 @@ const DetailPage: React.FC = () => {
           </Typography>
         </CardContent>
       </Card>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094376!2d144.9559253156859!3d-37.81720974202186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577206ee4c5f3ac!2sEureka%20Skydeck!5e0!3m2!1sen!2sau!4v1614033793386!5m2!1sen!2sau"
+      <div>
+<iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d391791.11795770284!2d67.96893118599341!3d39.89958512064768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b25239f8d76ce3%3A0x2150c2f17b39602d!2sZomin%20tumani%2C%20Jizzax%20viloyati%2C%20O%CA%BBzbekiston!5e0!3m2!1suz!2s!4v1733742786743!5m2!1suz!2s"
         width="100%"
         height="400"
-        style={{ border: 0, marginBottom: "40px" }}
+        style={{ border: 0, marginBottom: "40px", borderRadius:"10px" }}
         // allowFullScreen=""
         loading="lazy"
         title="Google Maps Location"
       ></iframe>
+      </div>
+      
       <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ backgroundColor: "#1E1E1E", p: 3, borderRadius: 2 }}>
         <Typography variant="h5" sx={{ mb: 3, color: "#FFB400" }}>
           Support Form
