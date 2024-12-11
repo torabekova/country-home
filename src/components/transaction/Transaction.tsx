@@ -7,12 +7,15 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import TransactionTable from '../TransactionTable/TransactionTable';
 import PersonalInfoForm from '../ProfilSettings/ProfilInformation';
+import Header from 'pages/Home/Header';
+import Footer from 'components/Footer/Footer';
 
 type Props = {}
 
 const Transaction = (props: Props) => {
   return (
-    <div>
+    <div style={{backgroundColor: "#F0FBFF"}}>
+      <Header/>
       <div style={{ maxWidth: "1360px", margin: "0 auto",  borderRadius: "20px", padding: "20px",}}>
       <Navbar/>
 
@@ -52,128 +55,21 @@ const Transaction = (props: Props) => {
           <SalesIndicator/>
         </div>
         <div>
-          <div style={{display:"flex", gap:"5px", marginBottom:"5px"}}>
-             <div
-            className="treding"
-            style={{
-              backgroundColor: "#0000000D",
-              maxWidth: "237px",
-              padding: "10px",
-              borderRadius: "10px",
-              gap: "12px",
-              paddingRight: "50px",
-              height:"130px"
-
-            }}
-          >
-            <div style={{ display: "flex", gap: "6px", alignItems: "center", }}>
-              <div
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "100px",
-                  backgroundColor: "#EFFEFA",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "12px",
-                }}
-              >
-                <TrendingUpIcon style={{ color: "green" }} />
-              </div>
-
-              <h5
-                style={{
-                  fontFamily: "Manrope",
-                  fontSize: "20px",
-                  fontWeight: "600",
-                  lineHeight: "28px",
-                  textAlign: "center",
-                }}
-              >
-                Kelajakdagi mablag'lar
-              </h5>
-            </div>
-            <h2
-              style={{
-                fontFamily: "Manrope",
-                fontSize: "40px",
-                fontWeight: "600",
-                lineHeight: "48px",
-                textAlign: "center",
-              
-              }}
-            >
-              $130
-            </h2>
-          </div>
-          <div
-            className="treding"
-            style={{
-              backgroundColor: "#0000000D",
-              maxWidth: "237px",
-              padding: "10px",
-              borderRadius: "10px",
-              gap: "12px",
-              paddingRight: "50px",
-              height:"130px"
-
-              
-            }}
-          >
-            <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-              <div
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "100px",
-                  backgroundColor: "##F0FBFF",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "12px",
-                }}
-              >
-                <PersonAddAltIcon style={{ color: "#33CFFF" }} />
-              </div>
-
-              <h5
-                style={{
-                  fontFamily: "Manrope",
-                  fontSize: "20px",
-                  fontWeight: "600",
-                  lineHeight: "28px",
-                  textAlign: "center",
-                }}
-              >
-                Agentlar
-              </h5>
-            </div>
-            <h2
-              style={{
-                fontFamily: "Manrope",
-                fontSize: "40px",
-                fontWeight: "600",
-                lineHeight: "48px",
-                textAlign: "center",
-              }}
-            >
-              2500
-            </h2>
-          </div>
-          </div >
+         
           <div style={{display:"flex", gap:"5px"}}>
              <div
             className="treding"
             style={{
-              backgroundColor: "#0000000D",
+              backgroundColor: "#F8F9FB",
               maxWidth: "237px",
               padding: "10px",
               borderRadius: "10px",
               gap: "12px",
               paddingRight: "50px",
-              height:"130px"
-
+              height:"172px",
+              alignItems:"center",
+             paddingTop:"40px",
+             paddingLeft:"30px"
             }}
           >
             <div style={{ display: "flex", gap: "6px", alignItems: "center", }}>
@@ -220,13 +116,16 @@ const Transaction = (props: Props) => {
           <div
             className="treding"
             style={{
-              backgroundColor: "#0000000D",
+              backgroundColor: "#F8F9FB",
               maxWidth: "237px",
               padding: "10px",
               borderRadius: "10px",
               gap: "12px",
               paddingRight: "50px",
-              height:"130px"
+              height:"172px",
+              alignItems:"center",
+             paddingTop:"40px"
+          
 
               
             }}
@@ -280,6 +179,7 @@ const Transaction = (props: Props) => {
       <TransactionTable/>
        
       </div>
+      <Footer/>
     </div>
   )
 }
