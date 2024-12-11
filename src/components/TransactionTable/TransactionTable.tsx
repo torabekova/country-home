@@ -62,6 +62,37 @@ const salesData: Sale[] = [
     status: "Pending",
     avatar: "https://i.pravatar.cc/40?img=3",
   },
+  {
+    id: "#1201290",
+    customerName: "Fajar Firmansyah",
+    date: "12 May, 2024",
+    property: "Grand Field",
+    amount: "$2,980",
+    type: "Apartment",
+    status: "Completed",
+    avatar: "https://i.pravatar.cc/40?img=1",
+  },
+  // {
+  //   id: "#1201291",
+  //   customerName: "Aulia",
+  //   date: "12 May, 2024",
+  //   property: "Serenity Estates",
+  //   amount: "$4,980",
+  //   type: "House",
+  //   status: "Completed",
+  //   avatar: "https://i.pravatar.cc/40?img=2",
+  // },
+  {
+    id: "#1201293",
+    customerName: "Irwansyah",
+    date: "12 May, 2024",
+    property: "Harbor Heights",
+    amount: "$4,980",
+    type: "House",
+    status: "Pending",
+    avatar: "https://i.pravatar.cc/40?img=3",
+  },
+ 
 ];
 
 
@@ -107,7 +138,7 @@ const TransactionTable: React.FC = () => {
   };
 
   return (
-    <Box sx={{ padding: 4 }}>
+    <Box sx={{ padding: 4 , border:"1px, solid", borderColor:"#DFE1E7", borderRadius:"40px", margin:"20px", backgroundColor:"white"}}>
    
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
         <Typography variant="h6" fontWeight="bold">
@@ -117,7 +148,7 @@ const TransactionTable: React.FC = () => {
           </Typography>
         </Typography>
         <Box display="flex" gap={2}>
-          <Button variant="contained" color="primary" onClick={handleDownloadPDF}>
+          <Button variant="contained" color="primary" onClick={handleDownloadPDF} style={{backgroundColor:"#1BA98F"}}>
             Download
           </Button>
           <TextField
@@ -148,7 +179,13 @@ const TransactionTable: React.FC = () => {
           </TableHead>
           <TableBody>
             {filteredData.map((row) => (
-              <TableRow key={row.id}>
+              <TableRow key={row.id}   sx={{
+                "&:hover": {
+                  backgroundColor: "#DFE1E7", // Hover paytida background oq rangga o'zgaradi
+                  boxShadow: "0px 2px 8px rgba(0,0,0,0.1)", // Hover paytida biroz soyani qo'shish uchun
+                  transition: "all 0.3s ease", // Smooth hover effekti
+                },
+              }}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>
                   <Box display="flex" alignItems="center" gap={1}>
@@ -166,6 +203,16 @@ const TransactionTable: React.FC = () => {
                     color={statusColors[row.status]}
                     variant="outlined"
                     size="small"
+                    sx={{
+                      cursor: "pointer", 
+                      transition: "all 0.3s ease", 
+                      "&:hover": {
+                        backgroundColor: row.status === "Pending" ? "#FFC107" : "#4CAF50", 
+                        color: "#ffffff",
+                        transform: "scale(1.1)", 
+                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                      },
+                    }}
                   />
                 </TableCell>
                 <TableCell>
