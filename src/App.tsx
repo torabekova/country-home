@@ -1,4 +1,5 @@
 import React from "react";
+import i18n from "./components/Translate/Translate"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import FilterType from "./components/FilterType/FilterType";
@@ -25,6 +26,14 @@ import ProfileForm from "components/AddProporties/AddProporties";
 import AddPropertiesModal from "components/AddProporties/AddProporties";
 import PersonalInformationNumber from "components/PersonalnformationNumber/PersonalnformatinNumber";
 import TopPropoty from "components/TopProporty/TopProporty";
+import PieChartWithPaddingAngle from "./components/selesIndicotor/SalesIndicotor";
+import Report from "components/Report/Report";
+import GlavniMainPage from "components/Glavni/GlavniMainPage";
+import FilterFacility from "components/FilterFacility/FilterFacility";
+
+import BookOption from "components/FilterBookOption/FilterBookOption";
+import ForTranslate from "components/Translate/ForTranslate";
+
 // import PropertyDetails from "./components/dashboard/PropertyDetails";
 function App() {
   console.log(PUBLIC_ROUTES);
@@ -33,7 +42,7 @@ function App() {
     <div>
      
       
-        {/* {" "}
+         {" "}
         <Routes>
           {" "}
           {PUBLIC_ROUTES.map((route) => (
@@ -45,12 +54,22 @@ function App() {
           <Route path="/card-info/:id" element={<CardInfo />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/Dashboard" element={<Dashboard />} /> 
-        
-        </Routes>{" "} */}
+          <Route path="/Login" element={<Login />} />
+          <Route path="/home" element={<Dashboard />} />
+          <Route path="/properties" element={<PropertiesPage />} />
+          <Route path="/transaction" element={<Transaction />} />
+
+          <Route path="/report" element={<Report />} />
+          <Route path="/profilePage" element = {<ProfilePage/>  }/>
+          <Route path="/profilsettings" element= {<PersonalInfoForm/>}/>
+          
+        </Routes>{" "} 
+        {/* <ForTranslate/> */}
+        {/* <Glavni/>
       
      
-      {/* <Login/>
-         */}
+      {/* <Login/> */}
+        
       {/* <Dashboard/> */}
      
         {/* <PropertiesPage/>  */}
@@ -62,14 +81,19 @@ function App() {
        
         
      
-        {/* <ProfilePage/>   */}
-        <Transaction/> 
+        
+        {/* <Transaction/>  */}
         {/* <PersonalInfoForm/> */}
         {/* <TransactionTable/> */}
         {/* <AddPropertiesModal/> */}
         {/* <TopPropoty/> */}
         {/* <Register/> */}
-       
+        {/* <Navbar/> */}
+        {/* <PieChartWithPaddingAngle/> */}
+      {/* <GlavniMainPage/> */}
+      {/* <FilterFacility/> */}
+
+      {/* <BookOption/> */}
     </div>
   );
 }
