@@ -96,7 +96,7 @@ const FilterBeds: React.FC = () => {
         <CloseIcon />
       </Box>
 
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs value={value} onChange={handleTabChange} aria-label="filter tabs">
           <Tab label="Price" />
           <Tab label="Beds" />
@@ -104,7 +104,7 @@ const FilterBeds: React.FC = () => {
           <Tab label="Facility" />
           <Tab label="Book Option" />
         </Tabs>
-      </Box>
+      </Box> */}
 
       <TabPanel value={value} index={1}>
         <Typography variant="subtitle1" gutterBottom>
