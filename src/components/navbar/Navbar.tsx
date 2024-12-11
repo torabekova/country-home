@@ -14,6 +14,9 @@ import avatar from "./img/avatar.jpg";
 import { PATH } from "../Types/path";
 import { Box, TextField } from "@mui/material";
 
+// import GlavniMainPage from "components/Glavni/GlavniMainPage";
+import ParentComponent from "components/Glavni/GlavniMainPage";
+
 const Navbar: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -24,7 +27,6 @@ const Navbar: React.FC = () => {
   return (
     <div className="navbar_container">
       <div className="navbar_math_div">
-       
         <Link to={"/"} className="home_icon_div">
           <img src={tabler} alt="tabler icon" />
         </Link>
@@ -32,32 +34,32 @@ const Navbar: React.FC = () => {
         <div className="navbar_link_div">
           <div className="navbar_link_icon_div">
             <img src={tabler} alt="tabler icon" width={30} />
-            <Link className="navbar_link" to={PATH.DASHBORD}>
+            <Link className="navbar_link" to={"/Dashboard"}>
               Dashboard
             </Link>
           </div>
           <div className="navbar_link_icon_div">
             <HomeIcon />
-            <Link className="navbar_link" to={PATH.PROPERTIESOAGE}>
-              Xususiyatlari
+            <Link className="navbar_link" to={"/properties"}>
+            Properties
             </Link>
           </div>
           <div className="navbar_link_icon_div">
             <SyncAltRoundedIcon />
-            <Link className="navbar_link" to={PATH.TRANSACTION}>
-            O'tkazmalar
+            <Link className="navbar_link" to={"/transaction"}>
+            Transaction
             </Link>
           </div>
-          <div className="navbar_link_icon_div">
+          {/* <div className="navbar_link_icon_div">
             <InsertCommentRoundedIcon />
             <Link className="navbar_link" to="/messages">
               Xabarlar
             </Link>
-          </div>
+          </div> */}
           <div className="navbar_link_icon_div">
             <AssessmentRoundedIcon />
-            <Link className="navbar_link" to={PATH.PROPERTIESOAGE}>
-              Hisobotlar
+            <Link className="navbar_link" to={"/report"}>
+            Report
             </Link>
           </div>
         </div>
@@ -86,9 +88,29 @@ const Navbar: React.FC = () => {
           <button className="search_btn">
             <NotificationsNoneRoundedIcon />
           </button>
-          <button className="search_btn" >
-            <Stack className="avatar" direction="row" spacing={2}>
-              <Avatar alt="User Avatar" src={avatar} />
+          <button
+            className="search_profil"
+            style={{
+              borderRadius: "100px",
+              border: "none",
+              padding: "none",
+              backgroundColor: "white",
+              maxWidth: "90px",
+              justifyContent: "center",
+              display: "flex",
+            }}
+          >
+            <Stack
+              className="avatar"
+              direction="row"
+              style={{ display: "flex", padding: "0"}}
+            >
+              <Avatar
+                alt="User Avatar"
+                src={avatar}
+                style={{ position: "relative", left: "30%" }}
+              />
+              <ParentComponent />
             </Stack>
           </button>
         </div>
