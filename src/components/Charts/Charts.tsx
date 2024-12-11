@@ -15,6 +15,8 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import FilterBeds from "components/FilterBeds/Filterbeds";
 import FilterType from "components/FilterType/FilterType";
+import FilterFacility from "components/FilterFacility/FilterFacility";
+import BookOption from "components/FilterBookOption/FilterBookOption";
 
 
 interface TabPanelProps {
@@ -127,7 +129,18 @@ const FilterComponent = () => {
           
             <FilterType/>
           </TabPanel>
+
+          <TabPanel value={value} index={3}>
+          
+          <FilterFacility/>
+        </TabPanel>
+          <TabPanel value={value} index={4}>
+          
+          <BookOption/>
+        </TabPanel>
         </DialogContent>
+        
+        
 
         <DialogActions>
           <Button
