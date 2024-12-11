@@ -15,8 +15,10 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 
+
+
 const AddPropertiesModal = () => {
-  const [open, setOpen] = useState(true); // Modalni ochiq yoki yopiq holatini boshqarish
+  const [open, setOpen] = useState(false);
   const [propertyData, setPropertyData] = useState({
     propertyName: "",
     carpetArea: "",
@@ -86,7 +88,7 @@ const AddPropertiesModal = () => {
       <Button
         variant="contained"
         onClick={handleOpen}
-        style={{ backgroundColor: "#1BA98F" }}
+        style={{ backgroundColor: "#1BA98F", borderRadius:"100px" }}
       >
         Add New Properties
       </Button>
@@ -102,7 +104,7 @@ const AddPropertiesModal = () => {
             my: 4,
           }}
         >
-          <Typography variant="h6" sx={{ mb: 2 }}>
+          <Typography variant="h6" sx={{ mb: 2  }}>
             Add New Properties
           </Typography>
           <Grid container spacing={2}>
