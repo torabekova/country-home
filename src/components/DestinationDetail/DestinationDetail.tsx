@@ -9,12 +9,14 @@ const destinationData = [
   {
     id: 1,
     title: "Tours And Travels",
-    image: "https://5.imimg.com/data5/SELLER/Default/2022/11/TD/AM/IK/88789658/travel-hotel-bus-flight-white-label-b2b.jpg", // Replace with actual image URL
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR_aWDdiC-SwNDuGepN8YSRl8qMjrZUKkBQw&s", // Replace with actual image URL
     description: "Explore the most breathtaking destinations.",
-    location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094376!2d144.9559253156859!3d-37.81720974202186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577206ee4c5f3ac!2sEureka%20Skydeck!5e0!3m2!1sen!2sau!4v1614033793386!5m2!1sen!2sau",
+    location:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d391791.11795770284!2d67.96893118599341!3d39.89958512064768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b25239f8d76ce3%3A0x2150c2f17b39602d!2sZomin%20tumani%2C%20Jizzax%20viloyati%2C%20O%CA%BBzbekiston!5e0!3m2!1suz!2s!4v1733742786743!5m2!1suz!2s",
   },
   // Add more destination data here
 ];
+
 
 const DestinationDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,14 +31,23 @@ const DestinationDetail: React.FC = () => {
     <div style={{backgroundColor:"black"}}>
   <Box sx={{ maxWidth: "1200px", margin: "auto", padding: 2 }}>
     <Header/>
-      <Card sx={{ mb: 4, marginBottom:"20px", backgroundColor:"black", color:"white"}}>
-        <CardMedia
+      <Card sx={{ mb: 4, marginBottom:"20px", backgroundColor:"black", color:"white",}}>
+        <CardMedia style={{borderRadius:"10px"}}
           component="img"
           height="400"
           image={destination.image}
           alt={destination.title}
         />
-        <CardContent>
+        {/* <iframe
+  src={destination.location}
+  width="100%"
+  height="400"
+  style={{ border: 0 }}
+  loading="lazy"
+  title={`${destination.title} Google Maps Location`}
+></iframe> */}
+
+        <CardContent style={{borderRadius:"10px"}}>
           <Typography variant="h5" sx={{ mb: 2 }}>
             {destination.title}
           </Typography>
@@ -50,7 +61,7 @@ const DestinationDetail: React.FC = () => {
             src={destination.location}
             width="100%"
             height="400"
-            style={{ border: 0 }}
+            style={{ border: 0, borderRadius:"10px" }}
           
             loading="lazy"
             title="Google Maps Location"
