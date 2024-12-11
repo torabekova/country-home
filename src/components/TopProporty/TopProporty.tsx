@@ -31,7 +31,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Navbar from "../navbar/Navbar";
 import Header from "pages/Home/Header";
 // import Footer from "components/Footer/Footer";
-import Navbar2 from "components/navbar/Navbar2";
+
 
 const PropertyCard = ({
   type,
