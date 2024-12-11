@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
   return (
     <Box
       sx={{
-        maxWidth: "2000px",
+        // maxWidth: "2000px",
         width: "100%",
         backgroundColor: "#000",
         margin: "auto",
@@ -43,6 +43,7 @@ const Footer: React.FC = () => {
         gap: "20px",
       }}
     >
+      
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
           ZAMIN TOWN
@@ -82,9 +83,9 @@ const Footer: React.FC = () => {
 
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
-          Tez havolalar
+        Quick links
         </Typography>
-        {["Home", "Biz Haqimizda", "Manzil", "Hizmatlar"].map((link, index) => (
+        {["Home", "About", "Destination", "Services"].map((link, index) => (
           <Typography
             key={index}
             sx={{
@@ -94,9 +95,9 @@ const Footer: React.FC = () => {
             }}
             onClick={() => handleScroll(
               link.toLowerCase() === "home" ? "header" :
-              link.toLowerCase() === "Biz Haqimizda" ? "about-section" :
-              link.toLowerCase() === "Manzil" ? "destination-section" :
-              link.toLowerCase() === "Hizmatlar" ? "services-section" : ""
+              link.toLowerCase() === "about" ? "about" :
+              link.toLowerCase() === "destination" ? "destination-section" :
+              link.toLowerCase() === "services" ? "services-section" : ""
             )}
           >
             {link}
@@ -106,7 +107,7 @@ const Footer: React.FC = () => {
 
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
-         Bizning Manzil
+        Our address
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
           <LocationOn sx={{ color: "#FFB400", mr: 1 }} />
