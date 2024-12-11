@@ -21,7 +21,8 @@ const Header: React.FC<HeaderProps> = ({ handleScroll, handleSignInClick }) => {
             <Button
               key={index}
               onClick={() => handleScroll && handleScroll(
-                text.toLowerCase() === "about" ? "about-section" :
+                text.toLowerCase() === "home" ? "header":
+                text.toLowerCase() === "about" ? "about" :
                 text.toLowerCase() === "destination" ? "destination-section" :
                 text.toLowerCase() === "services" ? "services-section" : text.toLowerCase()
               )}
