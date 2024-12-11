@@ -14,6 +14,11 @@ export const PATH = {
        DASHBORD :"dashboard",
        FORGOTPASSWORD :"forgotpassword",
        TRANSACTION: "transaction",
+       REPORT: "report",
+       Home:"home",
+       ABOUT:"about",
+       DESTINATION:"destination",
+       SERVICES:"services"
 
      
 
