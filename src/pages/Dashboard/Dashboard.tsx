@@ -26,6 +26,7 @@ import FinancialStatistics from "components/FinancialStatics/Statics";
 import Navbar from "components/navbar/Navbar";
 import Footer from "components/Footer/Footer";
 import Header from "pages/Home/Header";
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [Monthly, setMonthly] = React.useState("");
@@ -34,6 +35,7 @@ const Dashboard = () => {
     setMonthly(event.target.value as string);
   };
   const [isHovered, setIsHovered] = useState(false);
+
 
   const staffData = [
     { name: "Rina", status: "Online", avatarSrc: avatar },
@@ -128,7 +130,14 @@ interface Property {
   };
 
   const closeModal = () => {
-    setSelectedProperty(null); // Close modal by clearing the selected property
+    setSelectedProperty(null); 
+  };
+  const navigate = useNavigate();  
+  const handleClick = () => {
+    navigate('/clickdetail');  // Bosilganidan so'ng yangi sahifaga o'tamiz
+  };
+  const handleDetail = () => {
+    navigate('/propertiespage');  // Bosilganidan so'ng yangi sahifaga o'tamiz
   };
 
   return (
@@ -213,7 +222,7 @@ interface Property {
             </h4>
             {/* <MoreHorizIcon /> */}
           </div>
-          <div>
+          <div style={{marginBottom:"10px"}}>
       <img
         style={{
           maxWidth: "290px",
@@ -287,7 +296,8 @@ interface Property {
                 textDecorationSkipInk: "none",
                 backgroundColor: "black",
               }}
-              href="#"
+          
+              onClick={handleClick}
             >
               Detail
             </a>
@@ -662,7 +672,7 @@ interface Property {
                   textDecorationSkipInk: "none",
                 }}
                 href="#"
-                onClick={() => showDetails(property)} // Set the clicked property in state
+                onClick={handleDetail} // Set the clicked property in state
               >
                 Detail
               </a>

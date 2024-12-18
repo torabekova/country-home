@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 interface SearchFormProps {
   destination: string;
@@ -11,7 +12,11 @@ interface SearchFormProps {
   handleSearch: () => void;
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ destination, setDestination, date, setDate, tourists, setTourists, handleSearch }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ destination, setDestination, date, setDate, tourists, setTourists,  }) => {
+  const navigate = useNavigate();  
+const handleClick = () => {
+  navigate('/SearchForm');  // Bosilganidan so'ng yangi sahifaga o'tamiz
+};
   return (
     <Box
       sx={{
@@ -106,7 +111,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ destination, setDestination, da
       </Box>
 
       <Button
-        onClick={handleSearch}
+        onClick={handleClick}
         sx={{
           marginTop: "1.5rem",
           backgroundColor: "#FFB400",

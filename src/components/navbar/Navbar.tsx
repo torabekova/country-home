@@ -9,7 +9,7 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import tabler from "./img/tabler.png";
+import tabler from "./img/tabler.svg";
 import avatar from "./img/avatar.jpg";
 import { PATH } from "../Types/path";
 import { Box, TextField } from "@mui/material";
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
 
         <div className="navbar_link_div">
           <div className="navbar_link_icon_div">
-            <img src={tabler} alt="tabler icon" width={30} />
+            <img className="tabler_icon" src={tabler} alt="tabler icon" width={30} />
             <Link className="navbar_link" to={"/Dashboard"}>
               Dashboard
             </Link>
@@ -98,12 +98,13 @@ const Navbar: React.FC = () => {
               maxWidth: "90px",
               justifyContent: "center",
               display: "flex",
+              alignItems:"center"
             }}
           >
             <Stack
               className="avatar"
               direction="row"
-              style={{ display: "flex", padding: "0"}}
+              style={{ display: "flex", padding: "0", }}
             >
               <Avatar
                 alt="User Avatar"

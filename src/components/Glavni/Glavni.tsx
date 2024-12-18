@@ -10,54 +10,66 @@ import {
   Divider,
   IconButton,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close"; // X ikonkasi
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { useNavigate } from "react-router-dom";
+// import { useDarkMode } from "darkModeProvider/darkMode";
 
 const Glavni = () => {
-  const [menuOpen, setMenuOpen] = useState(true); // Menyu holati
+  const [menuOpen, setMenuOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/profilsettings");
+  };
+
   const handleMenuClose = () => {
-    setMenuOpen(false); // Menyuni yopish
+    setMenuOpen(false);
   };
 
   const handleDarkModeToggle = () => {
-    setDarkMode((prev) => !prev); // Qorong'u rejimni o'zgartirish
+    setDarkMode((prev) => !prev);
   };
 
   const handleLogout = () => {
     console.log("Chiqish bosildi");
   };
 
+  // const theme = createTheme({
+  //   palette: {
+  //     mode: darkMode ? "dark" : "light";
+  //   }
+  // })
+
   return (
-    <Menu 
-      open={menuOpen} // Menyu ochiq yoki yopiq holatini boshqarish
-      onClose={handleMenuClose} // Menyuni yopish uchun qo'shimcha usul
+    <Menu
+      style={{ position: "absolute" }}
+      open={menuOpen}
+      onClose={handleMenuClose}
       PaperProps={{
         elevation: 3,
         sx: {
-          width: 240,
+          width: 280,
           borderRadius: 2,
-        // position:"absolute",
-        // r:6,
-        marginTop:"140px",
+          left: "67% !important",
+          top: "40px !important",
+          marginTop: "140px",
           overflow: "visible",
+          position: "relative", // Position the menu relative to its container
           "&::before": {
             content: '" "',
             display: "block",
             position: "absolute",
-            top: 2,
+            right: "7px",
+            top: 1,
             width: 10,
             height: 10,
             bgcolor: "background.paper",
             transform: "translateY(-50%) rotate(45deg)",
             zIndex: 0,
-
           },
         },
       }}
@@ -65,25 +77,11 @@ const Glavni = () => {
         vertical: "top",
         horizontal: "right",
       }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
     >
-      {/* X tugmasi */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          p: 1,
-        }}
-      >
-        <IconButton size="small" onClick={handleMenuClose}>
-          <CloseIcon />
-        </IconButton>
-      </Box>
-
       <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
         <Avatar alt="User Avatar" src="/path/to/avatar.jpg" sx={{ mr: 2 }} />
         <Box>
@@ -104,7 +102,7 @@ const Glavni = () => {
         Profil
       </MenuItem>
 
-      <MenuItem onClick={() => navigate("/profilsettings")}>
+      <MenuItem onClick={handleClick}>
         <ListItemIcon>
           <SettingsIcon fontSize="small" />
         </ListItemIcon>

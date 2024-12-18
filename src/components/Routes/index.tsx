@@ -25,7 +25,7 @@ export const ROUTES: readonly RouteType[] = [
     },
     {
         path: PATH.REGISTER,
-        element: <Register />
+        element: <Register getIsLoginStatus={() => {}}/>
     },
     {
         path: PATH.NAVBAR,

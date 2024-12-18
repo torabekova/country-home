@@ -33,6 +33,12 @@ import FilterFacility from "components/FilterFacility/FilterFacility";
 
 import BookOption from "components/FilterBookOption/FilterBookOption";
 import ForTranslate from "components/Translate/ForTranslate";
+import PasswordReset from "components/PasswordReset/PasswordReset";
+import SetNewPassword from "components/SetNewPassword/SetNewPassword";
+import ClickDetail from "pages/Dashboard/cilickDetail/ClickDetail";
+import ModalMap from "components/ViewMap/ViewMap";
+
+import ViewMapSelect from "components/ViewMap/ViewMapSelect";
 
 // import PropertyDetails from "./components/dashboard/PropertyDetails";
 function App() {
@@ -40,9 +46,9 @@ function App() {
 
   return (
     <div>
-     
+     <ModalMap />
       
-         {" "}
+          {" "}
         <Routes>
           {" "}
           {PUBLIC_ROUTES.map((route) => (
@@ -62,13 +68,17 @@ function App() {
           <Route path="/report" element={<Report />} />
           <Route path="/profilePage" element = {<ProfilePage/>  }/>
           <Route path="/profilsettings" element= {<PersonalInfoForm/>}/>
+          <Route path="/clickdetail" element= {<PropertiesPage/> }/>
+          <Route path="/propertiespage" element= {<ClickDetail/> }/>
+          <Route path="/SearchForm" element= {<PropertiesPage/> }/>
+
           
-        </Routes>{" "} 
+        </Routes>{" "}  
         {/* <ForTranslate/> */}
         {/* <Glavni/>
       
      
-      {/* <Login/> */}
+      // {/* <Login/> */}
         
       {/* <Dashboard/> */}
      
@@ -77,7 +87,7 @@ function App() {
         {/* <FilterBeds/> */}
         {/* <FilterType/> */}
     
-     
+        {/* <ViewMapSelect/> */}
        
         
      
@@ -94,7 +104,15 @@ function App() {
       {/* <FilterFacility/> */}
 
       {/* <BookOption/> */}
+      {/* <ForgotPassword/> */}
+      {/* <Register/> */}
+     
+     {/* <SetNewPassword/> */}
+     {/* <PasswordReset/> */}
+     {/* <ClickDetail/> */}
+     {/* <ModalMap/> */}
     </div>
+
   );
 }
 

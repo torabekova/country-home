@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import zomindacha from "./img/zomindacha.png";
 import everestplaza from "./img/everestplaza.jpg";
 import {
@@ -31,9 +31,12 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Navbar from "../navbar/Navbar";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
+import { useNavigate } from 'react-router-dom';
 
 import FilterComponent from "components/Charts/Charts";
 import AddPropertiesModal from "components/AddProporties/AddProporties";
+import axios from "axios";
+import { Property } from "interfaces/property";
 
 const PropertyCard = ({
   type,
@@ -45,6 +48,7 @@ const PropertyCard = ({
   hasWifi,
   price,
   image,
+  onClick,
 }: {
   type: string;
   rating: number;
@@ -55,8 +59,11 @@ const PropertyCard = ({
   hasWifi: boolean;
   price: string;
   image: string;
-}) => (
+  onClick: () => void;
+}  ) => ( 
+  
   <div>
+    
     <Card sx={{ borderRadius: 4, overflow: "hidden", boxShadow: 2 , maxWidth:"500px",}}>
  
     <Box sx={{ position: "relative", backgroundColor: "#f5f5f5", height: 160 ,}}>
@@ -72,7 +79,7 @@ const PropertyCard = ({
           color: "#000",
           fontWeight: "bold",
         }}
-      />
+        />
      
       <Box
         sx={{
@@ -86,7 +93,7 @@ const PropertyCard = ({
           display: "flex",
           alignItems: "center",
         }}
-      >
+        >
         <StarIcon sx={{ fontSize: 16, color: "#ffeb3b" }} />
         <Typography variant="body2">{rating}</Typography>
       </Box>
@@ -101,7 +108,7 @@ const PropertyCard = ({
         variant="body2"
         color="text.secondary"
         sx={{ display: "flex", alignItems: "center", mt: 0.5, gap: 0.5 }}
-      >
+        >
         <LocationOnIcon fontSize="small" style={{color:"#1BA98F"}} />
         {address}
       </Typography>
@@ -138,17 +145,20 @@ const PropertyCard = ({
             / per month
           </Typography>
         </Typography>
+        
         <Button
           variant="contained"
           color="primary"
           size="small"
+          onClick={onClick}
           sx={{
             textTransform: "none",
             borderRadius: "20px",
             backgroundColor: "black",
             color: "white",
+            
           }}
-        >
+          >
           Detail
         </Button>
       </Box>
@@ -158,6 +168,25 @@ const PropertyCard = ({
 );
 
 const PropertiesPage = () => {
+  const navigate = useNavigate();
+  const [properties, setProperties] = useState<Property[]>([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        setProperties(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+
+  const handleClick = (location: string) => {
+    console.log("Navigating to:", location);
+    navigate("/propertiespage"); // Modify as needed
+  };
+
   const propertyData = [
     {
       type: "House",
@@ -195,7 +224,8 @@ const PropertiesPage = () => {
    
    
   ];
-
+  
+ 
 
   
 
@@ -236,20 +266,19 @@ const PropertiesPage = () => {
           </Button>
           <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
             <Switch defaultChecked color="primary" />
-            <Typography variant="body2">View Map</Typography>
+            <Typography variant="body2" style={{color:"#000000"}}>View Map</Typography>
           </Box>
         </Toolbar>
       </AppBar>
-
      
         <Grid  spacing={1}>
-          {propertyData.map((property, index) => (
+          {properties.map((property, index) => (
             <Grid style={{display:"flex", justifyContent:"space-around", marginBottom:"20px", }} item xs={12} sm={6}  lg={3} key={index}>
-              <PropertyCard {...property} />
-              <PropertyCard {...property} />
-              <PropertyCard {...property} />
-              <PropertyCard {...property} />
-              <PropertyCard {...property} />
+              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
+              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
+              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
+              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
+              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
               {/* <PropertyCard {...property} /> */}
             </Grid>
           ))}

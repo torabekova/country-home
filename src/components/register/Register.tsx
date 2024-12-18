@@ -1,23 +1,27 @@
-import React, { useState } from "react";
-import "./Register.css";
-import { Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography,
+  Button,
+} from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockIcon from "@mui/icons-material/Lock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import googleLogo from "./img/googleLogo.webp"
-import appleLogo from "./img/appleLogo.png"
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { text } from "stream/consumers";
-type Props = {};
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
-const Register = (props: Props) => {
+interface Props {
+  getIsLoginStatus: () => void;
+}
+
+const Register = ({ getIsLoginStatus }: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -25,100 +29,283 @@ const Register = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-   
     console.log("Email:", email, "Password:", password);
   };
 
-  const handleGoogleSubmit = () => {
-    console.log("hello google");
-    
+  const handleClose = () => {
+    setOpen(false);
   };
 
-  
-  const handleAppleSubmit = () => {
-    console.log("hello apple");
-     
-  };
+  useEffect(() => {
+    setOpen(true);
+  }, []);
 
   return (
-    <div className="container">
-      <h3 className="login_title">Create Your Account</h3>
-      <p className="login_text">Please input to your account</p>
-      <div className="input_div">
-        <div>
-        <Typography className="typography_text">First Name</Typography>
-        <div className="register_input_div">
-          <PermIdentityIcon className="email_icon" />
-          <input
-            className="register_input"
-            type="text"
-            placeholder="Input your first name"
-            
-          />
+    <div>
+      <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+        <div
+          className="container"
+          style={{
+            padding: "20px",
+            borderRadius: "1px",
+            backgroundColor: "#1E1E1E",
+          }}
+        >
+          <DialogTitle
+            style={{
+              fontFamily: "Manrope",
+              fontSize: "32px",
+              fontWeight: "600",
+              textAlign: "center",
+              paddingBottom: "16px",
+              color: "#FFB400",
+            }}
+          >
+            Create Your Account
+          </DialogTitle>
+
+          <DialogContent>
+            <p
+              className="login_text"
+              style={{
+                textAlign: "center",
+                color: "#666D80",
+                marginBottom: "16px",
+              }}
+            >
+              Please input to your account
+            </p>
+
+            <div
+              className="input_div"
+              style={{ display: "flex", gap: "10px", marginBottom: "10px" }}
+            >
+              <div>
+                <Typography
+                  className="typography_text"
+                  style={{ color: "#666D80", marginBottom: "8px" }}
+                >
+                  First Name
+                </Typography>
+                <div
+                  className="register_input_div"
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    gap: "10px",
+                    padding: "8px 12px",
+                    fontFamily: "Manrope",
+                    fontSize: "20px",
+                    borderRadius: "5px",
+                    alignItems: "center",
+                    border: "1px solid #FFB400",
+                  }}
+                >
+                  <PermIdentityIcon
+                    className="email_icon"
+                    style={{ color: "#666D80" }}
+                  />
+                  <input
+                    className="register_input"
+                    type="text"
+                    placeholder="Input your first name"
+                    style={{
+                      width: "100%",
+                      padding: "8px 12px",
+                      fontFamily: "Manrope",
+                      fontSize: "20px",
+                      border: "none",
+                      backgroundColor: "#1E1E1E",
+                      outline: "none",
+                      borderRadius: "5px",
+                      color: "white",
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Typography
+                  className="typography_text"
+                  style={{ color: "#666D80", marginBottom: "8px" }}
+                >
+                  Last Name
+                </Typography>
+                <div
+                  className="register_input_div"
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    gap: "10px",
+                    padding: "8px 12px",
+                    fontFamily: "Manrope",
+                    fontSize: "20px",
+                    borderRadius: "5px",
+                    alignItems: "center",
+                    border: "1px solid #FFB400",
+                  }}
+                >
+                  <PermIdentityIcon
+                    className="email_icon"
+                    style={{ color: "#666D80" }}
+                  />
+                  <input
+                    className="register_input"
+                    type="text"
+                    placeholder="Input your last name"
+                    style={{
+                      width: "100%",
+                      padding: "8px 12px",
+                      fontFamily: "Manrope",
+                      fontSize: "20px",
+                      border: "none",
+                      backgroundColor: "#1E1E1E",
+                      outline: "none",
+                      color: "white",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit}>
+              <Typography
+                className="typography_text"
+                style={{ color: "#666D80", marginBottom: "8px" }}
+              >
+                Email
+              </Typography>
+              <div
+                className="login_input_div"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  gap: "10px",
+                  padding: "8px 12px",
+                  fontFamily: "Manrope",
+                  fontSize: "20px",
+                  backgroundColor: "#1E1E1E",
+                  borderRadius: "5px",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                  border: "1px solid #FFB400",
+                }}
+              >
+                <MailOutlineIcon
+                  className="email_icon"
+                  style={{ color: "#666D80" }}
+                />
+                <input
+                  className="login_input"
+                  type="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={{
+                    width: "100%",
+                    padding: "8px 12px",
+                    fontFamily: "Manrope",
+                    fontSize: "20px",
+                    border: "none",
+                    backgroundColor: "#1E1E1E",
+                    outline: "none",
+                    color: "white",
+                  }}
+                />
+              </div>
+
+              <Typography
+                className="typography_text"
+                style={{ color: "#666D80", marginBottom: "8px" }}
+              >
+                Password
+              </Typography>
+              <div
+                className="login_input_div"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  gap: "10px",
+                  padding: "8px 12px",
+                  fontFamily: "Manrope",
+                  fontSize: "20px",
+                  borderRadius: "5px",
+                  alignItems: "center",
+                  marginBottom: "15px",
+                  border: "1px solid #FFB400",
+                  backgroundColor: "#1E1E1E",
+                }}
+              >
+                <LockIcon className="email_icon" style={{ color: "#666D80" }} />
+                <input
+                  className="login_input"
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Your Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{
+                    width: "100%",
+                    padding: "8px 12px",
+                    fontFamily: "Manrope",
+                    fontSize: "20px",
+                    border: "none",
+                    backgroundColor: "#1E1E1E",
+                    outline: "none",
+                    color: "white",
+                  }}
+                />
+                {passwordVisible ? (
+                  <VisibilityIcon
+                    className="email_icon"
+                    onClick={togglePasswordVisibility}
+                    style={{ color: "#666D80" }}
+                  />
+                ) : (
+                  <VisibilityOffIcon
+                    className="email_icon"
+                    onClick={togglePasswordVisibility}
+                    style={{ color: "#666D80" }}
+                  />
+                )}
+              </div>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  marginTop:'1.5rem',
+                  backgroundColor: "#1BA98F",
+                  color: "white",
+                  fontWeight: "bold",
+                  ":hover": { backgroundColor: "#FFA000" },
+                  mb: 3,
+                  padding: "10px 20px",
+                }}
+              >
+                Register
+              </Button>
+            </form>
+            <Typography
+              className="Sign_up_title"
+              style={{
+                textAlign: "center",
+                marginTop: "16px",
+                color: "#666D80",
+              }}
+            >
+              Already have an account?{" "}
+              <a
+                href="#"
+                onClick={getIsLoginStatus}
+                className="sign_up_link"
+                style={{ color: "#1BA98F" }}
+              >
+                Sign In
+              </a>
+            </Typography>
+          </DialogContent>
         </div>
-        </div>
-        <div>
-        <Typography className="typography_text">Last Name</Typography> 
-        <div className="register_input_div">
-          <PermIdentityIcon className="email_icon" />
-          <input
-            className="register_input"
-            type="text"
-            placeholder="Input your last name"
-           
-            
-          />
-        </div>
-        </div>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <Typography className="typography_text">Email</Typography>
-        <div className="login_input_div">
-          <MailOutlineIcon className="email_icon" />
-          <input
-            className="login_input"
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <Typography className="typography_text">Password</Typography>
-        <div className="login_input_div">
-          <LockIcon className="email_icon" />
-          <input
-className="login_input"
-type={passwordVisible ? "text" : "password"}
-placeholder="Your Password"
-/>
-{passwordVisible ? (
-< VisibilityIcon
-  className="email_icon"
-  onClick={togglePasswordVisibility}
-/>
-) : (
-<VisibilityOffIcon
-  className="email_icon"
-  onClick={togglePasswordVisibility}
-/>
-)}
-        </div>
-        
-        <button type="submit" className="login_input_btn">
-          <p className="login_input_btn-text">Login</p>
-        </button>
-        <div className="checkbox_div">
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="Remember me" />
-          </FormGroup>
-          <Typography className="forgot_password">Forgot Password?</Typography>
-        </div>
-      </form>
-      <div className="div_btn">
-        <button className="btn_sign_google" onClick={handleGoogleSubmit}><img src={googleLogo} alt="google logo" width={25}  />  Sign in with Google</button>
-        <button className="btn_sign_apple" onClick={handleAppleSubmit} > <img src={appleLogo} alt="apple logo" width={35} />Sign in with Apple</button>
-      </div>
-      <Typography className="Sign_up_title">Already have an account? {""} <a className="sign_up_link" href="#" >Sign Up</a></Typography>
+      </Dialog>
     </div>
   );
 };
