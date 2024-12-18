@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch } from "react";
 import {
   Dialog,
   DialogActions,
@@ -14,12 +14,13 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthScreens } from "components/login/login";
 
 interface Props {
-  getIsLoginStatus: () => void;
+  setCurrentView: Dispatch<React.SetStateAction<AuthScreens>>;
 }
 
-const Register = ({ getIsLoginStatus }: Props) => {
+const Register = ({  setCurrentView }: Props) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -27,6 +28,7 @@ const Register = ({ getIsLoginStatus }: Props) => {
   const [lastName, setLastName] = useState<string>("");
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
+
 
   const navigate = useNavigate();
 
@@ -42,7 +44,7 @@ const Register = ({ getIsLoginStatus }: Props) => {
     
     // Make the POST request to register the user
     axios
-      .post("https://ce49-95-214-211-5.ngrok-free.app/user/signUp", {
+      .post("https://e732-95-214-211-183.ngrok-free.app/user/signUp", {
         email,
         password,
         firstName,
@@ -52,6 +54,13 @@ const Register = ({ getIsLoginStatus }: Props) => {
         console.log(status);
 
         const statusString = status.toString();
+        console.log(status);
+        console.log(email);
+        console.log(password);
+        console.log(lastName);
+        console.log(firstName);
+        console.log(status);
+        
         if (statusString.startsWith("2")) {
           navigate("/propertiespage");
         } else if (statusString.startsWith("4")) {
@@ -71,6 +80,10 @@ const Register = ({ getIsLoginStatus }: Props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const navigateToSignIn = () => {
+    setCurrentView("login");
+  }
 
   return (
     <div>
@@ -331,10 +344,9 @@ const Register = ({ getIsLoginStatus }: Props) => {
             >
               Already have an account?{" "}
               <a
-                href="#"
-                onClick={getIsLoginStatus}
                 className="sign_up_link"
-                style={{ color: "#1BA98F" }}
+                onClick={navigateToSignIn}
+                style={{ color: "#1BA98F", cursor: "pointer" }}
               >
                 Sign In
               </a>

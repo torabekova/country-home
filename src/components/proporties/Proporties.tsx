@@ -171,15 +171,17 @@ const PropertiesPage = () => {
   const navigate = useNavigate();
   const [properties, setProperties] = useState<Property[]>([]);
 
-  useEffect(() => {
+  const getProperties = () => {
     axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => {
-        setProperties(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+    .then(response => {
+      setProperties(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+ 
 
 
   const handleClick = (location: string) => {
@@ -226,7 +228,9 @@ const PropertiesPage = () => {
   ];
   
  
-
+  useEffect(() => {
+    getProperties();
+  }, []);
   
 
   return (
@@ -272,7 +276,7 @@ const PropertiesPage = () => {
       </AppBar>
      
         <Grid  spacing={1}>
-          {properties.map((property, index) => (
+          {propertyData.map((property, index) => (
             <Grid style={{display:"flex", justifyContent:"space-around", marginBottom:"20px", }} item xs={12} sm={6}  lg={3} key={index}>
               <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
               <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
@@ -281,7 +285,7 @@ const PropertiesPage = () => {
               <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
               {/* <PropertyCard {...property} /> */}
             </Grid>
-          ))}
+          ))}000000000000000000000000000000000000000000000000000000000000000000000000
         </Grid>
         </Box>
      

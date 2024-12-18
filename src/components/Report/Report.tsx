@@ -50,7 +50,7 @@ function Report({}: Props) {
             O'tkazmalar
           </Typography >
         </div>
-        <div>
+        <div style={{marginLeft:"45px"}}>
           <SalesIndicator/>
         </div>
         <div>

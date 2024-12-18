@@ -24,10 +24,6 @@ export const ROUTES: readonly RouteType[] = [
         element: <Login />
     },
     {
-        path: PATH.REGISTER,
-        element: <Register getIsLoginStatus={() => {}}/>
-    },
-    {
         path: PATH.NAVBAR,
         element: <Navbar />
     },
@@ -59,10 +55,7 @@ export const ROUTES: readonly RouteType[] = [
     //     path: PATH.DASHBOARD,
     //     element: <Dashboard />
     // },
-    {
-        path: PATH.FORGOTPASSWORD,
-        element: <ForgotPassword />
-    },
+  
     {
         path: PATH.TRANSACTION,
         element: <Transaction />

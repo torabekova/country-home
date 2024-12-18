@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div>
-     <ModalMap />
+     
       
           {" "}
         <Routes>
@@ -60,7 +60,6 @@ function App() {
           <Route path="/card-info/:id" element={<CardInfo />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/Dashboard" element={<Dashboard />} /> 
-          <Route path="/Login" element={<Login />} />
           <Route path="/home" element={<Dashboard />} />
           <Route path="/properties" element={<PropertiesPage />} />
           <Route path="/transaction" element={<Transaction />} />
@@ -74,43 +73,7 @@ function App() {
 
           
         </Routes>{" "}  
-        {/* <ForTranslate/> */}
-        {/* <Glavni/>
-      
-     
-      // {/* <Login/> */}
-        
-      {/* <Dashboard/> */}
-     
-        {/* <PropertiesPage/>  */}
-      {/* <FilterComponent /> */}
-        {/* <FilterBeds/> */}
-        {/* <FilterType/> */}
     
-        {/* <ViewMapSelect/> */}
-       
-        
-     
-        
-        {/* <Transaction/>  */}
-        {/* <PersonalInfoForm/> */}
-        {/* <TransactionTable/> */}
-        {/* <AddPropertiesModal/> */}
-        {/* <TopPropoty/> */}
-        {/* <Register/> */}
-        {/* <Navbar/> */}
-        {/* <PieChartWithPaddingAngle/> */}
-      {/* <GlavniMainPage/> */}
-      {/* <FilterFacility/> */}
-
-      {/* <BookOption/> */}
-      {/* <ForgotPassword/> */}
-      {/* <Register/> */}
-     
-     {/* <SetNewPassword/> */}
-     {/* <PasswordReset/> */}
-     {/* <ClickDetail/> */}
-     {/* <ModalMap/> */}
     </div>
 
   );

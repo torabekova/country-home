@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch } from "react";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Typography, Button } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import tabler from "./img/tabler.svg";
-import { useNavigate } from "react-router-dom";
 import PasswordReset from "components/PasswordReset/PasswordReset";
+import { AuthScreens } from "components/login/login";
 
-const ForgotPassword = () => {
+interface Props {
+  setCurrentView: Dispatch<React.SetStateAction<AuthScreens>>;
+}
+
+const ForgotPassword = ({ setCurrentView}: Props) => {
   const [email, setEmail] = useState("");
   const [open, setOpen] = useState(false); 
   const [isForgotPassword, setIsForgotPassword] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    
     setOpen(true);
   }, []);
 
@@ -32,11 +33,12 @@ const ForgotPassword = () => {
   };
 
   const handleGoBack = () => {
-    navigate(-1);
+    setCurrentView('login')
   };
 
   const handleClose = () => {
-    setOpen(false); 
+    setCurrentView('login')
+    setOpen(false);
   };
 
   return (

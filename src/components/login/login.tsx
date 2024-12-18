@@ -26,34 +26,20 @@ import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-const schema = yup
-  .object({
-    email: yup
-      .string()
-      .email("Invalid email format")
-      .required("Email is required"),
-    password: yup
-      .string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-  })
-  .required();
+export type AuthScreens = "login" | "forgotPassword" | "register";
 
 const Login: React.FC = () => {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [isLoginStatus, getIsLoginStatus] = useState(false);
-  const [currentView, setCurrentView] = useState<"login" | "forgotPassword" | "register">("login");
+  const [currentView, setCurrentView] = useState<AuthScreens>("login");
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isError, setIsError] = useState<boolean>(false);
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -62,7 +48,7 @@ const Login: React.FC = () => {
   const onSubmit = (data: any) => {
     console.log("Login successful:", data);
     axios
-      .post("https://ce49-95-214-211-5.ngrok-free.app/user/signIn", {
+      .post("https://5cff-95-214-211-183.ngrok-free.app/user/signIn", {
         email,
         password,
       })
@@ -179,7 +165,7 @@ const Login: React.FC = () => {
               />
               {errors.email && (
                 <Typography variant="body2" color="error" sx={{ mb: 2 }}>
-                  {errors.email.message}
+                  {errors ? errors.root?.message : ""}
                 </Typography>
               )}
 
@@ -246,7 +232,7 @@ const Login: React.FC = () => {
               />
               {errors.password && (
                 <Typography variant="body2" color="error" sx={{ mb: 2 }}>
-                  {errors.password.message}
+                  {errors ? errors.root?.message : ""}
                 </Typography>
               )}
 
@@ -329,10 +315,14 @@ const Login: React.FC = () => {
           </Box>
         )}
 
-        {currentView === "forgotPassword" && <ForgotPassword/>}
-        {currentView === "register" && <Register getIsLoginStatus={function (): void {
-          throw new Error("Function not implemented.");
-        } }/>}
+        {currentView === "forgotPassword" && (
+          <ForgotPassword
+            setCurrentView={setCurrentView}
+          />
+        )}
+        {currentView === "register" && (
+          <Register  setCurrentView={setCurrentView} />
+        )}
       </div>
       <Footer />
     </div>
