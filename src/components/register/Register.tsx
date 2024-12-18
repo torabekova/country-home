@@ -1,20 +1,19 @@
-import React, { useState, useEffect, Dispatch } from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Typography,
-  Button,
-} from "@mui/material";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockIcon from "@mui/icons-material/Lock";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Typography
+} from "@mui/material";
 import axios from "axios";
 import { AuthScreens } from "components/login/login";
+import React, { Dispatch, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   setCurrentView: Dispatch<React.SetStateAction<AuthScreens>>;
@@ -44,7 +43,7 @@ const Register = ({  setCurrentView }: Props) => {
     
     // Make the POST request to register the user
     axios
-      .post("https://e732-95-214-211-183.ngrok-free.app/user/signUp", {
+      .post("https://e7ef-95-214-211-183.ngrok-free.app/user/signUp", {
         email,
         password,
         firstName,
