@@ -12,33 +12,65 @@ import LockIcon from "@mui/icons-material/Lock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface Props {
   getIsLoginStatus: () => void;
 }
 
 const Register = ({ getIsLoginStatus }: Props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
+  // Handle password visibility toggle
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-  };
+    console.log("Email:", email, "Password:", password, "First Name:", firstName, "Last Name:", lastName);
+    
+    // Make the POST request to register the user
+    axios
+      .post("https://ce49-95-214-211-5.ngrok-free.app/user/signUp", {
+        email,
+        password,
+        firstName,
+        lastName,
+      })
+      .then(({ status }: { status: number }) => {
+        console.log(status);
 
-  const handleClose = () => {
-    setOpen(false);
+        const statusString = status.toString();
+        if (statusString.startsWith("2")) {
+          navigate("/propertiespage");
+        } else if (statusString.startsWith("4")) {
+          setIsError(true);
+        }
+      })
+      .catch(() => {
+        setIsError(true);
+      });
   };
 
   useEffect(() => {
     setOpen(true);
   }, []);
+
+  // Close the dialog
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -106,6 +138,8 @@ const Register = ({ getIsLoginStatus }: Props) => {
                     style={{ color: "#666D80" }}
                   />
                   <input
+                    value={firstName}
+                    onChange={({ target }) => setFirstName(target.value)}
                     className="register_input"
                     type="text"
                     placeholder="Input your first name"
@@ -150,6 +184,8 @@ const Register = ({ getIsLoginStatus }: Props) => {
                     style={{ color: "#666D80" }}
                   />
                   <input
+                    value={lastName}
+                    onChange={({ target }) => setLastName(target.value)}
                     className="register_input"
                     type="text"
                     placeholder="Input your last name"
@@ -273,7 +309,7 @@ const Register = ({ getIsLoginStatus }: Props) => {
                 fullWidth
                 variant="contained"
                 sx={{
-                  marginTop:'1.5rem',
+                  marginTop: "1.5rem",
                   backgroundColor: "#1BA98F",
                   color: "white",
                   fontWeight: "bold",
