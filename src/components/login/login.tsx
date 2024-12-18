@@ -1,29 +1,27 @@
-import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
 import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  IconButton,
-  InputAdornment,
-} from "@mui/material";
-import {
+  Lock,
+  MailOutline,
   Visibility,
   VisibilityOff,
-  MailOutline,
-  Lock,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import bacgroundimg from "./img/bacgroundimg.png";
-import Header from "pages/Home/Header";
-import Footer from "components/Footer/Footer";
-import Register from "components/register/Register";
-import ForgotPassword from "components/forgot-password/ForgotPAssword";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
+import Footer from "components/Footer/Footer";
+import ForgotPassword from "components/forgot-password/ForgotPAssword";
+import Register from "components/register/Register";
+import Header from "pages/Home/Header";
+import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import bacgroundimg from "./img/bacgroundimg.png";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export type AuthScreens = "login" | "forgotPassword" | "register";
@@ -288,6 +286,7 @@ const Login: React.FC = () => {
                     textUnderlinePosition: "from-font",
                     textDecorationSkipInk: "none",
                     color: "#C1C7D0",
+                    cursor: "pointer"
                   }}
                 >
                   {" "}
@@ -307,7 +306,7 @@ const Login: React.FC = () => {
               <a
                 className="sign_up_link"
                 onClick={() => handleViewChange("register")}
-                style={{ color: "#1BA98F" }}
+                style={{ color: "#1BA98F", cursor: "pointer" }}
               >
                 Sign Up
               </a>
