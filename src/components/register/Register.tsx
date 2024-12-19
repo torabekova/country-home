@@ -8,7 +8,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Typography
+  Typography,
 } from "@mui/material";
 import axios from "axios";
 import { AuthScreens } from "components/login/login";
@@ -19,7 +19,7 @@ interface Props {
   setCurrentView: Dispatch<React.SetStateAction<AuthScreens>>;
 }
 
-const Register = ({  setCurrentView }: Props) => {
+const Register = ({ setCurrentView }: Props) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -28,22 +28,18 @@ const Register = ({  setCurrentView }: Props) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
 
-
   const navigate = useNavigate();
 
-  // Handle password visibility toggle
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password, "First Name:", firstName, "Last Name:", lastName);
-    
-    // Make the POST request to register the user
+    console.log("sa");
+
     axios
-      .post("https://e7ef-95-214-211-183.ngrok-free.app/user/signUp", {
+      .post("http://localhost:8000/user/signUp", {
         email,
         password,
         firstName,
@@ -53,13 +49,7 @@ const Register = ({  setCurrentView }: Props) => {
         console.log(status);
 
         const statusString = status.toString();
-        console.log(status);
-        console.log(email);
-        console.log(password);
-        console.log(lastName);
-        console.log(firstName);
-        console.log(status);
-        
+
         if (statusString.startsWith("2")) {
           navigate("/propertiespage");
         } else if (statusString.startsWith("4")) {
@@ -82,7 +72,7 @@ const Register = ({  setCurrentView }: Props) => {
 
   const navigateToSignIn = () => {
     setCurrentView("login");
-  }
+  };
 
   return (
     <div>
@@ -216,7 +206,7 @@ const Register = ({  setCurrentView }: Props) => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form>
               <Typography
                 className="typography_text"
                 style={{ color: "#666D80", marginBottom: "8px" }}
@@ -318,6 +308,7 @@ const Register = ({  setCurrentView }: Props) => {
               </div>
               <Button
                 type="submit"
+                onClick={handleSubmit}
                 fullWidth
                 variant="contained"
                 sx={{

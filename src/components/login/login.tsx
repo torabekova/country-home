@@ -42,16 +42,15 @@ const Login: React.FC = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+  console.log(email, password);
 
   const onSubmit = (data: any) => {
-    console.log("Login successful:", data);
     axios
-      .post("https://5cff-95-214-211-183.ngrok-free.app/user/signIn", {
-        email,
-        password,
+      .post("localhost:8000/user/signIn", {
+        email: email,
+        password: password,
       })
       .then(({ status }) => {
-        console.log(status);
         const statusString = status.toString();
         if (statusString.startsWith("2")) {
           navigate("/Dashboard");
@@ -286,7 +285,7 @@ const Login: React.FC = () => {
                     textUnderlinePosition: "from-font",
                     textDecorationSkipInk: "none",
                     color: "#C1C7D0",
-                    cursor: "pointer"
+                    cursor: "pointer",
                   }}
                 >
                   {" "}
@@ -315,12 +314,10 @@ const Login: React.FC = () => {
         )}
 
         {currentView === "forgotPassword" && (
-          <ForgotPassword
-            setCurrentView={setCurrentView}
-          />
+          <ForgotPassword setCurrentView={setCurrentView} />
         )}
         {currentView === "register" && (
-          <Register  setCurrentView={setCurrentView} />
+          <Register setCurrentView={setCurrentView} />
         )}
       </div>
       <Footer />
