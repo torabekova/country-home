@@ -78,7 +78,7 @@ const CardInfo: React.FC = () => {
   }
 
   return (
-    <Box sx={{ backgroundColor: "#000", color: "#fff", minHeight: "100vh" ,}}>
+    <Box sx={{ backgroundColor: "#333", color: "#fff", minHeight: "100vh" ,}}>
       <Header handleScroll={() => {}} handleSignInClick={() => {}} /> {/* Adjust props as needed */}
       <Box sx={{ maxWidth: "1200px", margin: "auto", padding: 2 }}>
         <Typography variant="h3" align="center" sx={{ my: 4, fontWeight: "bold",  }}>
@@ -118,7 +118,7 @@ const CardInfo: React.FC = () => {
               backgroundColor: "#FFA000",
             },
           }}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/readMore")}
         >
           Back to Home
         </Button>

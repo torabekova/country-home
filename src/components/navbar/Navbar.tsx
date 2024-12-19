@@ -13,6 +13,8 @@ import tabler from "./img/tabler.svg";
 import avatar from "./img/avatar.jpg";
 import { PATH } from "../Types/path";
 import { Box, TextField } from "@mui/material";
+import WaterDamageOutlinedIcon from '@mui/icons-material/WaterDamageOutlined';
+import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 
 // import GlavniMainPage from "components/Glavni/GlavniMainPage";
 import ParentComponent from "components/Glavni/GlavniMainPage";
@@ -33,13 +35,13 @@ const Navbar: React.FC = () => {
 
         <div className="navbar_link_div">
           <div className="navbar_link_icon_div">
-            <img className="tabler_icon" src={tabler} alt="tabler icon" width={30} />
+            <WaterDamageOutlinedIcon />
             <Link className="navbar_link" to={"/Dashboard"}>
               Dashboard
             </Link>
           </div>
           <div className="navbar_link_icon_div">
-            <HomeIcon />
+            <LayersOutlinedIcon />
             <Link className="navbar_link" to={"/properties"}>
             Properties
             </Link>

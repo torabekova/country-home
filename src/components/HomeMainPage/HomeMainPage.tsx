@@ -20,18 +20,18 @@ const destinationData = [
   { id: 1, title: "Tours And Travels", image: Villa1, description: "Explore the most breathtaking destinations." },
   { id: 1, title: "Tours And Travels", image: Villa2, description: "Explore the most breathtaking destinations." },
   { id: 1, title: "Tours And Travels", image: Villa3, description: "Explore the most breathtaking destinations." }
-  // Add more destination data here
+
 ];
 
 
-const serviceData = [
-  { id: 1, title: "Worldwide", icon: <Public style={{fontSize:"60px", }} />, description: "Experience worldwide tours." },
-  { id: 2, title: "Adventures", icon: <Hiking style={{fontSize:"60px"}}/>, description: "Embark on thrilling adventures." },
-  { id: 3, title: "Foods & Drinks", icon: <Fastfood style={{fontSize:"60px"}} />, description: "Taste exotic cuisines." },
-  { id: 4, title: "Affordable Hotels", icon: <Hotel style={{fontSize:"60px"}} />, description: "Comfortable stays at the best price." },
-  { id: 5, title: "Affordable Price", icon: <AttachMoney style={{fontSize:"60px"}} />, description: "Best deals for your trips." },
-  { id: 6, title: "24/7 Services", icon: <AccessTime style={{fontSize:"60px"}} />, description: "We are always here for you." },
-];
+// const serviceData = [
+//   { id: 1, title: "Worldwide", icon: <Public style={{fontSize:"60px", }} />, description: "Experience worldwide tours." },
+//   { id: 2, title: "Adventures", icon: <Hiking style={{fontSize:"60px"}}/>, description: "Embark on thrilling adventures." },
+//   { id: 3, title: "Foods & Drinks", icon: <Fastfood style={{fontSize:"60px"}} />, description: "Taste exotic cuisines." },
+//   { id: 4, title: "Affordable Hotels", icon: <Hotel style={{fontSize:"60px"}} />, description: "Comfortable stays at the best price." },
+//   { id: 5, title: "Affordable Price", icon: <AttachMoney style={{fontSize:"60px"}} />, description: "Best deals for your trips." },
+//   { id: 6, title: "24/7 Services", icon: <AccessTime style={{fontSize:"60px"}} />, description: "We are always here for you." },
+// ];
 
 const HomeMainPage: React.FC = () => {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ const HomeMainPage: React.FC = () => {
                         borderColor: "#FFB400",
                         "&:hover": { backgroundColor: "#FFB400", color: "#fff" },
                       }}
-                      onClick={() => navigate(`/destination-detail/${destination.id}`)}
+                      onClick={() => navigate(`/readMore`)}
                     >
                       Read More
                     </Button>
@@ -90,7 +90,7 @@ const HomeMainPage: React.FC = () => {
           </Grid>
         </section>
 
-        <section id="services-section">
+        {/* <section id="services-section">
           <Typography variant="h4" align="center" sx={{ mb: 4, fontWeight: "bold", paddingTop:"20px" }}>
             Countless Experience
           </Typography>
@@ -129,7 +129,46 @@ const HomeMainPage: React.FC = () => {
               </Grid>
             ))}
           </Grid>
-        </section>
+        </section> */}
+           <div
+          style={{ display: "flex", justifyContent: "center", padding: "30px" }}
+        >
+          <div>
+             <h1 style={{textAlign:'center', paddingBottom:"1rem", fontFamily:"Manrope"}}>About we</h1>
+          <p style={{ textAlign: "center", maxWidth: "1000px", fontFamily:"Manrope", fontSize:"18px" }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+            quas tenetur enim, porro id vel blanditiis, doloribus sunt laborum,
+            facilis soluta. Quas facilis aspernatur culpa minima commodi esse
+            numquam quis laboriosam placeat cumque consequuntur provident quidem
+            iure fuga magnam, cum nisi ducimus repudiandae, illum officia omnis
+            fugiat eius magni.
+          </p>
+          </div>
+         
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "1.5rem",
+          }}
+        >
+          <video
+            className="hover-effect"
+            style={{ borderRadius: "30px" }}
+            width="80%"
+            controls
+          >
+            <source
+              src="https://cdn.pixabay.com/video/2015/10/16/1057-142621433_large.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+
       </Box>
     </div>
   );

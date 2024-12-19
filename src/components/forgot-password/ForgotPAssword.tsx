@@ -128,6 +128,7 @@ const ForgotPassword = ({ setCurrentView}: Props) => {
                       backgroundColor: "#1E1E1E",
                       outline: "none",
                       borderRadius: "100px",
+                      
                     }}
                   />
                 </div>

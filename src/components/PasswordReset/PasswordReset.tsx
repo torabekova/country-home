@@ -114,8 +114,9 @@ const PasswordReset: React.FC = () => {
                 id={`code-input-${index}`}
                 value={digit}
                 onChange={(e) => handleChange(e.target.value, index)}
-                inputProps={{ maxLength: 1, style: { textAlign: "center", borderColor: "#FFB400" } }}
-                sx={{ width: 50 }}
+                inputProps={{ maxLength: 1, color:"white", style: { textAlign: "center",  } }}
+                sx={{ width: 50 ,}}
+               
               />
             ))}
           </Box>

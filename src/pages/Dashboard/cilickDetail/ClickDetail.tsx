@@ -11,6 +11,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grid
 } from "@mui/material";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
@@ -24,6 +25,15 @@ import IconButton from "@mui/material/IconButton";
 import ShareIcon from "@mui/icons-material/Share";
 import "./ClickDetail.css"
 
+import Villa4 from './img/villa4.jpg';
+import Villa3 from './img/villa3.jpg';
+import Villa2 from './img/villa2.jpg';
+import Villa1 from './img/villa1.jpg';
+import Villa5 from './img/villa5.jpg';
+import { AccessTime, AttachMoney, Fastfood, Hiking, Hotel, Public } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+
+
 // Example room data
 const images = [
   {
@@ -31,6 +41,7 @@ const images = [
     title: "Single Room",
     description: "A beautiful mountain retreat for a relaxing vacation.",
     facilities: "Free WiFi, Parking, Pool",
+    price: "100$",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfLkwLrf4rpvCZHc5--29eqYv86fo9ggrgw&s",
   },
@@ -39,6 +50,7 @@ const images = [
     title: "Twin Room",
     description: "A luxurious villa by the beach for an unforgettable stay.",
     facilities: "Free WiFi, Parking, Poo, Gym, Elevator, Balcony",
+    price: "100$",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY1aZQ8nh9P9qGzauogHpTtZVNi1WIZ9BBnQ&s",
   },
@@ -47,9 +59,23 @@ const images = [
     title: "Double Room",
     description: "A modern apartment in the heart of the city.",
     facilities: "Free WiFi, Parking, Pool, Gym, Elevator, Balcony",
+    price: "100$",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPCH8ufTsMaeP8CtE4UY1LeOrxdKTYBQl2RQ&s",
   },
+];
+
+
+
+
+
+const serviceData = [
+  { id: 1, title: "Worldwide", icon: <Public style={{fontSize:"60px",  }} />, description: "Experience worldwide tours." },
+  { id: 2, title: "Adventures", icon: <Hiking style={{fontSize:"60px"}}/>, description: "Embark on thrilling adventures." },
+  { id: 3, title: "Foods & Drinks", icon: <Fastfood style={{fontSize:"60px"}} />, description: "Taste exotic cuisines." },
+  { id: 4, title: "Affordable Hotels", icon: <Hotel style={{fontSize:"60px"}} />, description: "Comfortable stays at the best price." },
+  { id: 5, title: "Affordable Price", icon: <AttachMoney style={{fontSize:"60px"}} />, description: "Best deals for your trips." },
+  { id: 6, title: "24/7 Services", icon: <AccessTime style={{fontSize:"60px"}} />, description: "We are always here for you." },
 ];
 
 const ClickDetail: React.FC = () => {
@@ -58,55 +84,57 @@ const ClickDetail: React.FC = () => {
   const [liked, setLiked] = useState(false); // Like state
   const [likeCount, setLikeCount] = useState(0); // Like count
   const [bookingConfirmed, setBookingConfirmed] = useState(false); // Booking status
+  const navigate = useNavigate();
 
   const textToShare = "Check out this amazing place on Everest Plaza!"; // Text for sharing
 
-  // Handle "Book Now" button click
+
   const handleBookClick = (item: any) => {
     setSelectedItem(item);
     setOpenDialog(true);
   };
 
-  // Close booking dialog
+ 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setSelectedItem(null);
   };
 
-  // Confirm booking
   const handleConfirmBooking = () => {
-    console.log(`You have successfully booked the ${selectedItem.title}!`);
-    setBookingConfirmed(true); // Mark booking as confirmed
+    console.log('Selected Item:', selectedItem);
+  
+    
+    setBookingConfirmed(true);
     setOpenDialog(false);
   };
+  
 
-  // Handle like button click
   const handleLike = () => {
-    setLiked(!liked); // Toggle like status
-    setLikeCount((prev) => (liked ? prev - 1 : prev + 1)); // Adjust like count
+    setLiked(!liked);
+    setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
   };
 
-  // Share button click
+  
   const handleShare = () => {
     const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(
       window.location.href
     )}&text=${encodeURIComponent(textToShare)}`;
-    window.open(telegramShareUrl, "_blank"); // Open Telegram share dialog
+    window.open(telegramShareUrl, "_blank"); 
   };
 
-  const [comments, setComments] = useState<string[]>([]); // Comments list
-  const [newComment, setNewComment] = useState<string>(''); // New comment
+  const [comments, setComments] = useState<string[]>([]); 
+  const [newComment, setNewComment] = useState<string>(''); 
 
-  // Submit comment
+  
   const handleCommentSubmit = () => {
     if (newComment.trim() !== '') {
-      setComments([...comments, newComment]); // Add new comment to list
-      setNewComment(''); // Clear input
+      setComments([...comments, newComment]); 
+      setNewComment(''); 
     }
   };
 
   const handleCommentDelete = (index: number) => {
-    // Delete comment from list
+    
     setComments(comments.filter((_, i) => i !== index));
   };
 
@@ -210,6 +238,14 @@ const ClickDetail: React.FC = () => {
                 >
                   <strong>Facilities:</strong> {item.facilities}
                 </Typography>
+                <Typography
+                  style={{ color: "#6F6F6F" }}
+                  variant="body2"
+                  color="text.secondary"
+                  mt={2}
+                >
+                  <strong>Price:</strong> {item.price}
+                </Typography>
                 <Button
                   variant="contained"
                   color="primary"
@@ -250,6 +286,13 @@ const ClickDetail: React.FC = () => {
             >
               <strong>Facilities:</strong> {selectedItem?.facilities}
             </Typography>
+            <Typography
+              style={{ fontFamily: "Manrope" }}
+              variant="body2"
+              mt={2}
+            >
+              <strong>Price:</strong> {selectedItem?.price}
+            </Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseDialog} color="primary">
@@ -261,11 +304,7 @@ const ClickDetail: React.FC = () => {
           </DialogActions>
         </Dialog>
 
-        {bookingConfirmed && (
-          <Typography variant="h6" color="success.main" mt={2}>
-            Your booking for {selectedItem?.title} has been confirmed!
-          </Typography>
-        )}
+       
 
         <div
           style={{ display: "flex", justifyContent: "center", padding: "30px" }}
@@ -305,7 +344,48 @@ const ClickDetail: React.FC = () => {
           </video>
         </div>
 
-        {/* Comment Section */}
+         <section id="services-section">
+          <Typography variant="h4" align="center" sx={{ mb: 4, fontWeight: "bold", paddingTop:"20px", fontFamily:"Manrope",  }}>
+            Countless Experience
+          </Typography>
+          <Grid container spacing={4} justifyContent="center">
+            {serviceData.map((service) => (
+              <Grid item xs={12} sm={6} md={4} key={service.id}>
+                <Card
+                  sx={{
+                    backgroundColor: "#f5f5f5",
+                    color: "#fff",
+                    textAlign:"center",
+                    "&:hover": { transform: "scale(1.05)" },
+                    transition: "transform 0.3s ease",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+
+                  }}
+                >
+                  <Box
+                    onClick={() => navigate(`/card-info/${service.id}`)}
+                    sx={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", padding: 2 }}>
+                      <Box sx={{ fontSize: "48px", mb: 1, color: "#1BA98F" }}>{service.icon}</Box>
+                    </Box>
+                    <CardContent>
+                      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1, color:"#666" }}>
+                        {service.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{color:"#555"}}>{service.description}</Typography>
+                    </CardContent>
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </section>
+
+  
         <textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}

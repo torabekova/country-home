@@ -70,6 +70,7 @@ function App() {
           <Route path="/clickdetail" element= {<PropertiesPage/> }/>
           <Route path="/propertiespage" element= {<ClickDetail/> }/>
           <Route path="/SearchForm" element= {<PropertiesPage/> }/>
+          <Route path="/readMore" element= {<ClickDetail/> }/>
 
           
         </Routes>{" "}  

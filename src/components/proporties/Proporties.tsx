@@ -170,6 +170,10 @@ const PropertyCard = ({
 const PropertiesPage = () => {
   const navigate = useNavigate();
   const [properties, setProperties] = useState<Property[]>([]);
+  const [mySearch, setMySearch] = useState<string>('')
+  console.log(mySearch);
+  
+  
 
   const getProperties = () => {
     axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -193,8 +197,8 @@ const PropertiesPage = () => {
     {
       type: "House",
       rating: 4.5,
-      location: "Grand Field, MN",
-      address: "Grand Galaxy Park 2, West Java",
+      location: "Everest Plaza",
+      address: "Zomin tumani, Everest Plaza",
       beds: 3,
       baths: 2,
       hasWifi: true,
@@ -204,8 +208,8 @@ const PropertiesPage = () => {
     {
       type: "House",
       rating: 4.5,
-      location: "Grand Field, MN",
-      address: "Grand Galaxy Park 2, West Java",
+      location: "Plato",
+      address: "Zomin tumani, Everest Plaza",
       beds: 3,
       baths: 2,
       hasWifi: true,
@@ -215,8 +219,8 @@ const PropertiesPage = () => {
     {
       type: "House",
       rating: 4.5,
-      location: "Grand Field, MN",
-      address: "Grand Galaxy Park 2, West Java",
+      location: "Zomin Dacha",
+      address: "Zomin tumani, Everest Plaza",
       beds: 3,
       baths: 2,
       hasWifi: true,
@@ -226,6 +230,17 @@ const PropertiesPage = () => {
    
    
   ];
+  const findedRooms = () => {
+    const filtredRooms = propertyData.find((val) => val.location === mySearch)
+    if (filtredRooms) {
+      console.log(filtredRooms);
+      
+    }
+    else {
+      alert("Room not found")
+    }
+ }
+  
   
  
   useEffect(() => {
@@ -246,15 +261,20 @@ const PropertiesPage = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 , color:"black",}}>
             Properties
           </Typography>
+          
           <TextField
             size="small"
-            placeholder="Bogor, West Java"
+            onChange={(e) => setMySearch(e.target.value)}
+            placeholder="Search"
             variant="outlined"
             sx={{ mr: 2 }}
             InputProps={{
               endAdornment: <SearchIcon />,
             }}
           />
+          <Button onClick={findedRooms}>
+            Search
+          </Button>
           <div
             
           >
@@ -285,7 +305,7 @@ const PropertiesPage = () => {
               <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
               {/* <PropertyCard {...property} /> */}
             </Grid>
-          ))}000000000000000000000000000000000000000000000000000000000000000000000000
+          ))}
         </Grid>
         </Box>
      
