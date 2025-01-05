@@ -39,7 +39,7 @@ const Register = ({ setCurrentView }: Props) => {
     console.log("sa");
 
     axios
-      .post("http://localhost:8000/user/signUp", {
+      .post("/user/signUp", {
         email,
         password,
         firstName,
@@ -50,7 +50,7 @@ const Register = ({ setCurrentView }: Props) => {
 
         const statusString = status.toString();
 
-        if (statusString.startsWith("2")) {
+        if (statusString.startsWith("4")) {
           navigate("/propertiespage");
         } else if (statusString.startsWith("4")) {
           setIsError(true);

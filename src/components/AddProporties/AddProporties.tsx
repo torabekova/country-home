@@ -14,6 +14,7 @@ import {
   ToggleButtonGroup,
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
+import axios from "axios";
 
 
 
@@ -32,19 +33,21 @@ const AddPropertiesModal = () => {
     picture: "",
   });
 
-  const [originalData] = useState(propertyData); // Asl ma'lumotlarni saqlash uchun
+  const [originalData] = useState(propertyData); 
 
-  // Modalni ochish/yopish
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // Ma'lumotlarni yangilash
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPropertyData({ ...propertyData, [name]: value });
   };
 
-  // Dropdown tanlash uchun (yangilangan funksiya)
+  
+
+  
   const handleSelectChange = (event: SelectChangeEvent) => {
     const { name, value } = event.target;
     if (name) {
@@ -52,7 +55,7 @@ const AddPropertiesModal = () => {
     }
   };
 
-  // "Upload Foto" funksiyasi
+  
   const handlePictureUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const newPicture = URL.createObjectURL(e.target.files[0]);
@@ -60,7 +63,7 @@ const AddPropertiesModal = () => {
     }
   };
 
-  // "Label" (Rent/Sell) tugmasi uchun
+
   const handlePropertiesForChange = (
     e: React.MouseEvent<HTMLElement>,
     newValue: string
@@ -70,18 +73,81 @@ const AddPropertiesModal = () => {
     }
   };
 
-  // "Cancel" tugmasi
+  
   const handleCancel = () => {
     setPropertyData(originalData);
     handleClose();
   };
 
-  // "Add Properties" tugmasi
+  
   const handleAddProperties = () => {
     console.log("New Property Data:", propertyData);
-    alert("Property added successfully!");
+    // alert("Property added successfully!");
     handleClose();
   };
+  // const navigate = useNavigate();
+    // const [name, setName] = useState<string>("");
+    // const [bedroom, setBedroom] = useState<number>(0);
+    // const [address, setAddress] = useState<string>("");
+    // const [carpetArea, setCarpetArea] = useState<string> ("");
+    // const [bathroom, setbathroom] = useState <number> (0);
+    // const [city , setCity] = useState<string> ("");
+    // const [image, setImage] = useState<string[]>([]);
+    // const [postalCode, setPostalCode] = useState <string>("")
+    // const [isError, setIsError] = useState<boolean>(false);
+
+    // const submitData = async () => {
+    //   try {
+    //     const payload = { ...propertyData };
+  
+    //     const response = await axios.post('https://api.example.com/endpoint', payload);
+  
+    //     console.log('Response:', response.data);
+    //     setIsError(false);
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //     setIsError(true); 
+    //   }
+    // };
+
+    
+
+    const submitData = async () => {
+      try {
+        
+        const payload = { ...propertyData };
+    
+        
+        const response = await axios.post("/admin/props", payload);
+    
+        
+        console.log("Response:", response.data);
+    
+        
+        // alert("Property added successfully!");
+    
+      
+        setPropertyData({
+          propertyName: "",
+          carpetArea: "",
+          bedroom: "",
+          bathroom: "",
+          address: "",
+          city: "",
+          country: "",
+          postalCode: "",
+          propertiesFor: "",
+          picture: "",
+        });
+        handleClose();
+      } catch (error) {
+        // console.error("Error adding property:", error);
+    
+      
+        // alert("Error adding property. Please try again.");
+      }
+    };
+    
 
   return (
     <div>
@@ -101,7 +167,7 @@ const AddPropertiesModal = () => {
             boxShadow: 24,
             p: 4,
             mx: "auto",
-            my: 4,
+            my: 20,
           }}
         >
           <Typography variant="h6" sx={{ mb: 2  }}>
@@ -109,13 +175,13 @@ const AddPropertiesModal = () => {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="Property Name"
-                name="propertyName"
-                value={propertyData.propertyName}
-                onChange={handleInputChange}
-              />
+            <TextField
+        fullWidth
+        label="Property Name"
+        name="propertyName"
+        value={propertyData.propertyName}
+        onChange={handleInputChange}
+      />
             </Grid>
             <Grid item xs={6}>
               <TextField
@@ -254,6 +320,7 @@ const AddPropertiesModal = () => {
               color="primary"
               onClick={handleAddProperties}
               style={{ backgroundColor: "#1BA98F" }}
+              onChange={submitData}
             >
               Add Properties
             </Button>

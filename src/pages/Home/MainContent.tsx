@@ -40,7 +40,8 @@ const MainContent: React.FC<MainContentProps> = ({ destination, setDestination, 
         setDate={setDate} 
         tourists={tourists} 
         setTourists={setTourists} 
-        handleSearch={handleSearch} 
+        handleSearch={handleSearch}
+         
       />
     </Box>
   );

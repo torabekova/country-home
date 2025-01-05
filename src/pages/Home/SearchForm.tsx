@@ -15,7 +15,7 @@ interface SearchFormProps {
 const SearchForm: React.FC<SearchFormProps> = ({ destination, setDestination, date, setDate, tourists, setTourists,  }) => {
   const navigate = useNavigate();  
 const handleClick = () => {
-  navigate('/SearchForm');  // Bosilganidan so'ng yangi sahifaga o'tamiz
+  navigate('/SearchForm');  
 };
   return (
     <Box

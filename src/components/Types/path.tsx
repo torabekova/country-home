@@ -18,7 +18,8 @@ export const PATH = {
        Home:"home",
        ABOUT:"about",
        DESTINATION:"destination",
-       SERVICES:"services"
+       SERVICES:"services",
+       PRIMUM:"prmum"
 
      
 

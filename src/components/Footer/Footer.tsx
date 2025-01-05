@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
         Quick links
         </Typography>
-        {["Home", "About", "Destination", "Services"].map((link, index) => (
+        {["Home", "About", "Destination", ].map((link, index) => (
           <Typography
             key={index}
             sx={{
@@ -96,8 +96,7 @@ const Footer: React.FC = () => {
             onClick={() => handleScroll(
               link.toLowerCase() === "home" ? "header" :
               link.toLowerCase() === "about" ? "about" :
-              link.toLowerCase() === "destination" ? "destination-section" :
-              link.toLowerCase() === "services" ? "services-section" : ""
+              link.toLowerCase() === "destination" ? "destination-section" :""
             )}
           >
             {link}

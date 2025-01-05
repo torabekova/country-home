@@ -38,6 +38,13 @@ import AddPropertiesModal from "components/AddProporties/AddProporties";
 import axios from "axios";
 import { Property } from "interfaces/property";
 
+// const navigate = useNavigate();
+// const [location , setLocation] = useState<string>("");
+
+// const navigateToLocation = () => {
+//   setLocation("location");
+// };
+
 const PropertyCard = ({
   type,
   rating,
@@ -190,7 +197,7 @@ const PropertiesPage = () => {
 
   const handleClick = (location: string) => {
     console.log("Navigating to:", location);
-    navigate("/propertiespage"); // Modify as needed
+    navigate("/propertiespage"); 
   };
 
   const propertyData = [
@@ -246,6 +253,12 @@ const PropertiesPage = () => {
   useEffect(() => {
     getProperties();
   }, []);
+
+
+  const handleMap = () =>{
+    navigate ('/ViewMapSelect')
+  }
+  
   
 
   return (
@@ -272,9 +285,9 @@ const PropertiesPage = () => {
               endAdornment: <SearchIcon />,
             }}
           />
-          <Button onClick={findedRooms}>
+          {/* <Button onClick={findedRooms}>
             Search
-          </Button>
+          </Button> */}
           <div
             
           >
@@ -289,7 +302,7 @@ const PropertiesPage = () => {
              <AddPropertiesModal/>
           </Button>
           <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
-            <Switch defaultChecked color="primary" />
+            <Switch defaultChecked color="primary" onClick={handleMap} />
             <Typography variant="body2" style={{color:"#000000"}}>View Map</Typography>
           </Box>
         </Toolbar>

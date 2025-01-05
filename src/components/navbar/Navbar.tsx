@@ -17,7 +17,44 @@ import WaterDamageOutlinedIcon from '@mui/icons-material/WaterDamageOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 
 // import GlavniMainPage from "components/Glavni/GlavniMainPage";
-import ParentComponent from "components/Glavni/GlavniMainPage";
+// import ParentComponent from "components/Glavni/GlavniMainPage";
+
+
+interface Props {
+  isAuthenticated: boolean; // Tizimga kirganlik holatini belgilovchi prop
+  avatarSrc?: string; // Avatar rasmi manzili (ixtiyoriy)
+}
+
+// Shartga asoslangan holda ko'rinishni boshqaruvchi komponent
+const ConditionalAvatar: React.FC<Props> = ({ isAuthenticated, avatarSrc }) => {
+  return (
+    <Stack
+      className="avatar"
+      direction="row"
+      style={{ display: "flex", padding: "0" }}
+    >
+      {isAuthenticated ? (
+        <>
+          <Avatar
+            alt="User Avatar"
+            src={avatarSrc || ""}
+            style={{ position: "relative", left: "30%" }}
+          />
+          <ParentComponent />
+        </>
+      ) : (
+        <div></div>
+      )}
+    </Stack>
+  );
+};
+
+// Misol uchun ParentComponent
+const ParentComponent: React.FC = () => {
+  return <div>Parent Component Content</div>;
+};
+
+
 
 const Navbar: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -25,6 +62,12 @@ const Navbar: React.FC = () => {
   const handleSearchClick = () => {
     setSearchOpen(!searchOpen);
   };
+
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); // Tizimga kirganlik holati
+  const avatar = "https://example.com/avatar.jpg"; // Avatar rasmi manzili
+
+  // Tizimga kirish/qaytish uchun tugmalar
+  const toggleAuth = () => setIsAuthenticated((prev) => !prev);
 
   return (
     <div className="navbar_container">
@@ -103,18 +146,20 @@ const Navbar: React.FC = () => {
               alignItems:"center"
             }}
           >
-            <Stack
+            {/* <Stack
               className="avatar"
               direction="row"
               style={{ display: "flex", padding: "0", }}
             >
+              
               <Avatar
                 alt="User Avatar"
                 src={avatar}
                 style={{ position: "relative", left: "30%" }}
               />
               <ParentComponent />
-            </Stack>
+            </Stack> */}
+             <ConditionalAvatar isAuthenticated={isAuthenticated} avatarSrc={avatar} />
           </button>
         </div>
       </div>

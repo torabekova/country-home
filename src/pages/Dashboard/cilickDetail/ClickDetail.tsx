@@ -100,8 +100,8 @@ const ClickDetail: React.FC = () => {
     setSelectedItem(null);
   };
 
-  const handleConfirmBooking = () => {
-    console.log('Selected Item:', selectedItem);
+  const onClick = () => {
+    navigate("/ConfirmPage");
   
     
     setBookingConfirmed(true);
@@ -298,7 +298,7 @@ const ClickDetail: React.FC = () => {
             <Button onClick={handleCloseDialog} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleConfirmBooking} color="secondary">
+            <Button onClick={onClick} color="secondary">
               Confirm Booking
             </Button>
           </DialogActions>
@@ -410,6 +410,7 @@ const ClickDetail: React.FC = () => {
             borderRadius: '5px',
             border: 'none',
             cursor: 'pointer',
+
           }}
         >
           Submit Comment

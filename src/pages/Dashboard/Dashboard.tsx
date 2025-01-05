@@ -99,7 +99,7 @@ interface Property {
       id: 1,
       title: "Grand Field, MN",
       price: "$1,200 / per month",
-      image: zomindacha, // Replace with your actual image URLs
+      image: zomindacha, 
       location: "Grand Field, MN"
     },
     {
@@ -126,7 +126,7 @@ interface Property {
   ];
 
   const showDetails = (property: Property) => {
-    setSelectedProperty(property); // Set selected property for detail view
+    setSelectedProperty(property);
   };
 
   const closeModal = () => {
@@ -134,11 +134,15 @@ interface Property {
   };
   const navigate = useNavigate();  
   const handleClick = () => {
-    navigate('/clickdetail');  // Bosilganidan so'ng yangi sahifaga o'tamiz
+    navigate('/clickdetail');  
   };
   const handleDetail = () => {
-    navigate('/propertiespage');  // Bosilganidan so'ng yangi sahifaga o'tamiz
+    navigate('/propertiespage'); 
   };
+
+  const handleGetPro = () =>{
+    navigate('/primum')
+  }
 
   return (
     <div style={{ backgroundColor: "#F0FBFF"}} >
@@ -557,7 +561,7 @@ interface Property {
                       borderRadius: "100px",
                       marginLeft: "33px",
                     }}
-                    href="#"
+                    onClick={handleGetPro}
                   >
                     Get Pro
                   </a>
