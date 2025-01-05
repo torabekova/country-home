@@ -1,26 +1,25 @@
-import React, { useState, useEffect, Dispatch } from "react";
+import LockIcon from "@mui/icons-material/Lock";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
+  Button,
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
   Typography,
-  Button,
 } from "@mui/material";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import LockIcon from "@mui/icons-material/Lock";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthScreens } from "components/login/login";
+import React, { Dispatch, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   setCurrentView: Dispatch<React.SetStateAction<AuthScreens>>;
 }
 
-const Register = ({  setCurrentView }: Props) => {
+const Register = ({ setCurrentView }: Props) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -29,22 +28,18 @@ const Register = ({  setCurrentView }: Props) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
 
-
   const navigate = useNavigate();
 
-  // Handle password visibility toggle
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password, "First Name:", firstName, "Last Name:", lastName);
-    
-    // Make the POST request to register the user
+    console.log("sa");
+
     axios
-      .post("https://e732-95-214-211-183.ngrok-free.app/user/signUp", {
+      .post("http://localhost:8000/user/signUp", {
         email,
         password,
         firstName,
@@ -54,13 +49,7 @@ const Register = ({  setCurrentView }: Props) => {
         console.log(status);
 
         const statusString = status.toString();
-        console.log(status);
-        console.log(email);
-        console.log(password);
-        console.log(lastName);
-        console.log(firstName);
-        console.log(status);
-        
+
         if (statusString.startsWith("2")) {
           navigate("/propertiespage");
         } else if (statusString.startsWith("4")) {
@@ -83,7 +72,7 @@ const Register = ({  setCurrentView }: Props) => {
 
   const navigateToSignIn = () => {
     setCurrentView("login");
-  }
+  };
 
   return (
     <div>
@@ -217,7 +206,7 @@ const Register = ({  setCurrentView }: Props) => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form>
               <Typography
                 className="typography_text"
                 style={{ color: "#666D80", marginBottom: "8px" }}
@@ -319,6 +308,7 @@ const Register = ({  setCurrentView }: Props) => {
               </div>
               <Button
                 type="submit"
+                onClick={handleSubmit}
                 fullWidth
                 variant="contained"
                 sx={{
