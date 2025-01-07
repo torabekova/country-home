@@ -15,7 +15,20 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 import axios from "axios";
+import { Schema, model, Document } from 'mongoose';
 
+// interface IProperty  extends Document {
+//   bathroom: number;
+// }
+
+// const PropertySchema = new Schema <IProperty>({
+//   bathroom:{
+//     type:Number,
+//     required:[true],
+//     min:[1],
+//     max:[10],
+//   }
+// })
 
 
 const AddPropertiesModal = () => {
@@ -32,6 +45,12 @@ const AddPropertiesModal = () => {
     propertiesFor: "",
     picture: "",
   });
+
+
+  // const [name, setName] = useState <string>("");
+  // const [bedroom, setBedroom] = useState<number>(0);
+  // const [address, setAddress] =useState <string>("");
+  
 
   const [originalData] = useState(propertyData); 
 
@@ -112,41 +131,43 @@ const AddPropertiesModal = () => {
 
     
 
-    const submitData = async () => {
-      try {
+    
+
+    // const submitData = async () => {
+    //   try {
         
-        const payload = { ...propertyData };
+    //     const payload = { ...propertyData };
     
         
-        const response = await axios.post("/admin/props", payload);
+    //     const response = await axios.post("/admin/props", payload);
     
         
-        console.log("Response:", response.data);
+    //     console.log("Response:", response.data);
     
         
-        // alert("Property added successfully!");
+    //     // alert("Property added successfully!");
     
       
-        setPropertyData({
-          propertyName: "",
-          carpetArea: "",
-          bedroom: "",
-          bathroom: "",
-          address: "",
-          city: "",
-          country: "",
-          postalCode: "",
-          propertiesFor: "",
-          picture: "",
-        });
-        handleClose();
-      } catch (error) {
-        // console.error("Error adding property:", error);
+    //     setPropertyData({
+    //       propertyName: "",
+    //       carpetArea: "",
+    //       bedroom: "",
+    //       bathroom: "",
+    //       address: "",
+    //       city: "",
+    //       country: "",
+    //       postalCode: "",
+    //       propertiesFor: "",
+    //       picture: "",
+    //     });
+    //     handleClose();
+    //   } catch (error) {
+    //     // console.error("Error adding property:", error);
     
       
-        // alert("Error adding property. Please try again.");
-      }
-    };
+    //     // alert("Error adding property. Please try again.");
+    //   }
+    // };
     
 
   return (
@@ -320,7 +341,7 @@ const AddPropertiesModal = () => {
               color="primary"
               onClick={handleAddProperties}
               style={{ backgroundColor: "#1BA98F" }}
-              onChange={submitData}
+              // onChange={submitData}
             >
               Add Properties
             </Button>
