@@ -5,27 +5,60 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import tabler from "./img/tabler.svg";
 import PasswordReset from "components/PasswordReset/PasswordReset";
 import { AuthScreens } from "components/login/login";
+import axios from "axios";
 
 interface Props {
   setCurrentView: Dispatch<React.SetStateAction<AuthScreens>>;
 }
 
 const ForgotPassword = ({ setCurrentView}: Props) => {
-  const [email, setEmail] = useState("");
+ 
   const [open, setOpen] = useState(false); 
   const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [isError, setIsError] = useState<boolean>(false);
 
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+ const handleForgotPassword = () => {
+   
+
+   axios
+ .post("/user/forgot/password", {
+   email
+ })
+ .then((response) => {
+   console.log(response);
+
+   const statusString = response.status.toString();
+
+   // if (!statusString.startsWith("4")) {
+   //   navigate("/propertiespage");
+   // } else if (statusString.startsWith("4")) {
+   //   setIsError(true);
+   // }
+
+   // if (response.data && response.data.id) {
+   //   sessionStorage.setItem('user_id', response.data.id);
+   // }
+ })
+ .catch((error) => {
+   setIsError(true);
+   console.log(error);
+   
+ });
+ 
+
+ };
+ useEffect(() => {
+  setOpen(true);
+}, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email) {
-      alert("Please enter your email.");
-      return;
-    }
+    // if (!email) {
+    //   alert("Please enter your email.");
+    //   return;
+    // }
 
     console.log("Email:", email);
     setEmail("");
@@ -40,6 +73,8 @@ const ForgotPassword = ({ setCurrentView}: Props) => {
     setCurrentView('login')
     setOpen(false);
   };
+
+ 
 
   return (
     <div>
@@ -118,6 +153,7 @@ const ForgotPassword = ({ setCurrentView}: Props) => {
                     placeholder="Your Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    
                     style={{
                       width: "100%",
                       color: "white",
@@ -139,6 +175,7 @@ const ForgotPassword = ({ setCurrentView}: Props) => {
 
                 <Button
                   type="submit"
+                    onClick={handleForgotPassword}
                   sx={{
                     width: "100%",
                     height: "48px",

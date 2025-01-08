@@ -36,36 +36,67 @@ const Register = ({ setCurrentView }: Props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("sa");
+    // console.log("sa");
+
+    // axios
+    //   .post("/user/signUp", {
+    //     email,
+    //     password,
+    //     firstName,
+    //     lastName,
+    //   })
+    //   .then((data) => {
+    //     console.log(data.status);
+
+    //     const statusString = data.status.toString();
+
+    //     if (statusString.startsWith("4")) {
+    //       navigate("/propertiespage");
+    //     } else if (statusString.startsWith("4")) {
+    //       setIsError(true);
+    //     }
+    //     console.log(data.data.id);
+        
+    //     if (data && data.data.id) {
+    //       sessionStorage.setItem('user_id', data.data._id);
+    //     }
+    //   })
+    //   .catch(() => {
+    //     setIsError(true);
+    //   });
 
     axios
-      .post("/user/signUp", {
-        email,
-        password,
-        firstName,
-        lastName,
-      })
-      .then(({ status }: { status: number }) => {
-        console.log(status);
+  .post("/user/signUp", {
+    email,
+    password,
+    firstName,
+    lastName,
+  })
+  .then((response) => {
+    console.log(response.data._id);
 
-        const statusString = status.toString();
+    const statusString = response.status.toString();
 
-        if (statusString.startsWith("4")) {
-          navigate("/propertiespage");
-        } else if (statusString.startsWith("4")) {
-          setIsError(true);
-        }
-      })
-      .catch(() => {
-        setIsError(true);
-      });
+    if (!statusString.startsWith("4")) {
+      navigate("/propertiespage");
+    } else if (statusString.startsWith("4")) {
+      setIsError(true);
+    }
+
+    if (response.data && response.data.id) {
+      sessionStorage.setItem('user_id', response.data.id);
+    }
+  })
+  .catch(() => {
+    setIsError(true);
+  });
+
   };
 
   useEffect(() => {
     setOpen(true);
   }, []);
 
-  // Close the dialog
   const handleClose = () => {
     setOpen(false);
   };

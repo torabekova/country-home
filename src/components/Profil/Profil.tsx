@@ -29,7 +29,8 @@ const ProfilePage: React.FC = () => {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editedProfileData, setEditedProfileData] = useState(profileData);
 
-  const [isAddPropertiesDialogOpen, setIsAddPropertiesDialogOpen] = useState(false);
+  const [isAddPropertiesDialogOpen, setIsAddPropertiesDialogOpen] =
+    useState(false);
   const [newProperties, setNewProperties] = useState<string[]>([]);
   const [newPropertyValue, setNewPropertyValue] = useState<string>("");
 
@@ -39,21 +40,21 @@ const ProfilePage: React.FC = () => {
   };
 
   const handleEditProfileSave = () => {
-    setProfileData(editedProfileData); 
+    setProfileData(editedProfileData);
     setIsEditDialogOpen(false);
   };
 
   const handleAddPropertySave = () => {
     if (newPropertyValue.trim()) {
       setNewProperties([...newProperties, newPropertyValue.trim()]);
-      setNewPropertyValue(""); 
-      setIsAddPropertiesDialogOpen(false); 
+      setNewPropertyValue("");
+      setIsAddPropertiesDialogOpen(false);
     }
   };
 
   const handleAddPropertyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleAddPropertySave(); 
+      handleAddPropertySave();
     }
   };
 
@@ -70,7 +71,14 @@ const ProfilePage: React.FC = () => {
   return (
     <div style={{ backgroundColor: "#F0FBFF" }}>
       <Header />
-      <div style={{ maxWidth: "1360px", margin: "0 auto", borderRadius: "20px", padding: "20px" }}>
+      <div
+        style={{
+          maxWidth: "1360px",
+          margin: "0 auto",
+          borderRadius: "20px",
+          padding: "20px",
+        }}
+      >
         <Navbar />
       </div>
       <Box sx={{ padding: 4 }}>
@@ -104,7 +112,11 @@ const ProfilePage: React.FC = () => {
               variant="contained"
               color="primary"
               onClick={handleEditProfileOpen}
-              style={{ borderRadius: "100px", backgroundColor: "#1BA98F", color: "white" }}
+              style={{
+                borderRadius: "100px",
+                backgroundColor: "#1BA98F",
+                color: "white",
+              }}
             >
               Edit Profile
             </Button>
@@ -114,20 +126,26 @@ const ProfilePage: React.FC = () => {
               variant="contained"
               color="success"
               onClick={() => alert("Redirecting to upgrade...")}
-              style={{ borderRadius: "100px", backgroundColor: "#1BA98F", color: "white" }}
+              style={{
+                borderRadius: "100px",
+                backgroundColor: "#1BA98F",
+                color: "white",
+              }}
             >
               Upgrade Now
             </Button>
-            <AddPropertiesModal />
+            <AddPropertiesModal refetch={() => {}} />
           </Box>
         </Box>
-        <Box sx={{
-          maxWidth: "1360px",
-          margin: "0 auto",
-          borderRadius: 2,
-          padding: 3,
-          marginBottom: 4,
-        }}>
+        <Box
+          sx={{
+            maxWidth: "1360px",
+            margin: "0 auto",
+            borderRadius: 2,
+            padding: 3,
+            marginBottom: 4,
+          }}
+        >
           <div style={{ display: "flex", gap: "40px" }}>
             <PersonalInformationNumber />
             <TopPropoty />
@@ -137,7 +155,10 @@ const ProfilePage: React.FC = () => {
       <Footer />
 
       {/* Edit Profile Dialog */}
-      <Dialog open={isEditDialogOpen} onClose={() => setIsEditDialogOpen(false)}>
+      <Dialog
+        open={isEditDialogOpen}
+        onClose={() => setIsEditDialogOpen(false)}
+      >
         <DialogTitle>Edit Profile</DialogTitle>
         <DialogContent>
           <TextField

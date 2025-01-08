@@ -10,14 +10,17 @@ import {
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import tabler from "./img/tabler.svg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-import SetNewPassword from "components/SetNewPassword/SetNewPassword";
+import SetNewPassword from "components/ViewMap/SetNewPassword/SetNewPassword";
+
 
 const PasswordReset: React.FC = () => {
   const [open, setOpen] = useState(true); 
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const [isPasswordReset, setIsPasswordReset] = useState(false);
   const navigate = useNavigate(); 
+ 
 
   const handleClose = () => setOpen(false);
 

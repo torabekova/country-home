@@ -30,8 +30,8 @@ const Login: React.FC = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [currentView, setCurrentView] = useState<AuthScreens>("login");
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("shoxruhtoshmuhammedov.2001@gmail.com");
+  const [password, setPassword] = useState<string>("12345678");
   const [isError, setIsError] = useState<boolean>(false);
   const {
     handleSubmit,
@@ -42,7 +42,6 @@ const Login: React.FC = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  console.log(email, password);
 
   const onSubmit = (data: any) => {
     axios
@@ -50,8 +49,11 @@ const Login: React.FC = () => {
         email,
         password,
       })
-      .then(({ status }) => {
+      .then(({ status, data }) => {
         const statusString = status.toString();
+        console.log(status, data);
+        
+        localStorage.setItem("user_id", data.userId)
         if (statusString.startsWith("2")) {
           navigate("/Dashboard");
           return;

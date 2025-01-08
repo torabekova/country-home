@@ -31,7 +31,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Navbar from "../navbar/Navbar";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import FilterComponent from "components/Charts/Charts";
 import AddPropertiesModal from "components/AddProporties/AddProporties";
@@ -45,286 +45,266 @@ import { Property } from "interfaces/property";
 //   setLocation("location");
 // };
 
+interface PropertiesType {
+  name: any;
+  bedroom: any;
+  address: any;
+  bathroom: any;
+  city: any;
+  ratings: any;
+  location: any;
+  hasWifi: boolean;
+  price: number;
+  onClick: () => void;
+}
+
 const PropertyCard = ({
-  type,
-  rating,
-  location,
+  name,
+  bedroom,
   address,
-  beds,
-  baths,
+  bathroom,
+  city,
+  ratings,
+  location,
   hasWifi,
   price,
-  image,
   onClick,
-}: {
-  type: string;
-  rating: number;
-  location: string;
-  address: string;
-  beds: number;
-  baths: number;
-  hasWifi: boolean;
-  price: string;
-  image: string;
-  onClick: () => void;
-}  ) => ( 
-  
-  <div>
-    
-    <Card sx={{ borderRadius: 4, overflow: "hidden", boxShadow: 2 , maxWidth:"500px",}}>
- 
-    <Box sx={{ position: "relative", backgroundColor: "#f5f5f5", height: 160 ,}}>
-      <CardMedia sx={{ height: "100%", width: "100%" }} image={image} title="Property" />
- 
-      <Chip
-        label={type}
-        sx={{
-          position: "absolute",
-          top: 8,
-          left: 8,
-          backgroundColor: "#ffcc80",
-          color: "#000",
-          fontWeight: "bold",
-        }}
-        />
-     
+}: PropertiesType) => (
+  <>
+    <Card
+      sx={{
+        borderRadius: 4,
+        overflow: "hidden",
+        boxShadow: 2,
+        maxWidth: "500px",
+        border: "1px solid",
+      }}
+    >
       <Box
-        sx={{
-          position: "absolute",
-          top: 8,
-          right: 8,
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          color: "#fff",
-          padding: "4px 8px",
-          borderRadius: "16px",
-          display: "flex",
-          alignItems: "center",
-        }}
-        >
-        <StarIcon sx={{ fontSize: 16, color: "#ffeb3b" }} />
-        <Typography variant="body2">{rating}</Typography>
-      </Box>
-    </Box>
+        sx={{ position: "relative", backgroundColor: "#f5f5f5", height: 160 }}
+      >
+        <CardMedia
+          sx={{ height: "100%", width: "100%" }}
+          image={zomindacha}
+          title="Property"
+        />
 
-  
-    <CardContent>
-      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        {location}
-      </Typography>
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        sx={{ display: "flex", alignItems: "center", mt: 0.5, gap: 0.5 }}
-        >
-        <LocationOnIcon fontSize="small" style={{color:"#1BA98F"}} />
-        {address}
-      </Typography>
-
-      <Grid container  sx={{ mt: 1 }}>
-        <Grid item xs={4} sx={{ textAlign: "center" }}>
-          <Stack direction="column" alignItems="center">
-            <BedIcon fontSize="small" style={{color:"#1BA98F"}} />
-            <Typography variant="body2">{beds} Beds</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ textAlign: "center" }}>
-          <Stack direction="column" alignItems="center">
-            <BathtubIcon fontSize="small" style={{color:"#1BA98F"}} />
-            <Typography variant="body2">{baths} Bath</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ textAlign: "center" }}>
-          <Stack direction="column" alignItems="center">
-            <WifiIcon fontSize="small" color={hasWifi ? "success" : "disabled"} style={{color:"#1BA98F"}} />
-            <Typography variant="body2">{hasWifi ? "WiFi" : "No WiFi"}</Typography>
-          </Stack>
-        </Grid>
-      </Grid>
-
-      <Divider sx={{ my: 1 }} />
-
-     
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
-        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-          {price}
-          <Typography variant="body2" component="span">
-            {" "}
-            / per month
-          </Typography>
-        </Typography>
-        
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          onClick={onClick}
+        <Chip
           sx={{
-            textTransform: "none",
-            borderRadius: "20px",
-            backgroundColor: "black",
-            color: "white",
-            
+            position: "absolute",
+            top: 8,
+            left: 8,
+            backgroundColor: "#ffcc80",
+            color: "#000",
+            fontWeight: "bold",
           }}
-          >
-          Detail
-        </Button>
+        />
+
+        <Box
+          sx={{
+            position: "absolute",
+            top: 8,
+            right: 8,
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            color: "#fff",
+            padding: "4px 8px",
+            borderRadius: "16px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <StarIcon sx={{ fontSize: 16, color: "#ffeb3b" }} />
+          <Typography variant="body2">{ratings}</Typography>
+        </Box>
       </Box>
-    </CardContent>
-  </Card>
-  </div>
+
+      <CardContent>
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {name}, {city}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ display: "flex", alignItems: "center", mt: 0.5, gap: 0.5 }}
+        >
+          <LocationOnIcon fontSize="small" style={{ color: "#1BA98F" }} />
+          {address}
+        </Typography>
+
+        <Grid container sx={{ mt: 1 }}>
+          <Grid item xs={4} sx={{ textAlign: "center" }}>
+            <Stack direction="column" alignItems="center">
+              <BedIcon fontSize="small" style={{ color: "#1BA98F" }} />
+              <Typography variant="body2">{bedroom} Beds</Typography>
+            </Stack>
+          </Grid>
+          <Grid item xs={4} sx={{ textAlign: "center" }}>
+            <Stack direction="column" alignItems="center">
+              <BathtubIcon fontSize="small" style={{ color: "#1BA98F" }} />
+              <Typography variant="body2">{bathroom} Bath</Typography>
+            </Stack>
+          </Grid>
+          <Grid item xs={4} sx={{ textAlign: "center" }}>
+            <Stack direction="column" alignItems="center">
+              <WifiIcon
+                fontSize="small"
+                color={hasWifi ? "success" : "disabled"}
+                style={{ color: "#1BA98F" }}
+              />
+              <Typography variant="body2">
+                {hasWifi ? "WiFi" : "No WiFi"}
+              </Typography>
+            </Stack>
+          </Grid>
+        </Grid>
+
+        <Divider sx={{ my: 1 }} />
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mt: 1,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            {price}
+            <Typography variant="body2" component="span">
+              {" "}
+              / per month
+            </Typography>
+          </Typography>
+
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={onClick}
+            sx={{
+              textTransform: "none",
+              borderRadius: "20px",
+              backgroundColor: "black",
+              color: "white",
+            }}
+          >
+            Detail
+          </Button>
+        </Box>
+      </CardContent>
+    </Card>
+  </>
 );
 
 const PropertiesPage = () => {
   const navigate = useNavigate();
   const [properties, setProperties] = useState<Property[]>([]);
-  const [mySearch, setMySearch] = useState<string>('')
-  console.log(mySearch);
-  
-  
+  const [mySearch, setMySearch] = useState<string>("");
+  const [propertyData, setPropertyData] = useState<PropertiesType[]>([]);
 
-  const getProperties = () => {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then(response => {
-      setProperties(response.data);
-    })
-    .catch(error => {
+  const getProperties = async () => {
+    try {
+      const res = await axios.get("/hotel/all-get", {
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      });
+      setPropertyData(res.data);
+    } catch (error) {
       console.log(error);
-    });
-  }
-
- 
-
+    }
+  };
 
   const handleClick = (location: string) => {
     console.log("Navigating to:", location);
-    navigate("/propertiespage"); 
+    navigate("/propertiespage");
   };
+  //   const findedRooms = () => {
+  //     const filtredRooms = propertyData.find((val) => val.location === mySearch)
+  //     if (filtredRooms) {
+  //       console.log(filtredRooms);
 
-  const propertyData = [
-    {
-      type: "House",
-      rating: 4.5,
-      location: "Everest Plaza",
-      address: "Zomin tumani, Everest Plaza",
-      beds: 3,
-      baths: 2,
-      hasWifi: true,
-      price: "$120",
-      image: zomindacha,
-    },
-    {
-      type: "House",
-      rating: 4.5,
-      location: "Plato",
-      address: "Zomin tumani, Everest Plaza",
-      beds: 3,
-      baths: 2,
-      hasWifi: true,
-      price: "$120",
-      image: zomindacha,
-    },
-    {
-      type: "House",
-      rating: 4.5,
-      location: "Zomin Dacha",
-      address: "Zomin tumani, Everest Plaza",
-      beds: 3,
-      baths: 2,
-      hasWifi: true,
-      price: "$120",
-      image: zomindacha,
-    },
-   
-   
-  ];
-  const findedRooms = () => {
-    const filtredRooms = propertyData.find((val) => val.location === mySearch)
-    if (filtredRooms) {
-      console.log(filtredRooms);
-      
-    }
-    else {
-      alert("Room not found")
-    }
- }
-  
-  
- 
+  //     }
+  //     else {
+  //       alert("Room not found")
+  //     }
+  //  }
+
   useEffect(() => {
     getProperties();
   }, []);
 
-
-  const handleMap = () =>{
-    navigate ('/ViewMapSelect')
-  }
-  
-  
+  const handleMap = () => {
+    navigate("/ViewMapSelect");
+  };
 
   return (
-    <div style={{backgroundColor: "#F0FBFF"}}>
-      <Header/>
-      
-    <Navbar/>
-    
-    <Box sx={{   maxWidth:"1360px", width:"100%", margin:"0 auto", }}>
-      
-      <AppBar position="static"  sx={{ boxShadow: 0, backgroundColor:"#F0FBFF", }}>
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 , color:"black",}}>
-            Properties
-          </Typography>
-          
-          <TextField
-            size="small"
-            onChange={(e) => setMySearch(e.target.value)}
-            placeholder="Search"
-            variant="outlined"
-            sx={{ mr: 2 }}
-            InputProps={{
-              endAdornment: <SearchIcon />,
-            }}
-          />
-          {/* <Button onClick={findedRooms}>
+    <div style={{ backgroundColor: "#F0FBFF" }}>
+      <Header />
+
+      <Navbar />
+
+      <Box sx={{ maxWidth: "1360px", width: "100%", margin: "0 auto" }}>
+        <AppBar
+          position="static"
+          sx={{ boxShadow: 0, backgroundColor: "#F0FBFF" }}
+        >
+          <Toolbar>
+            <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
+              Properties
+            </Typography>
+
+            <TextField
+              size="small"
+              onChange={(e) => setMySearch(e.target.value)}
+              placeholder="Search"
+              variant="outlined"
+              sx={{ mr: 2 }}
+              InputProps={{
+                endAdornment: <SearchIcon />,
+              }}
+            />
+            {/* <Button onClick={findedRooms}>
             Search
           </Button> */}
-          <div
-            
+            <div>
+              <Typography variant="body2" sx={{ ml: 1 }}>
+                <FilterComponent />
+              </Typography>
+            </div>
+            <Button>
+              <AddPropertiesModal refetch={getProperties} />
+            </Button>
+            <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
+              <Switch defaultChecked color="primary" onClick={handleMap} />
+              <Typography variant="body2" style={{ color: "#000000" }}>
+                View Map
+              </Typography>
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        <Grid spacing={1}>
+          <Grid
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              marginBottom: "20px",
+            }}
+            item
+            xs={12}
+            sm={6}
+            lg={3}
           >
-           
-            <Typography variant="body2" sx={{ ml: 1 }}>
-            <FilterComponent/>
-            </Typography>
-          </div>
-          <Button
-           
-          >
-             <AddPropertiesModal/>
-          </Button>
-          <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
-            <Switch defaultChecked color="primary" onClick={handleMap} />
-            <Typography variant="body2" style={{color:"#000000"}}>View Map</Typography>
-          </Box>
-        </Toolbar>
-      </AppBar>
-     
-        <Grid  spacing={1}>
-          {propertyData.map((property, index) => (
-            <Grid style={{display:"flex", justifyContent:"space-around", marginBottom:"20px", }} item xs={12} sm={6}  lg={3} key={index}>
-              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
-              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
-              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
-              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
-              <PropertyCard {...property} onClick={() => handleClick(property.location)}/>
-              {/* <PropertyCard {...property} /> */}
-            </Grid>
-          ))}
+            {propertyData.map((property, index) => (
+              <PropertyCard {...property} onClick={() => handleClick("sa")} />
+            ))}
+          </Grid>
         </Grid>
-        </Box>
-     
-    <Footer/>
+      </Box>
+
+      <Footer />
     </div>
-    
   );
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "zamindacha",
-  "version": "0.1.0",
+  "version": "yarn start",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.5",
@@ -72,10 +72,14 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://9ecb-95-214-210-117.ngrok-free.app",
+  "proxy": "https://c5aa-213-230-87-18.ngrok-free.app",
   "devDependencies": {
     "@types/axios": "^0.14.4",
     "@types/react-slick": "^0.23.13",
     "typescript": "^5.7.2"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:torabekova/country-home.git",
+  "author": "shuhrat7 <faridatorabekova6gmail.com>",
+  "license": "MIT"
 }

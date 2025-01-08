@@ -16,7 +16,7 @@ import { Box, TextField } from "@mui/material";
 import WaterDamageOutlinedIcon from '@mui/icons-material/WaterDamageOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 
-// import GlavniMainPage from "components/Glavni/GlavniMainPage";
+import GlavniMainPage from "components/Glavni/GlavniMainPage";
 // import ParentComponent from "components/Glavni/GlavniMainPage";
 
 
@@ -95,12 +95,12 @@ const Navbar: React.FC = () => {
             Transaction
             </Link>
           </div>
-          {/* <div className="navbar_link_icon_div">
+          <div className="navbar_link_icon_div">
             <InsertCommentRoundedIcon />
             <Link className="navbar_link" to="/messages">
               Xabarlar
             </Link>
-          </div> */}
+          </div>
           <div className="navbar_link_icon_div">
             <AssessmentRoundedIcon />
             <Link className="navbar_link" to={"/report"}>
@@ -146,7 +146,7 @@ const Navbar: React.FC = () => {
               alignItems:"center"
             }}
           >
-            {/* <Stack
+            <Stack
               className="avatar"
               direction="row"
               style={{ display: "flex", padding: "0", }}
@@ -158,8 +158,8 @@ const Navbar: React.FC = () => {
                 style={{ position: "relative", left: "30%" }}
               />
               <ParentComponent />
-            </Stack> */}
-             <ConditionalAvatar isAuthenticated={isAuthenticated} avatarSrc={avatar} />
+            </Stack>
+             {/* <ConditionalAvatar isAuthenticated={isAuthenticated} avatarSrc={avatar} /> */}
           </button>
         </div>
       </div>
