@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -14,8 +14,10 @@ const Header: React.FC<HeaderProps> = ({ handleScroll, handleSignInClick }) => {
   };
 
   const user_id = localStorage.getItem("user_id");
+
   const Logout = () => {
     localStorage.removeItem("user_id");
+    localStorage.removeItem("user_role");
     onClick();
   };
 

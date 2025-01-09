@@ -30,7 +30,9 @@ const Login: React.FC = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [currentView, setCurrentView] = useState<AuthScreens>("login");
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>("shoxruhtoshmuhammedov.2001@gmail.com");
+  const [email, setEmail] = useState<string>(
+    "shoxruhtoshmuhammedov.2001@gmail.com"
+  );
   const [password, setPassword] = useState<string>("12345678");
   const [isError, setIsError] = useState<boolean>(false);
   const {
@@ -52,11 +54,14 @@ const Login: React.FC = () => {
       .then(({ status, data }) => {
         const statusString = status.toString();
         console.log(status, data);
-        
-        localStorage.setItem("user_id", data.userId)
-        if (statusString.startsWith("2")) {
+
+        localStorage.setItem("user_id", data.userId);
+        localStorage.setItem("user_role", data.role);
+        if (data.role === "Admin") {
           navigate("/Dashboard");
           return;
+        } else {
+          navigate("/favorite");
         }
 
         if (statusString.startsWith("4")) {

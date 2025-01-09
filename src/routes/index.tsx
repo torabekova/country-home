@@ -7,7 +7,7 @@ export const PUBLIC_ROUTES = [
     element: <Home />,
   },
   {
-    path: "/dashboard",
-    element: <Dashboard />,
+    // path: "/dashboard",
+    // element: <Dashboard />,
   },
 ];

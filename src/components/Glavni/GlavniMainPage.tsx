@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Box, Dialog } from "@mui/material";
+import { Box, Dialog } from "@mui/material";
 import Glavni from "./Glavni";
 
 const ParentComponent = () => {
@@ -11,15 +11,12 @@ const ParentComponent = () => {
 
   return (
     <Box>
-      <button onClick={() => setOpen(true)} style={{opacity:"0"}}>Open Profile Menu</button>
-      
-     
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        sx={{position:"absolute"}}
-      >
-        <Glavni  />
+      <button onClick={() => setOpen(true)} style={{ opacity: "0" }}>
+        Open Profile Menu
+      </button>
+
+      <Dialog open={open} onClose={handleClose} sx={{ position: "absolute" }}>
+        <Glavni />
       </Dialog>
     </Box>
   );

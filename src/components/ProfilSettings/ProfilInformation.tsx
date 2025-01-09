@@ -58,8 +58,19 @@ const PersonalInfoForm: React.FC = () => {
   };
 
   return (
-    <Dialog open={isModalOpen} onClose={handleModalClose} fullWidth maxWidth="md">
-      <DialogTitle sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <Dialog
+      open={isModalOpen}
+      onClose={handleModalClose}
+      fullWidth
+      maxWidth="md"
+    >
+      <DialogTitle
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         Personal Information
         <IconButton onClick={handleModalClose}>
           <CloseIcon />
@@ -86,7 +97,11 @@ const PersonalInfoForm: React.FC = () => {
               <Button
                 variant="contained"
                 component="label"
-                sx={{ mr: 1, backgroundColor: "#1BA98F", borderRadius: "100px" }}
+                sx={{
+                  mr: 1,
+                  backgroundColor: "#1BA98F",
+                  borderRadius: "100px",
+                }}
               >
                 Upload new picture
                 <input

@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Link komponenti
 import "./Navbar.css";
-import HomeIcon from "@mui/icons-material/Home";
 import SyncAltRoundedIcon from "@mui/icons-material/SyncAltRounded";
-import InsertCommentRoundedIcon from "@mui/icons-material/InsertCommentRounded";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import tabler from "./img/tabler.svg";
-import avatar from "./img/avatar.jpg";
-import { PATH } from "../Types/path";
+
 import { Box, TextField } from "@mui/material";
-import WaterDamageOutlinedIcon from '@mui/icons-material/WaterDamageOutlined';
-import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
-
-import GlavniMainPage from "components/Glavni/GlavniMainPage";
+import WaterDamageOutlinedIcon from "@mui/icons-material/WaterDamageOutlined";
+import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
+import ParentComponent from "components/Glavni/GlavniMainPage";
 // import ParentComponent from "components/Glavni/GlavniMainPage";
-
 
 interface Props {
   isAuthenticated: boolean; // Tizimga kirganlik holatini belgilovchi prop
@@ -26,35 +22,33 @@ interface Props {
 }
 
 // Shartga asoslangan holda ko'rinishni boshqaruvchi komponent
-const ConditionalAvatar: React.FC<Props> = ({ isAuthenticated, avatarSrc }) => {
-  return (
-    <Stack
-      className="avatar"
-      direction="row"
-      style={{ display: "flex", padding: "0" }}
-    >
-      {isAuthenticated ? (
-        <>
-          <Avatar
-            alt="User Avatar"
-            src={avatarSrc || ""}
-            style={{ position: "relative", left: "30%" }}
-          />
-          <ParentComponent />
-        </>
-      ) : (
-        <div></div>
-      )}
-    </Stack>
-  );
-};
+// const ConditionalAvatar: React.FC<Props> = ({ isAuthenticated, avatarSrc }) => {
+//   return (
+//     <Stack
+//       className="avatar"
+//       direction="row"
+//       style={{ display: "flex", padding: "0" }}
+//     >
+//       {isAuthenticated ? (
+//         <>
+//           <Avatar
+//             alt="User Avatar"
+//             src={avatarSrc || ""}
+//             style={{ position: "relative", left: "30%" }}
+//           />
+//           <ParentComponent />
+//         </>
+//       ) : (
+//         <div></div>
+//       )}
+//     </Stack>
+//   );
+// };
 
 // Misol uchun ParentComponent
-const ParentComponent: React.FC = () => {
-  return <div>Parent Component Content</div>;
-};
-
-
+// const ParentComponent: React.FC = () => {
+//   return <div style={{ opacity: "1" }}>Parent</div>;
+// };
 
 const Navbar: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -65,6 +59,8 @@ const Navbar: React.FC = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); // Tizimga kirganlik holati
   const avatar = "https://example.com/avatar.jpg"; // Avatar rasmi manzili
+
+  const user_role = localStorage.getItem("user_role");
 
   // Tizimga kirish/qaytish uchun tugmalar
   const toggleAuth = () => setIsAuthenticated((prev) => !prev);
@@ -77,34 +73,38 @@ const Navbar: React.FC = () => {
         </Link>
 
         <div className="navbar_link_div">
+          {user_role === "Admin" && (
+            <>
+              <div className="navbar_link_icon_div">
+                <WaterDamageOutlinedIcon />
+                <Link className="navbar_link" to={"/Dashboard"}>
+                  Dashboard
+                </Link>
+              </div>
+              <div className="navbar_link_icon_div">
+                <LayersOutlinedIcon />
+                <Link className="navbar_link" to={"/properties"}>
+                  Properties
+                </Link>
+              </div>
+              <div className="navbar_link_icon_div">
+                <SyncAltRoundedIcon />
+                <Link className="navbar_link" to={"/transaction"}>
+                  Transaction
+                </Link>
+              </div>
+              <div className="navbar_link_icon_div">
+                <AssessmentRoundedIcon />
+                <Link className="navbar_link" to={"/report"}>
+                  Report
+                </Link>
+              </div>
+            </>
+          )}
           <div className="navbar_link_icon_div">
-            <WaterDamageOutlinedIcon />
-            <Link className="navbar_link" to={"/Dashboard"}>
-              Dashboard
-            </Link>
-          </div>
-          <div className="navbar_link_icon_div">
-            <LayersOutlinedIcon />
-            <Link className="navbar_link" to={"/properties"}>
-            Properties
-            </Link>
-          </div>
-          <div className="navbar_link_icon_div">
-            <SyncAltRoundedIcon />
-            <Link className="navbar_link" to={"/transaction"}>
-            Transaction
-            </Link>
-          </div>
-          <div className="navbar_link_icon_div">
-            <InsertCommentRoundedIcon />
-            <Link className="navbar_link" to="/messages">
-              Xabarlar
-            </Link>
-          </div>
-          <div className="navbar_link_icon_div">
-            <AssessmentRoundedIcon />
-            <Link className="navbar_link" to={"/report"}>
-            Report
+            <FavoriteBorderIcon />
+            <Link className="navbar_link" to="/favorite">
+              Sevimlilar
             </Link>
           </div>
         </div>
@@ -143,23 +143,25 @@ const Navbar: React.FC = () => {
               maxWidth: "90px",
               justifyContent: "center",
               display: "flex",
-              alignItems:"center"
+              alignItems: "center",
             }}
           >
             <Stack
               className="avatar"
               direction="row"
-              style={{ display: "flex", padding: "0", }}
+              style={{ display: "flex", padding: "0" }}
             >
-              
               <Avatar
                 alt="User Avatar"
                 src={avatar}
-                style={{ position: "relative", left: "30%" }}
+                style={{ position: "relative", left: "25%" }}
               />
               <ParentComponent />
             </Stack>
-             {/* <ConditionalAvatar isAuthenticated={isAuthenticated} avatarSrc={avatar} /> */}
+            {/* <ConditionalAvatar
+              isAuthenticated={isAuthenticated}
+              avatarSrc={avatar}
+            /> */}
           </button>
         </div>
       </div>

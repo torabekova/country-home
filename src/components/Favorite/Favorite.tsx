@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import zomindacha from "./img/zomindacha.png";
-
 import {
   AppBar,
   Toolbar,
   Typography,
   Grid,
   Box,
-  TextField,
   Button,
-  Switch,
   Card,
   CardContent,
   CardMedia,
@@ -17,7 +14,6 @@ import {
   Divider,
   Stack,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 
 import StarIcon from "@mui/icons-material/Star";
 import BedIcon from "@mui/icons-material/Bed";
@@ -29,17 +25,8 @@ import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 
-import FilterComponent from "components/Charts/Charts";
-import AddPropertiesModal from "components/AddProporties/AddProporties";
 import axios from "axios";
 import { Property } from "interfaces/property";
-
-// const navigate = useNavigate();
-// const [location , setLocation] = useState<string>("");
-
-// const navigateToLocation = () => {
-//   setLocation("location");
-// };
 
 interface PropertiesType {
   name: any;
@@ -199,7 +186,7 @@ const PropertyCard = ({
   </>
 );
 
-const PropertiesPage = () => {
+const Favorite = () => {
   const navigate = useNavigate();
   const [properties, setProperties] = useState<Property[]>([]);
   const [mySearch, setMySearch] = useState<string>("");
@@ -234,7 +221,6 @@ const PropertiesPage = () => {
   return (
     <div style={{ backgroundColor: "#F0FBFF" }}>
       <Header />
-
       <Navbar />
 
       <Box sx={{ maxWidth: "1360px", width: "100%", margin: "0 auto" }}>
@@ -244,36 +230,8 @@ const PropertiesPage = () => {
         >
           <Toolbar>
             <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
-              Properties
+              Favorite
             </Typography>
-
-            <TextField
-              size="small"
-              onChange={(e) => setMySearch(e.target.value)}
-              placeholder="Search"
-              variant="outlined"
-              sx={{ mr: 2 }}
-              InputProps={{
-                endAdornment: <SearchIcon />,
-              }}
-            />
-            {/* <Button onClick={findedRooms}>
-            Search
-          </Button> */}
-            <div>
-              <Typography variant="body2" sx={{ ml: 1 }}>
-                <FilterComponent />
-              </Typography>
-            </div>
-            <Button>
-              <AddPropertiesModal refetch={getProperties} />
-            </Button>
-            <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
-              <Switch defaultChecked color="primary" onClick={handleMap} />
-              <Typography variant="body2" style={{ color: "#000000" }}>
-                View Map
-              </Typography>
-            </Box>
           </Toolbar>
         </AppBar>
 
@@ -302,4 +260,4 @@ const PropertiesPage = () => {
   );
 };
 
-export default PropertiesPage;
+export default Favorite;

@@ -1,6 +1,4 @@
-import React from "react";
-import i18n from "./components/Translate/Translate";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 import "./App.css";
 import { PUBLIC_ROUTES } from "routes";
 import DetailPage from "components/detailpage/DetailPgae";
@@ -18,9 +16,10 @@ import ConfirmPage from "components/ConfirmPage/ConfirmPage";
 import Primum from "components/Primum/Primum";
 import ViewMapSelect from "components/ViewMap/ViewMapSelect";
 
+import Favorite from "components/Favorite/Favorite";
 
 function App() {
-  console.log(PUBLIC_ROUTES);
+  const user_role = localStorage.getItem("user_role");
 
   return (
     <div>
@@ -34,13 +33,15 @@ function App() {
         <Route path="/destination-detail/:id" element={<DestinationDetail />} />
         <Route path="/card-info/:id" element={<CardInfo />} />
         <Route path="/signin" element={<Login />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/home" element={<Dashboard />} />
-        <Route path="/properties" element={<PropertiesPage />} />
-        <Route path="/transaction" element={<Transaction />} />
         <Route path="/location" element={<DetailPage />} />
+        {user_role === "Admin" && (
+          <>
+            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/properties" element={<PropertiesPage />} />
+            <Route path="/transaction" element={<Transaction />} />
+          </>
+        )}
         <Route path="/report" element={<Report />} />
-        <Route path="/profilePage" element={<ProfilePage />} />
         <Route path="/profilePage" element={<ProfilePage />} />
         <Route path="/profilsettings" element={<PersonalInfoForm />} />
         <Route path="/clickdetail" element={<PropertiesPage />} />
@@ -48,16 +49,13 @@ function App() {
         <Route path="/SearchForm" element={<PropertiesPage />} />
         <Route path="/readMore" element={<ClickDetail />} />
         <Route path="/ConfirmPage" element={<ConfirmPage />} />
-        <Route path="/primum" element={<Primum/>} />
+        <Route path="/primum" element={<Primum />} />
         <Route path="/selectplan" element={<ClickDetail />} />
         <Route path="/ViewMapSelect" element={<ViewMapSelect />} />
-        
-
+        <Route path="/favorite" element={<Favorite />} />
       </Routes>{" "}
     </div>
   );
 }
 
 export default App;
-
-

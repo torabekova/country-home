@@ -161,7 +161,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
             boxShadow: 24,
             p: 4,
             mx: "auto",
-            my: 20,
+            my: 7,
           }}
         >
           <Typography variant="h6" sx={{ mb: 2 }}>
