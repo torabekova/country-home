@@ -1,4 +1,4 @@
-import { BrowserRouter as Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { PUBLIC_ROUTES } from "routes";
 import DetailPage from "components/detailpage/DetailPgae";
