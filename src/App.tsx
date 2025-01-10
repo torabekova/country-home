@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { PUBLIC_ROUTES } from "routes";
 import DetailPage from "components/detailpage/DetailPgae";
-import DestinationDetail from "components/DestinationDetail/DestinationDetail";
+
 import CardInfo from "components/CardInfo/CardInfo";
 import Login from "components/login/login";
 import Dashboard from "pages/Dashboard/Dashboard";
@@ -30,7 +30,6 @@ function App() {
           <Route {...route} key={route.path} />
         ))}{" "}
         <Route path="/details" element={<DetailPage />} />{" "}
-        <Route path="/destination-detail/:id" element={<DestinationDetail />} />
         <Route path="/card-info/:id" element={<CardInfo />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/location" element={<DetailPage />} />
@@ -45,7 +44,7 @@ function App() {
         <Route path="/profilePage" element={<ProfilePage />} />
         <Route path="/profilsettings" element={<PersonalInfoForm />} />
         <Route path="/clickdetail" element={<PropertiesPage />} />
-        <Route path="/propertiespage" element={<ClickDetail />} />
+        <Route path="/propertiespage/:id" element={<ClickDetail />} />
         <Route path="/SearchForm" element={<PropertiesPage />} />
         <Route path="/readMore" element={<ClickDetail />} />
         <Route path="/ConfirmPage" element={<ConfirmPage />} />

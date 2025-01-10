@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 interface SearchFormProps {
   destination: string;
@@ -12,11 +12,18 @@ interface SearchFormProps {
   handleSearch: () => void;
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ destination, setDestination, date, setDate, tourists, setTourists,  }) => {
-  const navigate = useNavigate();  
-const handleClick = () => {
-  navigate('/SearchForm');  
-};
+const SearchForm: React.FC<SearchFormProps> = ({
+  destination,
+  setDestination,
+  date,
+  setDate,
+  tourists,
+  setTourists,
+}) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/SearchForm");
+  };
   return (
     <Box
       sx={{
@@ -32,11 +39,11 @@ const handleClick = () => {
     >
       <Box>
         <Typography sx={{ color: "#ffffff", mb: 1 }} variant="body2">
-          Where To?
+          Qayerga?
         </Typography>
         <TextField
           variant="outlined"
-          placeholder="Place Name"
+          placeholder="Joy nomi"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
           sx={{
@@ -60,7 +67,7 @@ const handleClick = () => {
 
       <Box>
         <Typography sx={{ color: "#ffffff", mb: 1 }} variant="body2">
-          When?
+          Qachon?
         </Typography>
         <TextField
           type="date"
@@ -87,11 +94,11 @@ const handleClick = () => {
 
       <Box>
         <Typography sx={{ color: "#ffffff", mb: 1 }} variant="body2">
-          How Many?
+          Nechi kishi?
         </Typography>
         <TextField
           type="number"
-          placeholder="No. of Tourists"
+          placeholder="nechi kishisiz"
           value={tourists}
           onChange={(e) => setTourists(e.target.value)}
           sx={{
@@ -123,7 +130,7 @@ const handleClick = () => {
           },
         }}
       >
-        Find Now
+        hozir topish
       </Button>
     </Box>
   );

@@ -39,33 +39,37 @@ import {
   Public,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import AddNewRooms from "components/AddNewRooms/AddNewRooms";
 
 // Example room data
 const images = [
   {
     id: 1,
-    title: "Single Room",
-    description: "A beautiful mountain retreat for a relaxing vacation.",
-    facilities: "Free WiFi, Parking, Pool",
+    title: "Bir kishilik hona",
+    description:
+      "Bir kishilik xona – sizning qulayligingiz uchun ideal tanlov. Xonada barcha zaruriy qulayliklar mavjud: qulay karavot, zamonaviy mebellar, konditsioner va Wi-Fi ulanishi. Sizning dam olish va ish faoliyatingizni maksimal darajada qulay va xotirjam qilish uchun barcha sharoitlar yaratilgan.",
+    facilities: "Tekin WiFi, Avto turargoh, Baseyn",
     price: "100$",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfLkwLrf4rpvCZHc5--29eqYv86fo9ggrgw&s",
   },
   {
     id: 2,
-    title: "Twin Room",
-    description: "A luxurious villa by the beach for an unforgettable stay.",
-    facilities: "Free WiFi, Parking, Poo, Gym, Elevator, Balcony",
-    price: "100$",
+    title: "Ikki kishilik hona",
+    description:
+      "Ikki kishilik xona – ikki kishi uchun mukammal tanlov. Xonada ikkita karavot, zamonaviy mebellar, shinam va yorqin ichki dizayn mavjud. Konditsioner, Wi-Fi va boshqa barcha qulayliklar sizning dam olishingizni unutilmas va qulay qilish uchun taqdim etilgan.",
+    facilities: "Tekin WiFi, Avto turargoh, Baseyn, Zal , Balkon",
+    price: "170$",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY1aZQ8nh9P9qGzauogHpTtZVNi1WIZ9BBnQ&s",
   },
   {
     id: 3,
-    title: "Double Room",
-    description: "A modern apartment in the heart of the city.",
-    facilities: "Free WiFi, Parking, Pool, Gym, Elevator, Balcony",
-    price: "100$",
+    title: "oilaviy hona",
+    description:
+      "Juftliklar xonasi – ikki kishilik qulaylik va dam olish uchun mo‘ljallangan zamonaviy va shinam xona. Xonada keng juftlik karavoti, konditsioner, Wi-Fi, televizor va boshqa barcha zarur qulayliklar mavjud. Xonamizda yuqori darajadagi xizmat va xotirjam dam olishni ta'minlash uchun barcha sharoitlar yaratilga.",
+    facilities: "Tekin WiFi, Avto turargoh, Baseyn, Zal, Fitness club,  Balkon",
+    price: "220$",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPCH8ufTsMaeP8CtE4UY1LeOrxdKTYBQl2RQ&s",
   },
@@ -74,39 +78,39 @@ const images = [
 const serviceData = [
   {
     id: 1,
-    title: "Worldwide",
+    title: "Zomin bo'ylab",
     icon: <Public style={{ fontSize: "60px" }} />,
-    description: "Experience worldwide tours.",
+    description: "Zomin tog'larida unutilmas sayohatni boshdan kechiring..",
   },
   {
     id: 2,
-    title: "Adventures",
+    title: "sarguzashtlar",
     icon: <Hiking style={{ fontSize: "60px" }} />,
-    description: "Embark on thrilling adventures.",
+    description: "Hayajonli sarguzashtlarga otlaning.",
   },
   {
     id: 3,
-    title: "Foods & Drinks",
+    title: "Ovqatlar & Icimliklar",
     icon: <Fastfood style={{ fontSize: "60px" }} />,
-    description: "Taste exotic cuisines.",
+    description: "Madaniy taomlarning noyob ta'mini kashf eting.",
   },
   {
     id: 4,
-    title: "Affordable Hotels",
+    title: "Arzon mehmonxonalar",
     icon: <Hotel style={{ fontSize: "60px" }} />,
-    description: "Comfortable stays at the best price.",
+    description: "Eng yaxshi narxda qulay turar joylar",
   },
   {
     id: 5,
-    title: "Affordable Price",
+    title: "Arzon narx",
     icon: <AttachMoney style={{ fontSize: "60px" }} />,
-    description: "Best deals for your trips.",
+    description: "Sizning sayohatlaringiz uchun eng yaxshi takliflar..",
   },
   {
     id: 6,
-    title: "24/7 Services",
+    title: "24/7 Hizmatlar",
     icon: <AccessTime style={{ fontSize: "60px" }} />,
-    description: "We are always here for you.",
+    description: "Biz har doim siz uchun shu yerdamiz.",
   },
 ];
 
@@ -174,6 +178,7 @@ const ClickDetail: React.FC = () => {
             display: "flex",
             justifyContent: "space-between",
             marginBottom: "1.5rem",
+            alignItems: "center",
           }}
         >
           <Typography style={{ paddingLeft: "40px" }}>
@@ -183,6 +188,7 @@ const ClickDetail: React.FC = () => {
           </Typography>
 
           <div style={{ display: "flex", gap: "10px" }}>
+            <AddNewRooms refetch={undefined} />
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <IconButton onClick={handleLike} color="primary">
                 {liked ? (
@@ -278,7 +284,7 @@ const ClickDetail: React.FC = () => {
                   color="text.secondary"
                   mt={2}
                 >
-                  <strong>Facilities:</strong> {item.facilities}
+                  <strong>Xususiyatlari:</strong> {item.facilities}
                 </Typography>
                 <Typography
                   style={{ color: "#6F6F6F" }}
@@ -286,7 +292,7 @@ const ClickDetail: React.FC = () => {
                   color="text.secondary"
                   mt={2}
                 >
-                  <strong>Price:</strong> {item.price}
+                  <strong>Narx:</strong> {item.price}
                 </Typography>
                 <Button
                   variant="contained"
@@ -301,7 +307,7 @@ const ClickDetail: React.FC = () => {
                   }}
                   onClick={() => handleBookClick(item)}
                 >
-                  Book Now
+                  Hozir band qiling
                 </Button>
               </CardContent>
             </Card>
@@ -309,39 +315,40 @@ const ClickDetail: React.FC = () => {
         </Stack>
 
         <Dialog open={openDialog} onClose={handleCloseDialog}>
-          <DialogTitle>Book "{selectedItem?.title}"</DialogTitle>
+          <DialogTitle>Band qilish "{selectedItem?.title}"</DialogTitle>
           <DialogContent>
             <Typography variant="body1">
-              Are you sure you want to book the "{selectedItem?.title}"?
+              Chindan ham buni bron qilishni xohlaysizmi? "{selectedItem?.title}
+              "?
             </Typography>
             <Typography
               style={{ fontFamily: "Manrope" }}
               variant="body2"
               mt={2}
             >
-              <strong>Description:</strong> {selectedItem?.description}
+              <strong>Izoh:</strong> {selectedItem?.description}
             </Typography>
             <Typography
               style={{ fontFamily: "Manrope" }}
               variant="body2"
               mt={2}
             >
-              <strong>Facilities:</strong> {selectedItem?.facilities}
+              <strong>Xusisiyatlar:</strong> {selectedItem?.facilities}
             </Typography>
             <Typography
               style={{ fontFamily: "Manrope" }}
               variant="body2"
               mt={2}
             >
-              <strong>Price:</strong> {selectedItem?.price}
+              <strong>Narx:</strong> {selectedItem?.price}
             </Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseDialog} color="primary">
-              Cancel
+              Bekor qilish
             </Button>
             <Button onClick={onClick} color="secondary">
-              Confirm Booking
+              Buyurtmani tasdiqlash
             </Button>
           </DialogActions>
         </Dialog>
@@ -357,7 +364,7 @@ const ClickDetail: React.FC = () => {
                 fontFamily: "Manrope",
               }}
             >
-              About we
+              Biz Haqimizda
             </h1>
             <p
               style={{
@@ -367,12 +374,15 @@ const ClickDetail: React.FC = () => {
                 fontSize: "18px",
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur quas tenetur enim, porro id vel blanditiis, doloribus
-              sunt laborum, facilis soluta. Quas facilis aspernatur culpa minima
-              commodi esse numquam quis laboriosam placeat cumque consequuntur
-              provident quidem iure fuga magnam, cum nisi ducimus repudiandae,
-              illum officia omnis fugiat eius magni.
+              Bizning mehmonxonamiz sizga eng yuqori darajadagi qulayliklarni va
+              xizmatlarni taqdim etishga intiladi. Har bir xonamiz zamonaviy
+              uslubda bezatilgan bo‘lib, mehmonlarimizning dam olish va ish
+              jarayonida maksimal darajada qulaylik va farovonlikni ta'minlaydi.
+              Mehmonxona ajoyib joylashuvi, do'stona xodimlari va yuqori sifatli
+              xizmatlari bilan farq qiladi. Bizning maqsadimiz — sizning dam
+              olishingizni unutilmas qilish, shuningdek, har bir mehmonni o‘zini
+              xushnud va xotirjam his qilishi uchun barcha imkoniyatlarni
+              yaratish.
             </p>
           </div>
         </div>
@@ -405,11 +415,12 @@ const ClickDetail: React.FC = () => {
             sx={{
               mb: 4,
               fontWeight: "bold",
-              paddingTop: "20px",
+              paddingTop: "60px",
               fontFamily: "Manrope",
+              paddingBottom: "20px",
             }}
           >
-            Countless Experience
+            Cheksiz Hizmatlar
           </Typography>
           <Grid container spacing={4} justifyContent="center">
             {serviceData.map((service) => (
@@ -487,11 +498,11 @@ const ClickDetail: React.FC = () => {
             cursor: "pointer",
           }}
         >
-          Submit Comment
+          Sharh qo'shish
         </button>
 
         <div style={{ marginTop: "20px" }}>
-          <h3>User Comments:</h3>
+          <h3>Sharhlar:</h3>
           <ul
             style={{
               listStyleType: "none",

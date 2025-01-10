@@ -80,15 +80,20 @@ const ConfirmPage = () => {
           <p
             style={{
               textAlign: "center",
-              maxWidth: "500px",
+              maxWidth: "800px",
               marginBottom: 1,
               color: "#666",
               paddingBottom: "20px",
             }}
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-            nam sapiente id inventore, optio quo reprehenderit iste, architecto
-            enim
+            Bu xona mehmonlarimiz uchun eng yuqori qulaylikni taqdim etadi.
+            Xonada keng va shinam karavot, konditsioner, televizor, Wi-Fi, va
+            boshqa zarur qulayliklar mavjud. Xonada alohida balkon, shuningdek,
+            maxsus vannaga ega bo‘lib, sizni to‘liq dam olish va xotirjamlikka
+            undaydi. Balkon sizga ajoyib manzaradan bahramand bo‘lish imkonini
+            beradi, vannada esa kundalik shaxsiy g‘amxo‘rlikni amalga
+            oshirishingiz mumkin. Har bir detallarga e'tibor berilgan, shunda
+            sizning qolishingiz qulay va esda qolarli bo‘ladi.
           </p>
         </div>
         <div style={{ display: "flex", gap: "40px", marginTop: "1.5rem" }}>
@@ -132,7 +137,7 @@ const ConfirmPage = () => {
                   color: "#555",
                 }}
               >
-                Twin Room
+                Ikki kishilik hona
               </h1>
               <hr style={{ borderColor: "#f5f5f5" }} />
               <div
@@ -144,7 +149,7 @@ const ConfirmPage = () => {
                 }}
               >
                 <h2 style={{ fontWeight: "bold", color: "bisque" }}>100$</h2>
-                <p>
+                {/* <p>
                   <span
                     style={{
                       color: "#666",
@@ -154,14 +159,14 @@ const ConfirmPage = () => {
                   >
                     /night
                   </span>
-                </p>
+                </p> */}
               </div>
 
               <p style={{ color: "#666" }}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo, odit exercitationem mollitia odio soluta ipsum neque
-                id necessitatibus beatae quam. Cum maxime ab explicabo
-                voluptatem? Vel nam ipsa placeat quasi!
+                Bron qilishda to‘langan pul qaytarib berilmaydi. Iltimos,
+                rezervatsiyani tasdiqlashdan oldin shartlar va qoidalar bilan
+                tanishing Shartlar va qoidalar haqida qo‘shimcha ma'lumot uchun
+                mehmonxona xizmati bilan aloqaga chiqishingiz mumkin.
               </p>
               <div
                 style={{
@@ -190,28 +195,28 @@ const ConfirmPage = () => {
                   paddingBottom: "20px",
                 }}
               >
-                Facilities
+                Xususyatlar
               </h1>
               <hr style={{ borderColor: "#f5f5f5" }} />
               <div style={{ marginTop: "20px" }}>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <StyledButton>
                     <HotelIcon />
-                    <h4>2 Beds</h4>
+                    <h4>2 Krovat</h4>
                   </StyledButton>
                   <StyledButton>
                     <BathtubRoundedIcon />
-                    <h4>1 Bath</h4>
+                    <h4>1 Vana</h4>
                   </StyledButton>
                 </div>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <StyledButton>
                     <WifiRoundedIcon />
-                    <h4> Free Wifi</h4>
+                    <h4> Tekin Wifi</h4>
                   </StyledButton>
                   <StyledButton>
                     <BrunchDiningIcon />
-                    <h4>Breakfast</h4>
+                    <h4>Nonushta</h4>
                   </StyledButton>
                 </div>
               </div>
@@ -231,7 +236,7 @@ const ConfirmPage = () => {
                   paddingBottom: "20px",
                 }}
               >
-                More Information
+                Ko'proq malumotlar
               </h1>
               <p
                 style={{
@@ -240,10 +245,15 @@ const ConfirmPage = () => {
                   paddingBottom: "20px",
                 }}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Pariatur ducimus odio hic voluptate numquam inventore commodi ex
-                nulla iure dolore aperiam, magnam aspernatur, sunt voluptatem
-                totam maxime porro? Ipsa, inventore.
+                Bizning mehmonxona xizmatlarimizga tekin nonushta ham kiradi, bu
+                esa ertalabki vaqtingizni qulay va mazali qilish uchun
+                mo‘ljallangan. Nonushta turli taomlar va ichimliklar bilan
+                taqdim etiladi, shuningdek, sizning talablaringizga mos ravishda
+                tayyorlanadi. Mehmonxonada 24 soat xizmat ko‘rsatuvchi
+                xodimlarimiz sizning barcha ehtiyojlaringizni qondirish uchun
+                har doim tayyor. Qo‘shimcha servislar ham mavjud, jumladan
+                xonada tozalash, qo‘shimcha oziq-ovqat buyurtmalari va boshqa
+                maxsus xizmatlar.
               </p>
             </div>
           </div>
@@ -261,7 +271,7 @@ const ConfirmPage = () => {
                   paddingBottom: "2px",
                 }}
               >
-                Address
+                Manzil
               </h3>
               <address style={{ paddingBottom: "2px" }}>
                 Jizzax Viloyati Zomin tumani{" "}
@@ -278,7 +288,7 @@ const ConfirmPage = () => {
                   paddingBottom: "2px",
                 }}
               >
-                Phone
+                Telefon Nomer
               </h3>
               <p style={{ paddingBottom: "2px" }}>(+998) 94 095 67 74</p>
               <p>(+998) 94 095 67 67</p>

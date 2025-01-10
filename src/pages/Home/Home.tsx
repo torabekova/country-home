@@ -13,7 +13,9 @@ const Home: React.FC = () => {
   const [tourists, setTourists] = useState("");
 
   const handleSearch = () => {
-    alert(`Searching for: ${destination}, Date: ${date}, Tourists: ${tourists}`);
+    alert(
+      `Searching for: ${destination}, Date: ${date}, Tourists: ${tourists}`
+    );
     console.log("Search Data:", { destination, date, tourists });
   };
 
@@ -26,16 +28,19 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: "#000" }}>
-      <Header handleScroll={handleScroll} handleSignInClick={handleSignInClick} />
-      <MainContent 
-        destination={destination} 
-        setDestination={setDestination} 
-        date={date} 
-        setDate={setDate} 
-        tourists={tourists} 
-        setTourists={setTourists} 
-        handleSearch={handleSearch} 
+    <Box>
+      <Header
+        handleScroll={handleScroll}
+        handleSignInClick={handleSignInClick}
+      />
+      <MainContent
+        destination={destination}
+        setDestination={setDestination}
+        date={date}
+        setDate={setDate}
+        tourists={tourists}
+        setTourists={setTourists}
+        handleSearch={handleSearch}
       />
       <HomeMainPage />
       <Footer />

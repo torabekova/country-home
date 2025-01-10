@@ -17,7 +17,7 @@ import { SelectChangeEvent } from "@mui/material";
 import axios from "axios";
 import { Schema, model, Document } from "mongoose";
 
-const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
+const AddNewRooms = ({ refetch }: { refetch: any }) => {
   const [open, setOpen] = useState(false);
   const [propertyData, setPropertyData] = useState({
     propertyName: "",
@@ -76,31 +76,26 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
     handleClose();
   };
 
-  const [name, setName] = useState<string>("Salom");
-  const [bedroom, setBedroom] = useState<number>(2);
-  const [address, setAddress] = useState<string>("dsfsd");
-  const [carpetArea, setCarpetArea] = useState<string>("sdfsdfds");
-  const [bathroom, setbathroom] = useState<number>(4);
-  const [city, setCity] = useState<string>("Tashkent");
-  const [country, setCountry] = useState<string>("Uzb");
-  const [postalCode, setPostalCode] = useState<string>("fsdfdsf");
+  const [propertyName, setPropertyName] = useState<string>("");
+  const [bedRoom, setBedRoom] = useState<number>();
+  const [bathroom, setbathroom] = useState<number>();
+  const [img, setImg] = useState<string[]>([]);
+  const [hotel, setHotel] = useState<string>("");
+  const [isRented, setIsRented] = useState<boolean>(false);
+  const [price, setPrice] = useState<string>("");
 
   const [isError, setIsError] = useState<boolean>(false);
 
   const submitData = async () => {
     try {
-      const response = await axios.post("/hotel/create", {
-        name,
-        bedroom,
-        address,
-        carpetArea,
+      const response = await axios.post("/room", {
+        hotel: "125678qwertyuiopoA",
+        propertyName,
+        bedRoom,
+        isRented,
         bathroom,
-        city,
-        postalCode,
-        owner: "677e7193e13c3cca279678c6",
-        hasWifi: true,
-        price: 2000,
-        location: [12345678, 23423432423],
+        img,
+        price,
       });
       console.log(response.data);
       refetch();
@@ -132,7 +127,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
           }}
         >
           <Typography variant="h6" sx={{ mb: 2 }}>
-            Add New Properties
+            Add New Rooms
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={6}>
@@ -140,26 +135,31 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
                 fullWidth
                 label="Property Name"
                 name="propertyName"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={hotel}
+                onChange={(e) => setHotel(e.target.value)}
               />
             </Grid>
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                label="Carpet Area"
-                name="carpetArea"
-                value={carpetArea}
-                onChange={(e) => setCarpetArea(e.target.value)}
+                label="Price"
+                name="Price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
               />
+            </Grid>
+            <Grid item xs={6}>
+              <Button onClick={(e) => setIsRented(true)} variant="contained">
+                Order
+              </Button>
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
                 <InputLabel>Bedroom</InputLabel>
                 <Select
                   name="bedroom"
-                  value={bedroom}
-                  onChange={(e) => setBedroom(Number(e.target.value))}
+                  value={bedRoom}
+                  onChange={(e) => setBedRoom(Number(e.target.value))}
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                     <MenuItem key={num} value={num}>
@@ -185,44 +185,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                multiline
-                rows={3}
-                label="Address"
-                name="address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="City"
-                name="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                fullWidth
-                label="Postal Code"
-                name="postalCode"
-                value={postalCode}
-                onChange={(e) => setPostalCode(e.target.value)}
-              />
-            </Grid>
+
             <Grid item xs={6}>
               <ToggleButtonGroup
                 value={propertyData.propertiesFor}
@@ -291,4 +254,4 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
   );
 };
 
-export default AddPropertiesModal;
+export default AddNewRooms;
