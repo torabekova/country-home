@@ -33,6 +33,7 @@ import FilterComponent from "components/Charts/Charts";
 import AddPropertiesModal from "components/AddProporties/AddProporties";
 import axios from "axios";
 import { Property } from "interfaces/property";
+import { Link } from "react-router-dom";
 
 // const navigate = useNavigate();
 // const [location , setLocation] = useState<string>("");
@@ -42,6 +43,7 @@ import { Property } from "interfaces/property";
 // };
 
 interface PropertiesType {
+  _id: any;
   name: any;
   bedroom: any;
   address: any;
@@ -51,10 +53,11 @@ interface PropertiesType {
   location: any;
   hasWifi: boolean;
   price: number;
-  onClick: () => void;
+  // onClick: () => void;
 }
 
 const PropertyCard = ({
+  _id,
   name,
   bedroom,
   address,
@@ -64,8 +67,8 @@ const PropertyCard = ({
   location,
   hasWifi,
   price,
-  onClick,
-}: PropertiesType) => (
+}: // onClick,
+PropertiesType) => (
   <>
     <Card
       sx={{
@@ -180,10 +183,11 @@ const PropertyCard = ({
           </Typography>
 
           <Button
+            component={Link}
+            to={`/propertiespage/${_id}`}
             variant="contained"
             color="primary"
             size="small"
-            onClick={onClick}
             sx={{
               textTransform: "none",
               borderRadius: "20px",
@@ -204,7 +208,6 @@ const PropertiesPage = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [mySearch, setMySearch] = useState<string>("");
   const [propertyData, setPropertyData] = useState<PropertiesType[]>([]);
-
   const getProperties = async () => {
     try {
       const res = await axios.get("/hotel/all-get", {
@@ -268,12 +271,12 @@ const PropertiesPage = () => {
             <Button>
               <AddPropertiesModal refetch={getProperties} />
             </Button>
-            <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
+            {/* <Box sx={{ ml: 2, display: "flex", alignItems: "center" }}>
               <Switch defaultChecked color="primary" onClick={handleMap} />
               <Typography variant="body2" style={{ color: "#000000" }}>
                 View Map
               </Typography>
-            </Box>
+            </Box> */}
           </Toolbar>
         </AppBar>
 
@@ -291,7 +294,7 @@ const PropertiesPage = () => {
             lg={3}
           >
             {propertyData.map((property, index) => (
-              <PropertyCard {...property} onClick={() => handleClick("sa")} />
+              <PropertyCard {...property} />
             ))}
           </Grid>
         </Grid>

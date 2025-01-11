@@ -13,7 +13,15 @@ interface MainContentProps {
   handleSearch: () => void;
 }
 
-const MainContent: React.FC<MainContentProps> = ({ destination, setDestination, date, setDate, tourists, setTourists, handleSearch }) => {
+const MainContent: React.FC<MainContentProps> = ({
+  destination,
+  setDestination,
+  date,
+  setDate,
+  tourists,
+  setTourists,
+  handleSearch,
+}) => {
   return (
     <Box
       sx={{
@@ -27,21 +35,23 @@ const MainContent: React.FC<MainContentProps> = ({ destination, setDestination, 
         alignItems: "center",
       }}
     >
-      <Typography variant="h3" sx={{ color: "#fff", mb: 2, fontWeight: "bold" }}>
+      <Typography
+        variant="h3"
+        sx={{ color: "#fff", mb: 2, fontWeight: "bold" }}
+      >
         Welcome to ZAMIN Town
       </Typography>
       <Typography variant="h6" sx={{ color: "#fff", mb: 4 }}>
-        Good people. Good thinking. Good feeling.
+        Yaxshi insonlar. Ajoyib g'oyalar. Yaxshi his.
       </Typography>
-      <SearchForm 
-        destination={destination} 
-        setDestination={setDestination} 
-        date={date} 
-        setDate={setDate} 
-        tourists={tourists} 
-        setTourists={setTourists} 
+      <SearchForm
+        destination={destination}
+        setDestination={setDestination}
+        date={date}
+        setDate={setDate}
+        tourists={tourists}
+        setTourists={setTourists}
         handleSearch={handleSearch}
-         
       />
     </Box>
   );

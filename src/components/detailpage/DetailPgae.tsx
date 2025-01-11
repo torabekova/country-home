@@ -31,7 +31,7 @@ const DetailPage: React.FC = () => {
           align="center"
           sx={{ my: 4, fontWeight: "bold" }}
         >
-          About Us
+          Biz Haqimizda
         </Typography>
         <Card sx={{ mb: 4, borderRadius: "10px" }}>
           <CardMedia
@@ -42,13 +42,14 @@ const DetailPage: React.FC = () => {
           />
           <CardContent>
             <Typography variant="h5" sx={{ mb: 2 }}>
-              Welcome to ZAMIN TOWN
+              XUSH KELIBSIZ ZAMIN TOWN GA!!!
             </Typography>
             <Typography variant="body1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              scelerisque ante sapien, non dapibus felis consequat ac. Fusce
-              euismod metus id ullamcorper venenatis. Aenean pharetra suscipit
-              lacus, a interdum nisi auctor at.
+              Sizni orzularingizdagi qulay va zamonaviy yashash maskaniga xush
+              kelibsiz! Zamin Town – bu shunchaki uy emas, balki farovon hayot
+              kechirish uchun yaratilgan muhitdir. Biz bilan siz zamonaviy
+              dizayn, qulay infratuzilma va ekologik toza sharoitdan bahramand
+              bo‘lasiz. Zamin Town – siz va oilangiz uchun eng yaxshi tanlov!
             </Typography>
           </CardContent>
         </Card>
@@ -70,7 +71,7 @@ const DetailPage: React.FC = () => {
           sx={{ backgroundColor: "#1E1E1E", p: 3, borderRadius: 2 }}
         >
           <Typography variant="h5" sx={{ mb: 3, color: "#FFB400" }}>
-            Support Form
+            Qo‘llab-quvvatlash Formasi
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -81,7 +82,7 @@ const DetailPage: React.FC = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Name"
+                    label="Ismingiz"
                     variant="outlined"
                     fullWidth
                     sx={{
@@ -143,7 +144,7 @@ const DetailPage: React.FC = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Message"
+                    label="Xabar"
                     variant="outlined"
                     fullWidth
                     multiline
@@ -182,7 +183,7 @@ const DetailPage: React.FC = () => {
                   },
                 }}
               >
-                Send Message
+                Xabarni jo'natish
               </Button>
             </Grid>
           </Grid>

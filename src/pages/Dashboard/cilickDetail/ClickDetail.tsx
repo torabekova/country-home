@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -24,6 +24,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
 import ShareIcon from "@mui/icons-material/Share";
 import "./ClickDetail.css";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import Villa4 from "./img/villa4.jpg";
 import Villa3 from "./img/villa3.jpg";
@@ -38,91 +41,74 @@ import {
   Hotel,
   Public,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate, useParams } from "react-router-dom";
 import AddNewRooms from "components/AddNewRooms/AddNewRooms";
+import axios from "axios";
+import { RoomFormData } from "components/RoomFormModal";
+interface RoomType {
+  _id: any;
+  propertyName: string;
+  bedRoom: number;
+  bathroom: number;
+  imgs: string[];
+  isRented: boolean;
+  price: number;
+  description: string;
+  guestsNumber: number;
+  hasWifi: boolean;
+}
 
 // Example room data
-const images = [
-  {
-    id: 1,
-    title: "Bir kishilik hona",
-    description:
-      "Bir kishilik xona – sizning qulayligingiz uchun ideal tanlov. Xonada barcha zaruriy qulayliklar mavjud: qulay karavot, zamonaviy mebellar, konditsioner va Wi-Fi ulanishi. Sizning dam olish va ish faoliyatingizni maksimal darajada qulay va xotirjam qilish uchun barcha sharoitlar yaratilgan.",
-    facilities: "Tekin WiFi, Avto turargoh, Baseyn",
-    price: "100$",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfLkwLrf4rpvCZHc5--29eqYv86fo9ggrgw&s",
-  },
-  {
-    id: 2,
-    title: "Ikki kishilik hona",
-    description:
-      "Ikki kishilik xona – ikki kishi uchun mukammal tanlov. Xonada ikkita karavot, zamonaviy mebellar, shinam va yorqin ichki dizayn mavjud. Konditsioner, Wi-Fi va boshqa barcha qulayliklar sizning dam olishingizni unutilmas va qulay qilish uchun taqdim etilgan.",
-    facilities: "Tekin WiFi, Avto turargoh, Baseyn, Zal , Balkon",
-    price: "170$",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY1aZQ8nh9P9qGzauogHpTtZVNi1WIZ9BBnQ&s",
-  },
-  {
-    id: 3,
-    title: "oilaviy hona",
-    description:
-      "Juftliklar xonasi – ikki kishilik qulaylik va dam olish uchun mo‘ljallangan zamonaviy va shinam xona. Xonada keng juftlik karavoti, konditsioner, Wi-Fi, televizor va boshqa barcha zarur qulayliklar mavjud. Xonamizda yuqori darajadagi xizmat va xotirjam dam olishni ta'minlash uchun barcha sharoitlar yaratilga.",
-    facilities: "Tekin WiFi, Avto turargoh, Baseyn, Zal, Fitness club,  Balkon",
-    price: "220$",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPCH8ufTsMaeP8CtE4UY1LeOrxdKTYBQl2RQ&s",
-  },
-];
-
-const serviceData = [
-  {
-    id: 1,
-    title: "Zomin bo'ylab",
-    icon: <Public style={{ fontSize: "60px" }} />,
-    description: "Zomin tog'larida unutilmas sayohatni boshdan kechiring..",
-  },
-  {
-    id: 2,
-    title: "sarguzashtlar",
-    icon: <Hiking style={{ fontSize: "60px" }} />,
-    description: "Hayajonli sarguzashtlarga otlaning.",
-  },
-  {
-    id: 3,
-    title: "Ovqatlar & Icimliklar",
-    icon: <Fastfood style={{ fontSize: "60px" }} />,
-    description: "Madaniy taomlarning noyob ta'mini kashf eting.",
-  },
-  {
-    id: 4,
-    title: "Arzon mehmonxonalar",
-    icon: <Hotel style={{ fontSize: "60px" }} />,
-    description: "Eng yaxshi narxda qulay turar joylar",
-  },
-  {
-    id: 5,
-    title: "Arzon narx",
-    icon: <AttachMoney style={{ fontSize: "60px" }} />,
-    description: "Sizning sayohatlaringiz uchun eng yaxshi takliflar..",
-  },
-  {
-    id: 6,
-    title: "24/7 Hizmatlar",
-    icon: <AccessTime style={{ fontSize: "60px" }} />,
-    description: "Biz har doim siz uchun shu yerdamiz.",
-  },
-];
+const imageUrl =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfLkwLrf4rpvCZHc5--29eqYv86fo9ggrgw&s";
 
 const ClickDetail: React.FC = () => {
+  const [rooms, setRooms] = useState<RoomType[]>([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState<any>(null);
-  const [liked, setLiked] = useState(false); // Like state
-  const [likeCount, setLikeCount] = useState(0); // Like count
-  const [bookingConfirmed, setBookingConfirmed] = useState(false); // Booking status
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+  // uzgartiretkan roomni aydisini saqlen stateda
+  // edit qiletkanda aidini set kilasiz va openDialogni true kib quyasiz
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const [formDate, setFormData] = useState<RoomFormData>({
+    bathroom: 0,
+    description: "",
+    bedroom: 0,
+    hasWifi: false,
+    hotelId: "",
+    price: 0,
+    propertyName: "",
+  });
+  const [comments, setComments] = useState<string[]>([]);
+  const [newComment, setNewComment] = useState<string>("");
 
-  const textToShare = "Check out this amazing place on Everest Plaza!"; // Text for sharing
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const fetchRoom = async () => {
+    try {
+      const { data } = await axios.get(`/room/get/${id}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      });
+
+      setRooms(data);
+    } catch (error) {
+      console.error(`Error with: ${error}`);
+    }
+  };
+
+  const textToShare = "Check out this amazing place on Everest Plaza!";
 
   const handleBookClick = (item: any) => {
     setSelectedItem(item);
@@ -153,9 +139,6 @@ const ClickDetail: React.FC = () => {
     window.open(telegramShareUrl, "_blank");
   };
 
-  const [comments, setComments] = useState<string[]>([]);
-  const [newComment, setNewComment] = useState<string>("");
-
   const handleCommentSubmit = () => {
     if (newComment.trim() !== "") {
       setComments([...comments, newComment]);
@@ -166,6 +149,32 @@ const ClickDetail: React.FC = () => {
   const handleCommentDelete = (index: number) => {
     setComments(comments.filter((_, i) => i !== index));
   };
+
+  const handleDelete = async (id: any) => {
+    try {
+      const { data } = await axios.delete(`/room/${id}`);
+      handleClose();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleEdit = useCallback((item: RoomFormData) => {
+    setFormData(item);
+  }, []);
+
+  const handleSubmit = async () => {
+    try {
+      const { data } = await axios.put(`/room/${id}`);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRoom();
+  }, []);
 
   return (
     <div style={{ backgroundColor: "#F0FBFF" }}>
@@ -186,9 +195,10 @@ const ClickDetail: React.FC = () => {
               Everest Plaza
             </h1>
           </Typography>
+          <Button onClick={fetchRoom}>Click</Button>
 
           <div style={{ display: "flex", gap: "10px" }}>
-            <AddNewRooms refetch={undefined} />
+            <AddNewRooms refetch={fetchRoom} />
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <IconButton onClick={handleLike} color="primary">
                 {liked ? (
@@ -229,7 +239,7 @@ const ClickDetail: React.FC = () => {
         </div>
 
         <Stack direction="row" spacing={4} marginBottom={4}>
-          {images.slice(0, 3).map((item) => (
+          {rooms.map((item) => (
             <Card
               sx={{
                 maxWidth: 430,
@@ -241,13 +251,47 @@ const ClickDetail: React.FC = () => {
                     "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                 },
               }}
-              key={item.id}
             >
+              <div>
+                <IconButton
+                  aria-label="more"
+                  id="long-button"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "long-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  slotProps={{
+                    paper: {
+                      style: {
+                        maxHeight: 48 * 4.5,
+                        width: "20ch",
+                      },
+                    },
+                  }}
+                >
+                  <MenuItem onClick={() => handleDelete(item._id)}>
+                    Delete
+                  </MenuItem>
+                  <MenuItem onClick={() => handleEdit(item as any)}>
+                    Edit
+                  </MenuItem>
+                </Menu>
+              </div>
               <CardMedia
                 component="img"
                 height="300"
-                image={item.imageUrl}
-                alt={item.title}
+                image={imageUrl}
                 className="hover-effect"
                 sx={{
                   "&:hover": {
@@ -269,14 +313,14 @@ const ClickDetail: React.FC = () => {
                   component="div"
                   color="#000000"
                 >
-                  {item.title}
+                  {item.propertyName}
                 </Typography>
                 <Typography
                   style={{ color: "#6F6F6F" }}
                   variant="body2"
                   color="text.secondary"
                 >
-                  {item.description}
+                  {/* {item.description} */}
                 </Typography>
                 <Typography
                   style={{ color: "#6F6F6F" }}
@@ -284,7 +328,7 @@ const ClickDetail: React.FC = () => {
                   color="text.secondary"
                   mt={2}
                 >
-                  <strong>Xususiyatlari:</strong> {item.facilities}
+                  <strong>Xususiyatlari:</strong> {item.description}
                 </Typography>
                 <Typography
                   style={{ color: "#6F6F6F" }}
@@ -422,7 +466,7 @@ const ClickDetail: React.FC = () => {
           >
             Cheksiz Hizmatlar
           </Typography>
-          <Grid container spacing={4} justifyContent="center">
+          {/* <Grid container spacing={4} justifyContent="center">
             {serviceData.map((service) => (
               <Grid item xs={12} sm={6} md={4} key={service.id}>
                 <Card
@@ -469,7 +513,7 @@ const ClickDetail: React.FC = () => {
                 </Card>
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
         </section>
 
         <textarea

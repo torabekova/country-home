@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
-import { Facebook, Twitter, Instagram, LinkedIn, LocationOn, Phone, Email } from "@mui/icons-material";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  LinkedIn,
+  LocationOn,
+  Phone,
+  Email,
+} from "@mui/icons-material";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -20,10 +28,10 @@ const Footer: React.FC = () => {
   };
 
   const handleScroll = (id: string) => {
-    if (id === 'header') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (id === "header") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -43,12 +51,13 @@ const Footer: React.FC = () => {
         gap: "20px",
       }}
     >
-      
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
           ZAMIN TOWN
         </Typography>
-        <Typography sx={{ mb: 2 }}>Good people. Good thinking. Good feeling.</Typography>
+        <Typography sx={{ mb: 2 }}>
+          Yaxshi insonlar. Ajoyib g'oyalar. Yahshi hislar.
+        </Typography>
         <Box sx={{ display: "flex", gap: "10px" }}>
           <IconButton
             sx={{ color: "#FFB400" }}
@@ -74,7 +83,9 @@ const Footer: React.FC = () => {
           <IconButton
             sx={{ color: "#FFB400" }}
             aria-label="LinkedIn"
-            onClick={() => openLink("https://linkedin.com/in/FaridaTo'rabekova")}
+            onClick={() =>
+              openLink("https://linkedin.com/in/FaridaTo'rabekova")
+            }
           >
             <LinkedIn />
           </IconButton>
@@ -83,9 +94,9 @@ const Footer: React.FC = () => {
 
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
-        Quick links
+          Tezkor Havolalar
         </Typography>
-        {["Home", "About", "Destination", ].map((link, index) => (
+        {["Home", "About", "Destination"].map((link, index) => (
           <Typography
             key={index}
             sx={{
@@ -93,11 +104,17 @@ const Footer: React.FC = () => {
               "&:hover": { color: "#FFB400" },
               mb: 1,
             }}
-            onClick={() => handleScroll(
-              link.toLowerCase() === "home" ? "header" :
-              link.toLowerCase() === "about" ? "about" :
-              link.toLowerCase() === "destination" ? "destination-section" :""
-            )}
+            onClick={() =>
+              handleScroll(
+                link.toLowerCase() === "home"
+                  ? "header"
+                  : link.toLowerCase() === "about"
+                  ? "about"
+                  : link.toLowerCase() === "destination"
+                  ? "destination-section"
+                  : ""
+              )
+            }
           >
             {link}
           </Typography>
@@ -106,7 +123,7 @@ const Footer: React.FC = () => {
 
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
-        Our address
+          Bizning Manzil
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
           <LocationOn sx={{ color: "#FFB400", mr: 1 }} />
@@ -125,9 +142,11 @@ const Footer: React.FC = () => {
 
       <Box>
         <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
-        Axborot xatlari
+          Axborot xatlari
         </Typography>
-        <Typography sx={{ mb: 2 }}>Eng so'nggi yangilanishlarga obuna bo'ling</Typography>
+        <Typography sx={{ mb: 2 }}>
+          Eng so'nggi yangilanishlarga obuna bo'ling
+        </Typography>
         <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           <TextField
             placeholder="Emailingizni kiriting"

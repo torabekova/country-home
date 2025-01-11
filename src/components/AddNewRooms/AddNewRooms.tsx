@@ -12,12 +12,29 @@ import {
   Grid,
   ToggleButton,
   ToggleButtonGroup,
+  Checkbox,
+  Switch,
+  FormControlLabel,
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 import axios from "axios";
 import { Schema, model, Document } from "mongoose";
+import { useParams } from "react-router-dom";
+import RoomFormModal, { RoomFormData } from "components/RoomFormModal";
 
 const AddNewRooms = ({ refetch }: { refetch: any }) => {
+  const { id } = useParams();
+
+  const [formData, setFormData] = useState<RoomFormData>({
+    hotelId: id,
+    bathroom: 0,
+    bedroom: 0,
+    description: "",
+    hasWifi: false,
+    price: 0,
+    propertyName: "",
+  });
+
   const [open, setOpen] = useState(false);
   const [propertyData, setPropertyData] = useState({
     propertyName: "",
@@ -37,67 +54,20 @@ const AddNewRooms = ({ refetch }: { refetch: any }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setPropertyData({ ...propertyData, [name]: value });
-  };
-
-  const handleSelectChange = (event: SelectChangeEvent) => {
-    const { name, value } = event.target;
-    if (name) {
-      setPropertyData({ ...propertyData, [name]: value });
-    }
-  };
-
-  const handlePictureUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const newPicture = URL.createObjectURL(e.target.files[0]);
-      setPropertyData({ ...propertyData, picture: newPicture });
-    }
-  };
-
-  const handlePropertiesForChange = (
-    e: React.MouseEvent<HTMLElement>,
-    newValue: string
-  ) => {
-    if (newValue) {
-      setPropertyData({ ...propertyData, propertiesFor: newValue });
-    }
-  };
-
   const handleCancel = () => {
     setPropertyData(originalData);
     handleClose();
   };
 
-  const handleAddProperties = () => {
-    console.log("New Property Data:", propertyData);
-
-    handleClose();
-  };
-
-  const [propertyName, setPropertyName] = useState<string>("");
-  const [bedRoom, setBedRoom] = useState<number>();
-  const [bathroom, setbathroom] = useState<number>();
-  const [img, setImg] = useState<string[]>([]);
-  const [hotel, setHotel] = useState<string>("");
-  const [isRented, setIsRented] = useState<boolean>(false);
-  const [price, setPrice] = useState<string>("");
-
   const [isError, setIsError] = useState<boolean>(false);
 
   const submitData = async () => {
     try {
-      const response = await axios.post("/room", {
-        hotel: "125678qwertyuiopoA",
-        propertyName,
-        bedRoom,
-        isRented,
-        bathroom,
-        img,
-        price,
+      await axios.post("/room", {
+        hotel: id,
+        ...formData,
+        isError,
       });
-      console.log(response.data);
       refetch();
       handleClose();
     } catch (error) {
@@ -114,7 +84,18 @@ const AddNewRooms = ({ refetch }: { refetch: any }) => {
       >
         Add New Hotels
       </Button>
-      <Modal open={open} onClose={handleClose}>
+      <RoomFormModal
+        type="create"
+        {...{
+          submitData,
+          formData,
+          handleCancel,
+          handleClose,
+          open,
+          setFormData,
+        }}
+      />
+      {/* <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
             width: 600,
@@ -135,8 +116,8 @@ const AddNewRooms = ({ refetch }: { refetch: any }) => {
                 fullWidth
                 label="Property Name"
                 name="propertyName"
-                value={hotel}
-                onChange={(e) => setHotel(e.target.value)}
+                value={propertyName}
+                onChange={(e) => setPropertyName(e.target.value)}
               />
             </Grid>
             <Grid item xs={6}>
@@ -145,13 +126,8 @@ const AddNewRooms = ({ refetch }: { refetch: any }) => {
                 label="Price"
                 name="Price"
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setPrice(Number(e.target.value))}
               />
-            </Grid>
-            <Grid item xs={6}>
-              <Button onClick={(e) => setIsRented(true)} variant="contained">
-                Order
-              </Button>
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
@@ -187,15 +163,36 @@ const AddNewRooms = ({ refetch }: { refetch: any }) => {
             </Grid>
 
             <Grid item xs={6}>
-              <ToggleButtonGroup
-                value={propertyData.propertiesFor}
-                exclusive
-                onChange={handlePropertiesForChange}
+              <TextField
                 fullWidth
-              >
-                <ToggleButton value="Rent">Rent</ToggleButton>
-                <ToggleButton value="Sell">Sell</ToggleButton>
-              </ToggleButtonGroup>
+                label="Number"
+                name="propertyName"
+                value={getGuestsNumber}
+                onChange={(e) => setGuestsNumber(e.target.value)}
+              />
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormControl fullWidth>
+                <InputLabel>Wifi</InputLabel>
+                <FormControlLabel
+                  control={
+                    <Switch checked={isHasWifi} onChange={handleSwitchChange} />
+                  }
+                  label={isHasWifi ? "WiFi bor" : "WiFi jo'q"}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="Description"
+                multiline // Makes the TextField a textarea
+                rows={4} // Specifies the number of visible text lines
+                value={description} // The value of the textarea
+                onChange={(e) => setDescription(e.target.value)} // Updates the value as the user types
+                variant="outlined" // Style variant (outlined, filled, or standard)
+                fullWidth // Makes the TextField take up the full width of its container
+              />
             </Grid>
             <Grid item xs={12}>
               <Button
@@ -249,7 +246,7 @@ const AddNewRooms = ({ refetch }: { refetch: any }) => {
             </Button>
           </Box>
         </Box>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

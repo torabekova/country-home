@@ -118,7 +118,7 @@ const ProfilePage: React.FC = () => {
                 color: "white",
               }}
             >
-              Edit Profile
+              Profile tahrirlash
             </Button>
           </Box>
           <Box display="flex" alignItems="center" gap={2}>
@@ -132,7 +132,7 @@ const ProfilePage: React.FC = () => {
                 color: "white",
               }}
             >
-              Upgrade Now
+              Yangilash
             </Button>
             <AddPropertiesModal refetch={() => {}} />
           </Box>

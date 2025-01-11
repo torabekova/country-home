@@ -42,57 +42,6 @@ import Navbar from "../navbar/Navbar";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
 
-// const destinationData = [
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa1,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa2,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa3,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa4,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa5,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa1,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa2,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-//   {
-//     id: 1,
-//     title: "Tours And Travels",
-//     image: Villa3,
-//     description: "Explore the most breathtaking destinations.",
-//   },
-// ];
-
 interface PropertiesType {
   _id: any;
   name: any;
@@ -232,7 +181,7 @@ const PropertyCard = ({
               {price}
               <Typography variant="body2" component="span">
                 {" "}
-                / per month
+                / oyiga
               </Typography>
             </Typography>
 
@@ -313,51 +262,8 @@ const HomeMainPage: React.FC = () => {
             sx={{ mb: 4, fontWeight: "bold", paddingTop: "25px" }}
             color="#000"
           >
-            All Hotels
+            Hamma Mehmonxonalar
           </Typography>
-          {/* <Grid container spacing={4} justifyContent="center" sx={{ mb: 8 }}>
-            {destinationData.map((destination) => (
-              <Grid item xs={12} sm={6} md={3} key={destination.id}>
-                <Card
-                  sx={{
-                    backgroundColor: "#1E1E1E",
-                    color: "#fff",
-                    "&:hover": { transform: "scale(1.05)" },
-                    transition: "transform 0.3s ease",
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    image={destination.image}
-                    alt={destination.title}
-                    sx={{ transition: "transform 0.3s ease", "&:hover": { transform: "scale(1.1)" } }}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h6">
-                      {destination.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ mb: 2 }}>
-                      {destination.description}
-                    </Typography>
-                    <Button
-                      variant="outlined"
-                      sx={{
-                        color: "#FFB400",
-                        borderColor: "#FFB400",
-                        "&:hover": { backgroundColor: "#FFB400", color: "#fff" },
-                      }}
-                      onClick={() => navigate(`/readMore`)}
-                    >
-                      Read More
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid> */}
 
           <div style={{ backgroundColor: "#F0FBFF" }}>
             <Box sx={{ maxWidth: "1360px", width: "100%", margin: "0 auto" }}>
@@ -367,7 +273,7 @@ const HomeMainPage: React.FC = () => {
               >
                 <Toolbar>
                   <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
-                    Hotels proporties
+                    Mehmonxonalar
                   </Typography>
                 </Toolbar>
               </AppBar>
@@ -406,7 +312,7 @@ const HomeMainPage: React.FC = () => {
                 color: "#000",
               }}
             >
-              About we
+              Biz Haqimizda
             </h1>
             <p
               style={{
@@ -417,12 +323,16 @@ const HomeMainPage: React.FC = () => {
                 color: "#000",
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur quas tenetur enim, porro id vel blanditiis, doloribus
-              sunt laborum, facilis soluta. Quas facilis aspernatur culpa minima
-              commodi esse numquam quis laboriosam placeat cumque consequuntur
-              provident quidem iure fuga magnam, cum nisi ducimus repudiandae,
-              illum officia omnis fugiat eius magni.
+              Zomin Town – zamonaviy turar joy majmuasini qamrab oluvchi
+              innovatsion loyiha bo‘lib, qulaylik va sifatni birlashtiradi.
+              Bizning asosiy maqsadimiz mijozlarimizga farovon yashash muhitini
+              yaratib berishdir. Zomin Town’da siz: Arxitektura va dizayndagi
+              yangiliklar; Ekologik toza va xavfsiz muhit; Zamonaviy
+              infrastruktura yechimlaridan bahramand bo‘lasiz. Bizning loyiha
+              nafaqat uy-joy, balki orzularingizdagi hayot tarzini taqdim etish
+              uchun mo‘ljallangan. Har bir mijozning ehtiyojlari va istaklarini
+              inobatga olish – bizning ustuvorligimizdir. Zomin Town – qulaylik,
+              farovonlik va innovatsiyaning uyg‘unligi!
             </p>
           </div>
         </div>
