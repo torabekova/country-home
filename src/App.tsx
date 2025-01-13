@@ -21,6 +21,7 @@ import MyOrders from "components/MyOrders/MyOrders";
 
 function App() {
   const user_role = localStorage.getItem("user_role");
+  // const admin_role = localStorage.getItem("admin_role");
 
   return (
     <div>
