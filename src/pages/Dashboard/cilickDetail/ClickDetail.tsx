@@ -153,6 +153,7 @@ const ClickDetail: React.FC = () => {
   const handleDelete = async (id: any) => {
     try {
       const { data } = await axios.delete(`/room/${id}`);
+      fetchRoom();
       handleClose();
     } catch (error) {
       console.error(error);
