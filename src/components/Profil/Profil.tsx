@@ -17,6 +17,7 @@ import TopPropoty from "components/TopProporty/TopProporty";
 import Footer from "components/Footer/Footer";
 import Header from "pages/Home/Header";
 
+import AddPropertiesModal from "components/AddProporties/AddProporties";
 import AddNewRooms from "components/AddNewRooms/AddNewRooms";
 
 const ProfilePage: React.FC = () => {

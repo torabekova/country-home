@@ -116,6 +116,18 @@ const Navbar: React.FC = () => {
               </div>
             </>
           )}
+          <div className="navbar_link_icon_div">
+            <FavoriteBorderIcon />
+            <Link className="navbar_link" to="/favorite">
+              Sevimlilar
+            </Link>
+          </div>
+          <div className="navbar_link_icon_div">
+            <FavoriteBorderIcon />
+            <Link className="navbar_link" to="/myorders ">
+              Buyurtmalarim
+            </Link>
+          </div>
         </div>
 
         <div className="navbar_btn-div">
