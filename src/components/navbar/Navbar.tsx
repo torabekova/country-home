@@ -14,11 +14,11 @@ import { Box, TextField } from "@mui/material";
 import WaterDamageOutlinedIcon from "@mui/icons-material/WaterDamageOutlined";
 import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import ParentComponent from "components/Glavni/GlavniMainPage";
-// import ParentComponent from "components/Glavni/GlavniMainPage";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 
 interface Props {
-  isAuthenticated: boolean; // Tizimga kirganlik holatini belgilovchi prop
-  avatarSrc?: string; // Avatar rasmi manzili (ixtiyoriy)
+  isAuthenticated: boolean;
+  avatarSrc?: string;
 }
 
 // Shartga asoslangan holda ko'rinishni boshqaruvchi komponent
@@ -57,12 +57,11 @@ const Navbar: React.FC = () => {
     setSearchOpen(!searchOpen);
   };
 
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false); // Tizimga kirganlik holati
-  const avatar = "https://example.com/avatar.jpg"; // Avatar rasmi manzili
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const avatar = "https://example.com/avatar.jpg";
 
   const user_role = localStorage.getItem("user_role");
 
-  // Tizimga kirish/qaytish uchun tugmalar
   const toggleAuth = () => setIsAuthenticated((prev) => !prev);
 
   return (
@@ -107,9 +106,14 @@ const Navbar: React.FC = () => {
               Sevimlilar
             </Link>
           </div>
+          <div className="navbar_link_icon_div">
+            <FavoriteBorderIcon />
+            <Link className="navbar_link" to="/myorders ">
+              Buyurtmalarim
+            </Link>
+          </div>
         </div>
 
-        {/* Buttons */}
         <div className="navbar_btn-div">
           <button className="search_btn" onClick={handleSearchClick}>
             <SearchRoundedIcon />

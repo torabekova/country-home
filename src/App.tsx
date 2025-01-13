@@ -17,6 +17,7 @@ import Primum from "components/Primum/Primum";
 import ViewMapSelect from "components/ViewMap/ViewMapSelect";
 
 import Favorite from "components/Favorite/Favorite";
+import MyOrders from "components/MyOrders/MyOrders";
 
 function App() {
   const user_role = localStorage.getItem("user_role");
@@ -40,6 +41,12 @@ function App() {
             <Route path="/transaction" element={<Transaction />} />
           </>
         )}
+        {user_role === "User" && (
+          <>
+            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/myorders" element={<MyOrders />} />
+          </>
+        )}
         <Route path="/report" element={<Report />} />
         <Route path="/profilePage" element={<ProfilePage />} />
         <Route path="/profilsettings" element={<PersonalInfoForm />} />
@@ -51,7 +58,6 @@ function App() {
         <Route path="/primum" element={<Primum />} />
         <Route path="/selectplan" element={<ClickDetail />} />
         <Route path="/ViewMapSelect" element={<ViewMapSelect />} />
-        <Route path="/favorite" element={<Favorite />} />
       </Routes>{" "}
     </div>
   );

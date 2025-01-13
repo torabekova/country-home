@@ -180,7 +180,7 @@ const ClickDetail: React.FC = () => {
   return (
     <div style={{ backgroundColor: "#F0FBFF" }}>
       <Header />
-      {/* <Navbar /> */}
+      <Navbar />
 
       <div style={{ maxWidth: "1360px", margin: "auto", padding: "20px" }}>
         <div
@@ -282,10 +282,10 @@ const ClickDetail: React.FC = () => {
                   }}
                 >
                   <MenuItem onClick={() => handleDelete(item._id)}>
-                    Delete
+                    O'chirish
                   </MenuItem>
                   <MenuItem onClick={() => handleEdit(item as any)}>
-                    Edit
+                    Tahrirlash
                   </MenuItem>
                 </Menu>
               </div>
@@ -320,9 +320,7 @@ const ClickDetail: React.FC = () => {
                   style={{ color: "#6F6F6F" }}
                   variant="body2"
                   color="text.secondary"
-                >
-                  {/* {item.description} */}
-                </Typography>
+                ></Typography>
                 <Typography
                   style={{ color: "#6F6F6F" }}
                   variant="body2"
@@ -467,54 +465,6 @@ const ClickDetail: React.FC = () => {
           >
             Cheksiz Hizmatlar
           </Typography>
-          {/* <Grid container spacing={4} justifyContent="center">
-            {serviceData.map((service) => (
-              <Grid item xs={12} sm={6} md={4} key={service.id}>
-                <Card
-                  sx={{
-                    backgroundColor: "#f5f5f5",
-                    color: "#fff",
-                    textAlign: "center",
-                    "&:hover": { transform: "scale(1.05)" },
-                    transition: "transform 0.3s ease",
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Box
-                    onClick={() => navigate(`/card-info/${service.id}`)}
-                    sx={{
-                      cursor: "pointer",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: 2,
-                      }}
-                    >
-                      <Box sx={{ fontSize: "48px", mb: 1, color: "#1BA98F" }}>
-                        {service.icon}
-                      </Box>
-                    </Box>
-                    <CardContent>
-                      <Typography
-                        variant="h6"
-                        sx={{ fontWeight: "bold", mb: 1, color: "#666" }}
-                      >
-                        {service.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "#555" }}>
-                        {service.description}
-                      </Typography>
-                    </CardContent>
-                  </Box>
-                </Card>
-              </Grid>
-            ))}
-          </Grid> */}
         </section>
 
         <textarea

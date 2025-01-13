@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 import axios from "axios";
-import { Schema, model, Document } from "mongoose";
 
 const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
   const [open, setOpen] = useState(false);
@@ -97,7 +96,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
         bathroom,
         city,
         postalCode,
-        owner: "677e7193e13c3cca279678c6",
+        owner: localStorage.getItem("user_id"),
         hasWifi: true,
         price: 2000,
         location: [12345678, 23423432423],
@@ -117,7 +116,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
         onClick={handleOpen}
         style={{ backgroundColor: "#1BA98F", borderRadius: "100px" }}
       >
-        Add New Hotels
+        Yangi mehmonxona qo'shish
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box
@@ -132,14 +131,14 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
           }}
         >
           <Typography variant="h6" sx={{ mb: 2 }}>
-            Add New Properties
+            Yangi Mehmonxona qo'shish
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                label="Property Name"
-                name="propertyName"
+                label="Xona nomi"
+                name="PropertyName"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -155,7 +154,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel>Bedroom</InputLabel>
+                <label>Yotaqxona</label>
                 <Select
                   name="bedroom"
                   value={bedroom}
@@ -171,7 +170,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel>Bathroom</InputLabel>
+                <label>Hommom</label>
                 <Select
                   name="bathroom"
                   value={bathroom}
@@ -190,7 +189,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
                 fullWidth
                 multiline
                 rows={3}
-                label="Address"
+                label="Manzil"
                 name="address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -199,7 +198,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                label="City"
+                label="Shahar"
                 name="city"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
@@ -208,7 +207,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                label="Country"
+                label="Mamlakat"
                 name="country"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
@@ -241,7 +240,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
                 fullWidth
                 sx={{ py: 2, backgroundColor: "#1BA98F" }}
               >
-                Upload Foto
+                Rasm joylash
                 <input
                   hidden
                   accept="image/*"
@@ -257,7 +256,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
                   }}
                 >
                   <Typography variant="subtitle1" sx={{ mb: 1 }}>
-                    Uploaded Image:
+                    Tanlagan rasmingiz
                   </Typography>
                   <img
                     src={propertyData.picture}
@@ -274,7 +273,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
           </Grid>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Button variant="outlined" color="error" onClick={handleCancel}>
-              Cancel
+              Bekor qilish
             </Button>
             <Button
               variant="contained"
@@ -282,7 +281,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
               style={{ backgroundColor: "#1BA98F" }}
               onClick={submitData}
             >
-              Add Properties
+              qo'shish
             </Button>
           </Box>
         </Box>
