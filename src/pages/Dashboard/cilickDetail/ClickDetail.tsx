@@ -45,6 +45,7 @@ import { data, useNavigate, useParams } from "react-router-dom";
 import AddNewRooms from "components/AddNewRooms/AddNewRooms";
 import axios from "axios";
 import { RoomFormData } from "components/RoomFormModal";
+import { Types } from "mongoose";
 interface RoomType {
   _id: any;
   propertyName: string;
@@ -127,9 +128,18 @@ const ClickDetail: React.FC = () => {
     setOpenDialog(false);
   };
 
-  const handleLike = () => {
-    setLiked(!liked);
-    setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
+  const handleLike = async (hotelId:any) => {
+    // setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
+
+    try {
+      const {data,status} = await axios.post(`/hotel/${hotelId}`);
+      if (status === 201) {
+        setLiked(true);
+        console.log(data)
+      }
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   const handleShare = () => {
@@ -201,7 +211,7 @@ const ClickDetail: React.FC = () => {
           <div style={{ display: "flex", gap: "10px" }}>
             <AddNewRooms refetch={fetchRoom} />
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <IconButton onClick={handleLike} color="primary">
+              <IconButton onClick={()=> handleLike(id)} color="primary">
                 {liked ? (
                   <FavoriteIcon style={{ color: "red" }} />
                 ) : (
