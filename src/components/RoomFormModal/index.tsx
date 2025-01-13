@@ -4,7 +4,6 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  InputLabel,
   MenuItem,
   Modal,
   Select,
@@ -57,14 +56,14 @@ const RoomFormModal: FC<Props> = ({
         }}
       >
         <Typography variant="h6" sx={{ mb: 2 }}>
-          Add New Rooms
+          Yangi xona qo'shish
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
               fullWidth
-              label="Property Name"
-              name="propertyName"
+              label="Xona nomi"
+              name="PropertyName"
               value={formData.propertyName}
               onChange={(e) =>
                 setFormData((data) => ({
@@ -77,8 +76,8 @@ const RoomFormModal: FC<Props> = ({
           <Grid item xs={6}>
             <TextField
               fullWidth
-              label="Price"
-              name="Price"
+              label="Narx"
+              name="price "
               value={formData.price}
               onChange={(e) =>
                 setFormData((data) => ({
@@ -90,7 +89,7 @@ const RoomFormModal: FC<Props> = ({
           </Grid>
           <Grid item xs={6}>
             <FormControl fullWidth>
-              <InputLabel>Bedroom</InputLabel>
+              <label>Yotaxona</label>
               <Select
                 name="bedroom"
                 value={formData.bedroom}
@@ -111,7 +110,7 @@ const RoomFormModal: FC<Props> = ({
           </Grid>
           <Grid item xs={6}>
             <FormControl fullWidth>
-              <InputLabel>Bathroom</InputLabel>
+              <label>Hammom</label>
               <Select
                 name="bathroom"
                 value={formData.bathroom}
@@ -133,7 +132,6 @@ const RoomFormModal: FC<Props> = ({
 
           <Grid item xs={6}>
             <FormControl fullWidth>
-              <InputLabel>Wifi</InputLabel>
               <FormControlLabel
                 control={
                   <Switch
@@ -146,30 +144,30 @@ const RoomFormModal: FC<Props> = ({
                     }
                   />
                 }
-                label={formData.hasWifi ? "WiFi bor" : "WiFi jo'q"}
+                label={formData.hasWifi ? "WiFi bor" : "WiFi yo'q"}
               />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Description"
-              multiline // Makes the TextField a textarea
-              rows={4} // Specifies the number of visible text lines
-              value={formData.description} // The value of the textarea
+              label="Tavsif"
+              multiline
+              rows={4}
+              value={formData.description}
               onChange={(e) =>
                 setFormData((data) => ({
                   ...data,
                   description: e.target.value,
                 }))
-              } // Updates the value as the user types
-              variant="outlined" // Style variant (outlined, filled, or standard)
-              fullWidth // Makes the TextField take up the full width of its container
+              }
+              variant="outlined"
+              fullWidth
             />
           </Grid>
         </Grid>
         <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
           <Button variant="outlined" color="error" onClick={handleCancel}>
-            Cancel
+            Bekor qilish
           </Button>
           <Button
             variant="contained"
@@ -177,7 +175,7 @@ const RoomFormModal: FC<Props> = ({
             style={{ backgroundColor: "#1BA98F" }}
             onClick={submitData}
           >
-            Add Properties
+            Qo'shish
           </Button>
         </Box>
       </Box>

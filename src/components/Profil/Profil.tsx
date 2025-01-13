@@ -18,6 +18,7 @@ import TopPropoty from "components/TopProporty/TopProporty";
 import Footer from "components/Footer/Footer";
 import Header from "pages/Home/Header";
 import AddPropertiesModal from "components/AddProporties/AddProporties";
+import AddNewRooms from "components/AddNewRooms/AddNewRooms";
 
 const ProfilePage: React.FC = () => {
   const [profileData, setProfileData] = useState({
@@ -134,7 +135,7 @@ const ProfilePage: React.FC = () => {
             >
               Yangilash
             </Button>
-            <AddPropertiesModal refetch={() => {}} />
+            <AddNewRooms refetch={() => {}} />
           </Box>
         </Box>
         <Box
@@ -159,7 +160,7 @@ const ProfilePage: React.FC = () => {
         open={isEditDialogOpen}
         onClose={() => setIsEditDialogOpen(false)}
       >
-        <DialogTitle>Edit Profile</DialogTitle>
+        <DialogTitle>Profilni Tahrirlash</DialogTitle>
         <DialogContent>
           <TextField
             label="Name"
@@ -186,10 +187,10 @@ const ProfilePage: React.FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setIsEditDialogOpen(false)} color="primary">
-            Cancel
+            Bekor qilish
           </Button>
           <Button onClick={handleEditProfileSave} color="primary">
-            Save
+            Saqlash
           </Button>
         </DialogActions>
       </Dialog>
