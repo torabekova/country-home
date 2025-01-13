@@ -1,4 +1,3 @@
-import React from "react";
 import zomindacha from "./img/zomindacha.png";
 import {
   Box,
@@ -187,7 +186,7 @@ const TopPropoty = () => {
   const navigate = useNavigate();
   const handleClick = (location: string) => {
     console.log("Navigating to:", location);
-    navigate("/propertiespage");
+    navigate("/propertiespage/:id");
   };
 
   return (

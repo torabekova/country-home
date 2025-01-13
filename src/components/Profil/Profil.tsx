@@ -9,14 +9,14 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Grid,
 } from "@mui/material";
-import profilimg from "./img/proffilimg.jpg";
+// import profilimg from "./img/proffilimg.jpg";
 import Navbar from "../navbar/Navbar";
 import PersonalInformationNumber from "components/PersonalnformationNumber/PersonalnformatinNumber";
 import TopPropoty from "components/TopProporty/TopProporty";
 import Footer from "components/Footer/Footer";
 import Header from "pages/Home/Header";
+
 import AddPropertiesModal from "components/AddProporties/AddProporties";
 import AddNewRooms from "components/AddNewRooms/AddNewRooms";
 
@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
   const [profileData, setProfileData] = useState({
     name: "To'rabekova Farida",
     email: "farida123@gmail.com",
-    avatar: profilimg,
+    avatar: "",
   });
 
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
@@ -126,7 +126,6 @@ const ProfilePage: React.FC = () => {
             <Button
               variant="contained"
               color="success"
-              onClick={() => alert("Redirecting to upgrade...")}
               style={{
                 borderRadius: "100px",
                 backgroundColor: "#1BA98F",
@@ -179,6 +178,7 @@ const ProfilePage: React.FC = () => {
           {/* You can add an avatar upload feature here if needed */}
           <TextField
             label="Avatar URL (optional)"
+            type="file"
             value={editedProfileData.avatar}
             onChange={(e) => handleProfileFieldChange(e, "avatar")}
             fullWidth

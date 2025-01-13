@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  Box,
   Button,
   Card,
   CardContent,
@@ -11,7 +10,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Grid,
 } from "@mui/material";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
@@ -28,21 +26,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import Villa4 from "./img/villa4.jpg";
-import Villa3 from "./img/villa3.jpg";
-import Villa2 from "./img/villa2.jpg";
-import Villa1 from "./img/villa1.jpg";
-import Villa5 from "./img/villa5.jpg";
-import {
-  AccessTime,
-  AttachMoney,
-  Fastfood,
-  Hiking,
-  Hotel,
-  Public,
-} from "@mui/icons-material";
-import { data, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AddNewRooms from "components/AddNewRooms/AddNewRooms";
+import EditRoom from "components/EditRoom/EditRoom";
 import axios from "axios";
 import { RoomFormData } from "components/RoomFormModal";
 interface RoomType {
@@ -68,6 +54,9 @@ const ClickDetail: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [room, setRoom] = useState([{ id: 1 }]);
+  const [editinRoom, setEditingRoom] = useState();
+
   // uzgartiretkan roomni aydisini saqlen stateda
   // edit qiletkanda aidini set kilasiz va openDialogni true kib quyasiz
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
@@ -75,7 +64,7 @@ const ClickDetail: React.FC = () => {
   const { id } = useParams();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const [formDate, setFormData] = useState<RoomFormData>({
+  const [formData, setFormData] = useState<RoomFormData>({
     bathroom: 0,
     description: "",
     bedroom: 0,
@@ -86,12 +75,15 @@ const ClickDetail: React.FC = () => {
   });
   const [comments, setComments] = useState<string[]>([]);
   const [newComment, setNewComment] = useState<string>("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectId, setSelectId] = useState();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setIsOpen(false);
   };
 
   const fetchRoom = async () => {
@@ -160,9 +152,13 @@ const ClickDetail: React.FC = () => {
     }
   };
 
-  const handleEdit = useCallback((item: RoomFormData) => {
-    setFormData(item);
-  }, []);
+  const handleEdit = async (id: any, items: any) => {
+    console.log(id, items);
+
+    // setFormData(items); // Update the form data with the selected item
+    // setSelectId(id); // Set the selected ID
+    // setIsOpen(true); // Open the form or modal for editing
+  };
 
   const handleSubmit = async () => {
     try {
@@ -200,6 +196,13 @@ const ClickDetail: React.FC = () => {
 
           <div style={{ display: "flex", gap: "10px" }}>
             <AddNewRooms refetch={fetchRoom} />
+            <EditRoom
+              refetch={fetchRoom}
+              formData={formData}
+              open={isOpen}
+              handleClose={handleClose}
+              id={selectId}
+            />
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <IconButton onClick={handleLike} color="primary">
                 {liked ? (
@@ -240,8 +243,9 @@ const ClickDetail: React.FC = () => {
         </div>
 
         <Stack direction="row" spacing={4} marginBottom={4}>
-          {rooms.map((item) => (
+          {rooms.map((item, index) => (
             <Card
+              key={index}
               sx={{
                 maxWidth: 430,
                 backgroundColor: "#f5f5f5",
@@ -284,7 +288,7 @@ const ClickDetail: React.FC = () => {
                   <MenuItem onClick={() => handleDelete(item._id)}>
                     O'chirish
                   </MenuItem>
-                  <MenuItem onClick={() => handleEdit(item as any)}>
+                  <MenuItem onClick={() => handleEdit(item._id, item)}>
                     Tahrirlash
                   </MenuItem>
                 </Menu>

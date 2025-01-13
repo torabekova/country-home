@@ -32,7 +32,7 @@
     border: 1px solid #DFE1E7;
     padding: 8px;
     background-color: white;
-    /* padding-bottom: 8px; */
+    min-width: 400px;
 
 }
 
@@ -93,7 +93,6 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #DFE1E7;
-    margin-left: 80px;
 
 }
 

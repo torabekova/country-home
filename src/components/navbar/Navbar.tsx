@@ -61,6 +61,7 @@ const Navbar: React.FC = () => {
   const avatar = "https://example.com/avatar.jpg";
 
   const user_role = localStorage.getItem("user_role");
+  // const admin_role = localStorage.getItem("admin_role");
 
   const toggleAuth = () => setIsAuthenticated((prev) => !prev);
 
@@ -72,7 +73,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         <div className="navbar_link_div">
-          {user_role === "Admin" && (
+          {user_role === "Admin" ? (
             <>
               <div className="navbar_link_icon_div">
                 <WaterDamageOutlinedIcon />
@@ -96,6 +97,21 @@ const Navbar: React.FC = () => {
                 <AssessmentRoundedIcon />
                 <Link className="navbar_link" to={"/report"}>
                   Report
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="navbar_link_icon_div">
+                <FavoriteBorderIcon />
+                <Link className="navbar_link" to="/favorite">
+                  Sevimlilar
+                </Link>
+              </div>
+              <div className="navbar_link_icon_div">
+                <LocalMallIcon />
+                <Link className="navbar_link" to="/myorders ">
+                  Buyurtmalarim
                 </Link>
               </div>
             </>
@@ -153,12 +169,12 @@ const Navbar: React.FC = () => {
             <Stack
               className="avatar"
               direction="row"
-              style={{ display: "flex", padding: "0" }}
+              style={{ display: "flex", padding: "0", cursor: "pointer" }}
             >
               <Avatar
                 alt="User Avatar"
                 src={avatar}
-                style={{ position: "relative", left: "25%" }}
+                style={{ position: "relative", left: "25%", cursor: "pointer" }}
               />
               <ParentComponent />
             </Stack>
