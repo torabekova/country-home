@@ -288,9 +288,7 @@ const ClickDetail: React.FC = () => {
                   <MenuItem onClick={() => handleDelete(item._id)}>
                     O'chirish
                   </MenuItem>
-                  {/* <MenuItem onClick={() => handleEdit(item._id, item)}>
-                    Tahrirlash
-                  </MenuItem> */}
+
                 </Menu>
               </div>
               <CardMedia
