@@ -57,7 +57,7 @@ const ConfirmPage = () => {
   return (
     <div style={{ backgroundColor: "#f5f5f5" }}>
       <Header />
-
+      <Navbar />
       <Box
         sx={{
           maxWidth: "1360px",
@@ -149,17 +149,6 @@ const ConfirmPage = () => {
                 }}
               >
                 <h2 style={{ fontWeight: "bold", color: "bisque" }}>100$</h2>
-                {/* <p>
-                  <span
-                    style={{
-                      color: "#666",
-                      fontWeight: "bold",
-                      paddingBottom: "20px",
-                    }}
-                  >
-                    /night
-                  </span>
-                </p> */}
               </div>
 
               <p style={{ color: "#666" }}>
@@ -290,8 +279,11 @@ const ConfirmPage = () => {
               >
                 Telefon Nomer
               </h3>
-              <p style={{ paddingBottom: "2px" }}>(+998) 94 095 67 74</p>
-              <p>(+998) 94 095 67 67</p>
+              <div>
+                <a href="tel:+998940956767">(+998) 94 095 67 67</a>
+              </div>
+
+              <a href="tel:+998940956767">(+998) 94 095 67 74</a>
             </StyledDiv>
             <StyledDiv>
               <DraftsOutlinedIcon

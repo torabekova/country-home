@@ -18,6 +18,7 @@ import ViewMapSelect from "components/ViewMap/ViewMapSelect";
 
 import Favorite from "components/Favorite/Favorite";
 import MyOrders from "components/MyOrders/MyOrders";
+import NotificationPage from "components/NotificationPage/NotificationPage";
 
 function App() {
   const user_role = localStorage.getItem("user_role");
@@ -59,6 +60,7 @@ function App() {
         <Route path="/primum" element={<Primum />} />
         <Route path="/selectplan" element={<ClickDetail />} />
         <Route path="/ViewMapSelect" element={<ViewMapSelect />} />
+        <Route path="/notification" element={<NotificationPage />} />
       </Routes>{" "}
     </div>
   );
