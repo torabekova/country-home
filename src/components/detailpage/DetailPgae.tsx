@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -12,14 +12,41 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import Header from "pages/Home/Header";
 import Footer from "components/Footer/Footer";
+import axios from "axios";
+import { error } from "console";
 
 const DetailPage: React.FC = () => {
   const { handleSubmit, control, reset } = useForm();
 
   const onSubmit = (data: any) => {
     console.log("Form Data:", data);
-    alert("Thank you for your message!");
+
     reset();
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    emai: "",
+    massage: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handlSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    axios
+      .post("https://example.com/api/endpoint", formData)
+      .then((response) => {
+        console.log("Javob:", response.data);
+      })
+      .catch((error) => {
+        console.error("Xato:", error);
+      });
   };
 
   return (
@@ -84,6 +111,7 @@ const DetailPage: React.FC = () => {
                     {...field}
                     label="Ismingiz"
                     variant="outlined"
+                    onChange={handleChange}
                     fullWidth
                     sx={{
                       "& .MuiOutlinedInput-root": {
@@ -115,6 +143,7 @@ const DetailPage: React.FC = () => {
                     {...field}
                     label="Email"
                     variant="outlined"
+                    onChange={handleChange}
                     fullWidth
                     sx={{
                       "& .MuiOutlinedInput-root": {
@@ -146,6 +175,7 @@ const DetailPage: React.FC = () => {
                     {...field}
                     label="Xabar"
                     variant="outlined"
+                    onChange={handleChange}
                     fullWidth
                     multiline
                     rows={4}
@@ -173,6 +203,7 @@ const DetailPage: React.FC = () => {
               <Button
                 type="submit"
                 variant="contained"
+                onClick={handlSubmit}
                 sx={{
                   backgroundColor: "#FFB400",
                   color: "white",

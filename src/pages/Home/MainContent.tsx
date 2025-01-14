@@ -44,7 +44,7 @@ const MainContent: React.FC<MainContentProps> = ({
       <Typography variant="h6" sx={{ color: "#fff", mb: 4 }}>
         Yaxshi insonlar. Ajoyib g'oyalar. Yaxshi his.
       </Typography>
-      <SearchForm
+      {/* <SearchForm
         destination={destination}
         setDestination={setDestination}
         date={date}
@@ -52,7 +52,7 @@ const MainContent: React.FC<MainContentProps> = ({
         tourists={tourists}
         setTourists={setTourists}
         handleSearch={handleSearch}
-      />
+      /> */}
     </Box>
   );
 };

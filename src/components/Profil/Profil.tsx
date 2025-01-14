@@ -123,7 +123,7 @@ const ProfilePage: React.FC = () => {
             </Button>
           </Box>
           <Box display="flex" alignItems="center" gap={2}>
-            <Button
+            {/* <Button
               variant="contained"
               color="success"
               style={{
@@ -133,7 +133,7 @@ const ProfilePage: React.FC = () => {
               }}
             >
               Yangilash
-            </Button>
+            </Button> */}
             <AddNewRooms refetch={() => {}} />
           </Box>
         </Box>
@@ -154,7 +154,6 @@ const ProfilePage: React.FC = () => {
       </Box>
       <Footer />
 
-      {/* Edit Profile Dialog */}
       <Dialog
         open={isEditDialogOpen}
         onClose={() => setIsEditDialogOpen(false)}
@@ -175,15 +174,15 @@ const ProfilePage: React.FC = () => {
             fullWidth
             margin="normal"
           />
-          {/* You can add an avatar upload feature here if needed */}
-          <TextField
+
+          {/* <TextField
             label="Avatar URL (optional)"
             type="file"
             value={editedProfileData.avatar}
             onChange={(e) => handleProfileFieldChange(e, "avatar")}
             fullWidth
             margin="normal"
-          />
+          /> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setIsEditDialogOpen(false)} color="primary">

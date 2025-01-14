@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Link komponenti
+import { Link, useNavigate } from "react-router-dom"; // Link komponenti
 import "./Navbar.css";
 import SyncAltRoundedIcon from "@mui/icons-material/SyncAltRounded";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -52,6 +52,12 @@ interface Props {
 
 const Navbar: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/notification");
+  };
 
   const handleSearchClick = () => {
     setSearchOpen(!searchOpen);
@@ -116,18 +122,6 @@ const Navbar: React.FC = () => {
               </div>
             </>
           )}
-          <div className="navbar_link_icon_div">
-            <FavoriteBorderIcon />
-            <Link className="navbar_link" to="/favorite">
-              Sevimlilar
-            </Link>
-          </div>
-          <div className="navbar_link_icon_div">
-            <FavoriteBorderIcon />
-            <Link className="navbar_link" to="/myorders ">
-              Buyurtmalarim
-            </Link>
-          </div>
         </div>
 
         <div className="navbar_btn-div">
@@ -150,9 +144,9 @@ const Navbar: React.FC = () => {
               </Box>
             </div>
           )}
-          <button className="search_btn">
+          {/* <button onClick={handleClick} className="search_btn">
             <NotificationsNoneRoundedIcon />
-          </button>
+          </button> */}
           <button
             className="search_profil"
             style={{

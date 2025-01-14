@@ -31,6 +31,7 @@ import AddNewRooms from "components/AddNewRooms/AddNewRooms";
 import EditRoom from "components/EditRoom/EditRoom";
 import axios from "axios";
 import { RoomFormData } from "components/RoomFormModal";
+
 interface RoomType {
   _id: any;
   propertyName: string;
@@ -192,7 +193,6 @@ const ClickDetail: React.FC = () => {
               Everest Plaza
             </h1>
           </Typography>
-          <Button onClick={fetchRoom}>Click</Button>
 
           <div style={{ display: "flex", gap: "10px" }}>
             <AddNewRooms refetch={fetchRoom} />
@@ -288,9 +288,7 @@ const ClickDetail: React.FC = () => {
                   <MenuItem onClick={() => handleDelete(item._id)}>
                     O'chirish
                   </MenuItem>
-                  <MenuItem onClick={() => handleEdit(item._id, item)}>
-                    Tahrirlash
-                  </MenuItem>
+
                 </Menu>
               </div>
               <CardMedia
@@ -456,7 +454,7 @@ const ClickDetail: React.FC = () => {
         </div>
 
         <section id="services-section">
-          <Typography
+          {/* <Typography
             variant="h4"
             align="center"
             sx={{
@@ -468,7 +466,7 @@ const ClickDetail: React.FC = () => {
             }}
           >
             Cheksiz Hizmatlar
-          </Typography>
+          </Typography> */}
         </section>
 
         <textarea
