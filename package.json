@@ -72,8 +72,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:9001/"
-  "proxy": "https://e3f5-84-54-73-223.ngrok-free.app",
+  
+  "proxy": "https://9d6d- 84-54-73-223.ngrok-free.app/",
 
   "devDependencies": {
     "@types/axios": "^0.14.4",
