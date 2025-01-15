@@ -295,6 +295,7 @@ const ClickDetail: React.FC = () => {
                   <MenuItem onClick={() => handleDelete(item._id)}>
                     O'chirish
                   </MenuItem>
+
                 </Menu>
               </div>
               <CardMedia
