@@ -10,6 +10,7 @@ import {
   AppBar,
   Toolbar,
   Chip,
+  LinearProgress,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {
@@ -211,6 +212,7 @@ const HomeMainPage: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [mySearch, setMySearch] = useState<string>("");
   const [propertyData, setPropertyData] = useState<PropertiesType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getProperties = async () => {
     try {
@@ -222,6 +224,8 @@ const HomeMainPage: React.FC = () => {
       setPropertyData(res.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -241,8 +245,6 @@ const HomeMainPage: React.FC = () => {
         width: "100%",
         margin: "auto",
         borderRadius: "40px",
-        // padding: "20px",
-        // marginBottom: "60px",
       }}
     >
       <Box
@@ -291,9 +293,17 @@ const HomeMainPage: React.FC = () => {
                   sm={6}
                   lg={3}
                 >
-                  {propertyData.map((property, index) => (
-                    <PropertyCard {...property} />
-                  ))}
+                  {loading ? (
+                    <Box sx={{ width: "100%" }}>
+                      <LinearProgress />
+                    </Box>
+                  ) : (
+                    <>
+                      {propertyData.map((property, index) => (
+                        <PropertyCard {...property} />
+                      ))}
+                    </>
+                  )}
                 </Grid>
               </Grid>
             </Box>

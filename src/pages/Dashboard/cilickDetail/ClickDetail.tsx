@@ -77,8 +77,9 @@ const ClickDetail: React.FC = () => {
   const [comments, setComments] = useState<string[]>([]);
   const [newComment, setNewComment] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
-  const [selectId, setSelectId] = useState();
+  const [selectId, setSelectId] = useState<any>();
 
+  const user_id = localStorage.getItem("user_id");
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -120,9 +121,15 @@ const ClickDetail: React.FC = () => {
     setOpenDialog(false);
   };
 
-  const handleLike = () => {
-    setLiked(!liked);
-    setLikeCount((prev) => (liked ? prev - 1 : prev + 1));
+  const handleLike = async () => {
+    try {
+      await axios.post(`/favorite/create`, {
+        user: user_id,
+        hotel: id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleShare = () => {

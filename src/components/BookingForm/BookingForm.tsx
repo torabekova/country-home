@@ -13,9 +13,11 @@ import {
   DialogTitle,
 } from "@mui/material";
 import PDFCheck from "./PDFCheck";
-
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 interface BookingFormData {
+  _id: any;
   fullName: string;
   email: string;
   phone: string;
@@ -39,6 +41,7 @@ interface ValidationErrors {
 
 const BookingForm: React.FC = () => {
   const [formData, setFormData] = useState<BookingFormData>({
+    _id: "",
     fullName: "",
     email: "",
     phone: "",
@@ -53,6 +56,16 @@ const BookingForm: React.FC = () => {
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFormSubmitted, setFormSubmitted] = useState(false);
+  const { id } = useParams();
+  const [fullName, setFullName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [startingDate, setStartingDate] = useState<Date>();
+  const [endingDate, setEndingDate] = useState<Date>();
+  const [numberOfGuests, setNumberOfGuests] = useState<number>();
+  const [paymentType, setPaymentType] = useState();
+  const [orderedRoom, setOrderedRoom] = useState();
+  const [roomId, setRoomId] = useState();
 
   const validateForm = (data: BookingFormData): ValidationErrors => {
     const errors: ValidationErrors = {};
@@ -61,7 +74,10 @@ const BookingForm: React.FC = () => {
       errors.fullName = "Ism va familiya majburiy.";
     }
 
-    if (!data.email.trim() || !/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(data.email)) {
+    if (
+      !data.email.trim() ||
+      !/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(data.email)
+    ) {
       errors.email = "Yaroqli email kiriting.";
     }
 
@@ -76,7 +92,8 @@ const BookingForm: React.FC = () => {
     if (!data.checkOutDate) {
       errors.checkOutDate = "Ketish sanasi majburiy.";
     } else if (new Date(data.checkInDate) >= new Date(data.checkOutDate)) {
-      errors.checkOutDate = "Ketish sanasi kelish sanasidan keyin bo‘lishi kerak.";
+      errors.checkOutDate =
+        "Ketish sanasi kelish sanasidan keyin bo‘lishi kerak.";
     }
 
     if (data.guests < 1) {
@@ -91,7 +108,9 @@ const BookingForm: React.FC = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value, type } = e.target;
 
@@ -117,20 +136,69 @@ const BookingForm: React.FC = () => {
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form submitted:", formData);
       setFormSubmitted(true);
-      setModalOpen(false); 
+      setModalOpen(false);
+    }
+  };
+
+  const user_id = localStorage.getItem("user_id");
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  // const myorders = async () => (
+  //   try {
+  //     await axios.post(`/order`),(
+
+  //       fullName:"",
+  //       email:"",
+  //       phone:"",
+  //       startingDate:"",
+  //       endingDate:"",
+  //       numberOfGuests:"",
+  //       paymentType:"",
+  //       orderedRoom:"",
+  //       roomId:"",
+  //     )
+
+  //   } catch (error) {
+  //     console.log(error);
+
+  //   }
+  // )
+
+  const handleOrder = async () => {
+    try {
+      await axios.post(`/`, {
+        user: user_id,
+        room: id,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <>
-      <Button variant="contained" onClick={() => setModalOpen(true)} style={{ backgroundColor: "#1BA98F" }}>
+      <Button
+        variant="contained"
+        onClick={() => setModalOpen(true)}
+        style={{ backgroundColor: "#1BA98F" }}
+      >
         Bronlashni boshlash
       </Button>
 
-      <Dialog open={isModalOpen} onClose={() => setModalOpen(false)} maxWidth="md" fullWidth>
+      <Dialog
+        open={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        maxWidth="md"
+        fullWidth
+      >
         <DialogTitle>Mehmonxona bronlash</DialogTitle>
         <DialogContent>
-          <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box
+            component="form"
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+          >
             <TextField
               label="Ism va Familiya"
               name="fullName"
@@ -213,7 +281,13 @@ const BookingForm: React.FC = () => {
               fullWidth
             />
             <FormControlLabel
-              control={<Checkbox name="termsAccepted" checked={formData.termsAccepted} onChange={handleChange} />}
+              control={
+                <Checkbox
+                  name="termsAccepted"
+                  checked={formData.termsAccepted}
+                  onChange={handleChange}
+                />
+              }
               label="Shartlarga roziman"
             />
             {errors.termsAccepted && (
@@ -225,7 +299,13 @@ const BookingForm: React.FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setModalOpen(false)}>Bekor qilish</Button>
-          <Button onClick={handleSubmit} variant="contained" color="primary" style={{backgroundColor:'#1BA98F'}}>
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
+            color="primary"
+            style={{ backgroundColor: "#1BA98F" }}
+            onSubmit={handleOrder}
+          >
             Tasdiqlash
           </Button>
         </DialogActions>
@@ -238,4 +318,6 @@ const BookingForm: React.FC = () => {
 
 export default BookingForm;
 
-
+function setAnchorEl(currentTarget: EventTarget & HTMLElement) {
+  throw new Error("Function not implemented.");
+}
