@@ -42,10 +42,12 @@ interface ValidationErrors {
 }
 
 const BookingForm: React.FC = () => {
+
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFormSubmitted, setFormSubmitted] = useState(false);
   const { id } = useParams();
+
   const [fullName, setFullName] = useState<string>("shoxruh");
   const [email, setEmail] = useState<string>("shoxruh@gmail.com");
   const [phone, setPhone] = useState<string>("7349857489375");
@@ -112,6 +114,22 @@ const BookingForm: React.FC = () => {
         paymentType,
         roomId,
         isAgreed,
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value, type } = e.target;
+
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: (e.target as HTMLInputElement).checked,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
       });
       setFormData(data);
       console.log(data);
@@ -119,6 +137,45 @@ const BookingForm: React.FC = () => {
       console.log(error);
     }
   };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const validationErrors = validateForm(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      console.log("Form submitted:", formData);
+      setFormSubmitted(true);
+      setModalOpen(false);
+    }
+  };
+
+  const user_id = localStorage.getItem("user_id");
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  // const myorders = async () => (
+  //   try {
+  //     await axios.post(`/order`),(
+
+  //       fullName:"",
+  //       email:"",
+  //       phone:"",
+  //       startingDate:"",
+  //       endingDate:"",
+  //       numberOfGuests:"",
+  //       paymentType:"",
+  //       orderedRoom:"",
+  //       roomId:"",
+  //     )
+
+  //   } catch (error) {
+  //     console.log(error);
+
+  //   }
+  // )
 
   const handleOrder = async () => {
     try {
@@ -245,6 +302,8 @@ const BookingForm: React.FC = () => {
                   name="termsAccepted"
                   checked={isAgreed}
                   onChange={(e) => setIsAgreed(e.target.checked)}
+<!--                   checked={formData.termsAccepted}
+                  onChange={handleChange} -->
                 />
               }
               label="Shartlarga roziman"
@@ -260,6 +319,7 @@ const BookingForm: React.FC = () => {
           <Button onClick={() => setModalOpen(false)}>Bekor qilish</Button>
           <Button
             onClick={myorders}
+//             onClick={handleSubmit}
             variant="contained"
             color="primary"
             style={{ backgroundColor: "#1BA98F" }}
