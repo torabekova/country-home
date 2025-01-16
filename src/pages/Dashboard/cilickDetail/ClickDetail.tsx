@@ -95,6 +95,7 @@ const ClickDetail: React.FC = () => {
           "ngrok-skip-browser-warning": "true",
         },
       });
+      console.log(data);
 
       setRooms(data);
     } catch (error) {
@@ -200,6 +201,7 @@ const ClickDetail: React.FC = () => {
               Everest Plaza
             </h1>
           </Typography>
+            <Button onClick={fetchRoom}>Fetch</Button>
 
           <div style={{ display: "flex", gap: "10px" }}>
             <AddNewRooms refetch={fetchRoom} />

@@ -37,60 +37,54 @@ interface ValidationErrors {
   checkOutDate?: string;
   guests?: string;
   termsAccepted?: string;
+  startingDate?: string;
+  endingDate?: string;
 }
 
 const BookingForm: React.FC = () => {
-  const [formData, setFormData] = useState<BookingFormData>({
-    _id: "",
-    fullName: "",
-    email: "",
-    phone: "",
-    checkInDate: "",
-    checkOutDate: "",
-    guests: 1,
-    paymentMethod: "creditCard",
-    specialRequests: "",
-    termsAccepted: false,
-  });
 
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFormSubmitted, setFormSubmitted] = useState(false);
   const { id } = useParams();
-  const [fullName, setFullName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [startingDate, setStartingDate] = useState<Date>();
-  const [endingDate, setEndingDate] = useState<Date>();
-  const [numberOfGuests, setNumberOfGuests] = useState<number>();
-  const [paymentType, setPaymentType] = useState();
-  const [orderedRoom, setOrderedRoom] = useState();
-  const [roomId, setRoomId] = useState();
 
-  const validateForm = (data: BookingFormData): ValidationErrors => {
+  const [fullName, setFullName] = useState<string>("shoxruh");
+  const [email, setEmail] = useState<string>("shoxruh@gmail.com");
+  const [phone, setPhone] = useState<string>("7349857489375");
+  const [startingDate, setStartingDate] = useState<any>();
+  const [endingDate, setEndingDate] = useState<any>();
+  const [numberOfGuests, setNumberOfGuests] = useState<number>(2);
+  const [paymentType, setPaymentType] = useState("card");
+  const [roomId, setRoomId] = useState("677e88d26f6e72d2475f01ac");
+  const [termsAccepted, setTermsAccepted] = useState();
+  const [description, setDescription] = useState("");
+  const [isAgreed, setIsAgreed] = useState(false);
+  const [formData, setFormData] = useState([]);
+
+  const validateForm = (data: any): ValidationErrors => {
     const errors: ValidationErrors = {};
 
-    if (!data.fullName.trim()) {
+    if (!fullName.trim()) {
       errors.fullName = "Ism va familiya majburiy.";
     }
 
     if (
-      !data.email.trim() ||
+      !email.trim() ||
       !/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/.test(data.email)
     ) {
       errors.email = "Yaroqli email kiriting.";
     }
 
-    if (!data.phone.trim() || !/^\+?[0-9]{10,15}$/.test(data.phone)) {
+    if (!phone.trim() || !/^\+?[0-9]{10,15}$/.test(data.phone)) {
       errors.phone = "Yaroqli telefon raqamini kiriting.";
     }
 
-    if (!data.checkInDate) {
-      errors.checkInDate = "Kelish sanasi majburiy.";
+    if (!startingDate) {
+      errors.startingDate = "Kelish sanasi majburiy.";
     }
 
-    if (!data.checkOutDate) {
-      errors.checkOutDate = "Ketish sanasi majburiy.";
+    if (!endingDate) {
+      errors.endingDate = "Ketish sanasi majburiy.";
     } else if (new Date(data.checkInDate) >= new Date(data.checkOutDate)) {
       errors.checkOutDate =
         "Ketish sanasi kelish sanasidan keyin bo‘lishi kerak.";
@@ -100,13 +94,26 @@ const BookingForm: React.FC = () => {
       errors.guests = "Mehmonlar soni kamida 1 bo‘lishi kerak.";
     }
 
-    if (!data.termsAccepted) {
+    if (!termsAccepted) {
       errors.termsAccepted = "Shartlarga rozilik bildirish majburiy.";
     }
 
     return errors;
   };
 
+  const myorders = async () => {
+    console.log(isAgreed);
+    try {
+      const { data } = await axios.post(`/order`, {
+        fullName,
+        email,
+        phone,
+        startingDate,
+        endingDate,
+        numberOfGuests,
+        paymentType,
+        roomId,
+        isAgreed,
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -124,6 +131,10 @@ const BookingForm: React.FC = () => {
         ...formData,
         [name]: value,
       });
+      setFormData(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -177,6 +188,11 @@ const BookingForm: React.FC = () => {
     }
   };
 
+  const user_id = localStorage.getItem("user_id");
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <>
       <Button
@@ -202,8 +218,8 @@ const BookingForm: React.FC = () => {
             <TextField
               label="Ism va Familiya"
               name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               error={!!errors.fullName}
               helperText={errors.fullName}
               fullWidth
@@ -211,8 +227,8 @@ const BookingForm: React.FC = () => {
             <TextField
               label="Email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               error={!!errors.email}
               helperText={errors.email}
               fullWidth
@@ -220,8 +236,8 @@ const BookingForm: React.FC = () => {
             <TextField
               label="Telefon"
               name="phone"
-              value={formData.phone}
-              onChange={handleChange}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               error={!!errors.phone}
               helperText={errors.phone}
               fullWidth
@@ -230,8 +246,8 @@ const BookingForm: React.FC = () => {
               label="Kelish sanasi"
               type="date"
               name="checkInDate"
-              value={formData.checkInDate}
-              onChange={handleChange}
+              value={startingDate}
+              onChange={(e) => setStartingDate(e.target.value)}
               error={!!errors.checkInDate}
               helperText={errors.checkInDate}
               InputLabelProps={{ shrink: true }}
@@ -241,8 +257,8 @@ const BookingForm: React.FC = () => {
               label="Ketish sanasi"
               type="date"
               name="checkOutDate"
-              value={formData.checkOutDate}
-              onChange={handleChange}
+              value={endingDate}
+              onChange={(e) => setEndingDate(e.target.value)}
               error={!!errors.checkOutDate}
               helperText={errors.checkOutDate}
               InputLabelProps={{ shrink: true }}
@@ -252,8 +268,8 @@ const BookingForm: React.FC = () => {
               label="Mehmonlar soni"
               type="number"
               name="guests"
-              value={formData.guests}
-              onChange={handleChange}
+              value={numberOfGuests}
+              onChange={(e) => setNumberOfGuests(Number(e.target.value))}
               error={!!errors.guests}
               helperText={errors.guests}
               InputProps={{ inputProps: { min: 1 } }}
@@ -263,8 +279,8 @@ const BookingForm: React.FC = () => {
               label="To‘lov usuli"
               name="paymentMethod"
               select
-              value={formData.paymentMethod}
-              onChange={handleChange}
+              value={paymentType}
+              onChange={(e) => setPaymentType(e.target.value)}
               fullWidth
             >
               <MenuItem value="creditCard">Kredit karta</MenuItem>
@@ -274,8 +290,8 @@ const BookingForm: React.FC = () => {
             <TextField
               label="Maxsus talablar"
               name="specialRequests"
-              value={formData.specialRequests}
-              onChange={handleChange}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               multiline
               rows={4}
               fullWidth
@@ -284,8 +300,10 @@ const BookingForm: React.FC = () => {
               control={
                 <Checkbox
                   name="termsAccepted"
-                  checked={formData.termsAccepted}
-                  onChange={handleChange}
+                  checked={isAgreed}
+                  onChange={(e) => setIsAgreed(e.target.checked)}
+<!--                   checked={formData.termsAccepted}
+                  onChange={handleChange} -->
                 />
               }
               label="Shartlarga roziman"
@@ -300,7 +318,8 @@ const BookingForm: React.FC = () => {
         <DialogActions>
           <Button onClick={() => setModalOpen(false)}>Bekor qilish</Button>
           <Button
-            onClick={handleSubmit}
+            onClick={myorders}
+//             onClick={handleSubmit}
             variant="contained"
             color="primary"
             style={{ backgroundColor: "#1BA98F" }}
@@ -311,7 +330,7 @@ const BookingForm: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      {isFormSubmitted && <PDFCheck formData={formData} />}
+      {/* {isFormSubmitted && <PDFCheck formData={formData} />} */}
     </>
   );
 };
