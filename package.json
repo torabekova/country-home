@@ -74,7 +74,7 @@
   },
 
   
-  "proxy": "https://9d6d- 84-54-73-223.ngrok-free.app/",
+  "proxy": "http://localhost:8080",
 
 
 
