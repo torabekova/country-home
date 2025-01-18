@@ -281,7 +281,7 @@ const AddPropertiesModal = ({ refetch }: { refetch: any }) => {
               style={{ backgroundColor: "#1BA98F" }}
               onClick={submitData}
             >
-              qo'shish
+              Qo'shish
             </Button>
           </Box>
         </Box>
