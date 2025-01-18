@@ -42,6 +42,10 @@ interface ValidationErrors {
 }
 
 const BookingForm: React.FC = () => {
+// <<<<<<< develop
+// =======
+
+// >>>>>>> main
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFormSubmitted, setFormSubmitted] = useState(false);
@@ -113,6 +117,7 @@ const BookingForm: React.FC = () => {
         paymentType,
         roomId,
         isAgreed,
+<!-- <<<<<<< develop -->
       });
       const handleChange = (
         e: React.ChangeEvent<
@@ -135,6 +140,27 @@ const BookingForm: React.FC = () => {
           console.log(data);
         }
       };
+<!-- ======= -->
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value, type } = e.target;
+
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: (e.target as HTMLInputElement).checked,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+      setFormData(data);
+      console.log(data);
+// >>>>>>> main
     } catch (error) {
       console.log(error);
     }
@@ -304,8 +330,13 @@ const BookingForm: React.FC = () => {
                   name="termsAccepted"
                   checked={isAgreed}
                   onChange={(e) => setIsAgreed(e.target.checked)}
+<!-- <<<<<<< develop -->
                   //                    checked={formData.termsAccepted}
                   //                   onChange={handleChange}
+<!-- ======= -->
+<!--                   checked={formData.termsAccepted}
+                  onChange={handleChange} -->
+<!-- >>>>>>> main -->
                 />
               }
               label="Shartlarga roziman"
@@ -321,7 +352,11 @@ const BookingForm: React.FC = () => {
           <Button onClick={() => setModalOpen(false)}>Bekor qilish</Button>
           <Button
             onClick={myorders}
+<!-- <<<<<<< develop -->
             //             onClick={handleSubmit}
+<!-- ======= -->
+//             onClick={handleSubmit}
+<!-- >>>>>>> main -->
             variant="contained"
             color="primary"
             style={{ backgroundColor: "#1BA98F" }}
