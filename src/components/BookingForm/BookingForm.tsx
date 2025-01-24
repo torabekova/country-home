@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import {
   TextField,
   Button,
@@ -12,7 +12,6 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import PDFCheck from "./PDFCheck";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -41,7 +40,7 @@ interface ValidationErrors {
   endingDate?: string;
 }
 
-const BookingForm: React.FC = () => {
+const BookingForm  = () => {
 
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [isModalOpen, setModalOpen] = useState(false);
@@ -114,11 +113,8 @@ const BookingForm: React.FC = () => {
         paymentType,
         roomId,
         isAgreed,
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
+      })
+        const handleChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
 
     if (type === "checkbox") {
@@ -133,10 +129,11 @@ const BookingForm: React.FC = () => {
       });
       setFormData(data);
       console.log(data);
-    } catch (error) {
-      console.log(error);
     }
-  };
+  }} 
+  catch (error) {
+    console.log(error);
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -151,31 +148,8 @@ const BookingForm: React.FC = () => {
     }
   };
 
-  const user_id = localStorage.getItem("user_id");
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  // const myorders = async () => (
-  //   try {
-  //     await axios.post(`/order`),(
-
-  //       fullName:"",
-  //       email:"",
-  //       phone:"",
-  //       startingDate:"",
-  //       endingDate:"",
-  //       numberOfGuests:"",
-  //       paymentType:"",
-  //       orderedRoom:"",
-  //       roomId:"",
-  //     )
-
-  //   } catch (error) {
-  //     console.log(error);
-
-  //   }
-  // )
+  const user_id = localStorage.getItem("user_id")
+ 
 
   const handleOrder = async () => {
     try {
@@ -188,7 +162,7 @@ const BookingForm: React.FC = () => {
     }
   };
 
-  const user_id = localStorage.getItem("user_id");
+  
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -297,17 +271,16 @@ const BookingForm: React.FC = () => {
               fullWidth
             />
             <FormControlLabel
-              control={
-                <Checkbox
-                  name="termsAccepted"
-                  checked={isAgreed}
-                  onChange={(e) => setIsAgreed(e.target.checked)}
-<!--                   checked={formData.termsAccepted}
-                  onChange={handleChange} -->
-                />
-              }
-              label="Shartlarga roziman"
-            />
+            control={
+              <Checkbox
+                name="termsAccepted"
+                checked={isAgreed}
+                onChange={(e) => setIsAgreed(e.target.checked)}
+              />
+            }
+            label="Shartlarga roziman"
+          />
+
             {errors.termsAccepted && (
               <Typography color="error" variant="body2">
                 {errors.termsAccepted}
@@ -330,13 +303,21 @@ const BookingForm: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      {/* {isFormSubmitted && <PDFCheck formData={formData} />} */}
     </>
   );
 };
 
-export default BookingForm;
 
 function setAnchorEl(currentTarget: EventTarget & HTMLElement) {
   throw new Error("Function not implemented.");
 }
+
+function handleOrder(event: FormEvent<HTMLButtonElement>): void {
+  throw new Error("Function not implemented.");
+}
+
+return <></>
+
+}
+
+export default BookingForm;

@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 import Navbar from "components/navbar/Navbar";
 import Header from "pages/Home/Header";
 import React from "react";
@@ -157,6 +157,9 @@ const ConfirmPage = () => {
                 tanishing Shartlar va qoidalar haqida qo‘shimcha ma'lumot uchun
                 mehmonxona xizmati bilan aloqaga chiqishingiz mumkin.
               </p>
+              <Button>
+                Brom qilishHH
+              </Button>
               <div
                 style={{
                   borderRadius: "6px",
@@ -282,7 +285,6 @@ const ConfirmPage = () => {
               <div>
                 <a href="tel:+998940956767">(+998) 94 095 67 67</a>
               </div>
-
               <a href="tel:+998940956767">(+998) 94 095 67 74</a>
             </StyledDiv>
             <StyledDiv>
