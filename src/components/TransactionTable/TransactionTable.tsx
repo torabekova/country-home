@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -17,10 +17,12 @@ import {
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import axios from "axios";
 
 
 interface Sale {
   id: string;
+  userId: string
   customerName: string;
   date: string;
   property: string;
@@ -31,9 +33,11 @@ interface Sale {
 }
 
 
+
 const salesData: Sale[] = [
   {
     id: "#1201290",
+    userId: localStorage.getItem('user_id') || '',
     customerName: "Fajar Firmansyah",
     date: "12 May, 2024",
     property: "Grand Field",
@@ -42,58 +46,16 @@ const salesData: Sale[] = [
     status: "Completed",
     avatar: "https://i.pravatar.cc/40?img=1",
   },
-  {
-    id: "#1201291",
-    customerName: "Aulia",
-    date: "12 May, 2024",
-    property: "Serenity Estates",
-    amount: "$4,980",
-    type: "House",
-    status: "Completed",
-    avatar: "https://i.pravatar.cc/40?img=2",
-  },
-  {
-    id: "#1201293",
-    customerName: "Irwansyah",
-    date: "12 May, 2024",
-    property: "Harbor Heights",
-    amount: "$4,980",
-    type: "House",
-    status: "Pending",
-    avatar: "https://i.pravatar.cc/40?img=3",
-  },
-  {
-    id: "#1201290",
-    customerName: "Fajar Firmansyah",
-    date: "12 May, 2024",
-    property: "Grand Field",
-    amount: "$2,980",
-    type: "Apartment",
-    status: "Completed",
-    avatar: "https://i.pravatar.cc/40?img=1",
-  },
-  // {
-  //   id: "#1201291",
-  //   customerName: "Aulia",
-  //   date: "12 May, 2024",
-  //   property: "Serenity Estates",
-  //   amount: "$4,980",
-  //   type: "House",
-  //   status: "Completed",
-  //   avatar: "https://i.pravatar.cc/40?img=2",
-  // },
-  {
-    id: "#1201293",
-    customerName: "Irwansyah",
-    date: "12 May, 2024",
-    property: "Harbor Heights",
-    amount: "$4,980",
-    type: "House",
-    status: "Pending",
-    avatar: "https://i.pravatar.cc/40?img=3",
-  },
- 
 ];
+ 
+async function fetchOrderedData() {
+  try {
+    const existOrders = await axios.get(`/order${salesData[0].userId}`);
+    console.log('heyy') 
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
 const statusColors: Record<Sale["status"], "success" | "warning"> = {
@@ -108,6 +70,11 @@ const TransactionTable: React.FC = () => {
   const filteredData = salesData.filter((row) =>
     row.customerName.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+
+  useEffect(()=> {
+    fetchOrderedData()
+  })
 
   const handleDownloadPDF = async () => {
     const element = document.getElementById("sales-table");

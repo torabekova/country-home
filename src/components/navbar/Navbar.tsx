@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
   };
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const avatar = "https://example.com/avatar.jpg";
+  const avatar = "https://cdn.pixabay.com/photo/2023/02/08/06/33/fashion-7775827_640.jpg";
 
   const user_role = localStorage.getItem("user_role");
   // const admin_role = localStorage.getItem("admin_role");

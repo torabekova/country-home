@@ -54,7 +54,7 @@ const Glavni = () => {
     city: "",
     address: "",
     postalCode: "",
-    picture: "/path/to/default-picture.jpg",
+    picture: "https://cdn.pixabay.com/photo/2023/02/10/16/07/new-york-7781184_1280.jpg",
   });
 
   const [originalData] = useState(formData);
@@ -132,7 +132,7 @@ const Glavni = () => {
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
-          <Avatar alt="User Avatar" src="/path/to/avatar.jpg" sx={{ mr: 2 }} />
+          <Avatar alt="User Avatar" src="https://cdn.pixabay.com/photo/2023/02/08/06/33/fashion-7775827_640.jpg" sx={{ mr: 2 }} />
           <Box>
             <Typography variant="subtitle1" fontWeight="bold">
               John Doe

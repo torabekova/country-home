@@ -1,4 +1,4 @@
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Typography, useRadioGroup } from "@mui/material";
 import Navbar from "components/navbar/Navbar";
 import Header from "pages/Home/Header";
 import React from "react";
@@ -13,6 +13,10 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import BookingForm from "components/BookingForm/BookingForm";
 import Footer from "components/Footer/Footer";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { ROUTES } from "components/Routes";
+import { PATH } from "components/Types/path";
 
 // const navigate = useNavigate =>{
 //   navigate("<BookingForm/>")
@@ -53,7 +57,31 @@ const StyledDiv = styled.div`
   margin-top: 10px;
 `;
 
+
 const ConfirmPage = () => {
+
+  const handleOrder = async () => {
+    const user_id = localStorage.getItem('user_id')
+    const orderData = {
+      userId: user_id,
+      fullName: "Brilliant",
+      email: "aaa@gmail.com",
+      phone: "+998911993233",
+      startingDate: "2025-01-24T10:15:30.000Z",
+      endingDate: "2025-01-31T10:15:30.000Z",
+      numberOfGuests: 3,
+      paymentType: 'card',
+      roomId: "678277c25b00f7e5274fd901"
+    }
+
+    try {
+      const { data } = await axios.post("/order", orderData);
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div style={{ backgroundColor: "#f5f5f5" }}>
       <Header />
@@ -157,9 +185,11 @@ const ConfirmPage = () => {
                 tanishing Shartlar va qoidalar haqida qo‘shimcha ma'lumot uchun
                 mehmonxona xizmati bilan aloqaga chiqishingiz mumkin.
               </p>
-              <Button>
-                Brom qilishHH
+              <Link to={'/transaction'} >
+              <Button onClick={handleOrder}>
+                Brom qilish
               </Button>
+              </Link>
               <div
                 style={{
                   borderRadius: "6px",
