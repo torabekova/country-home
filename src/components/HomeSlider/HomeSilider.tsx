@@ -26,7 +26,7 @@ const SliderSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -51,13 +51,13 @@ const SliderSection = () => {
             backgroundImage: `url(${slides[currentSlide].bgImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            height: "500px", // Set the height of the slide
-            color: "white", // Text color to ensure visibility
+            height: "500px",
+            color: "white",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             fontSize: "2rem",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)", // Optional text shadow for better visibility
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
           }}
         >
           {slides[currentSlide].content}
