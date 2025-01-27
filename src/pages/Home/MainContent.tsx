@@ -33,15 +33,30 @@ const MainContent: React.FC<MainContentProps> = ({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        px: 2,
       }}
     >
       <Typography
         variant="h3"
-        sx={{ color: "#fff", mb: 2, fontWeight: "bold" }}
+        sx={{
+          color: "#fff",
+          mb: 2,
+          fontWeight: "bold",
+          textAlign: "center",
+          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
+        }}
       >
         Welcome to ZAMIN Town
       </Typography>
-      <Typography variant="h6" sx={{ color: "#fff", mb: 4 }}>
+      <Typography
+        variant="h6"
+        sx={{
+          color: "#fff",
+          mb: 4,
+          textAlign: "center",
+          fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+        }}
+      >
         Yaxshi insonlar. Ajoyib g'oyalar. Yaxshi his.
       </Typography>
       {/* <SearchForm
