@@ -116,3 +116,5 @@
     align-items: center;
     padding-bottom: 5px;
 }
+
+@media (max-width: 934px) {}
