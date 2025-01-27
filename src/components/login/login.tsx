@@ -90,23 +90,33 @@ const Login: React.FC = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          padding: "10px",
         }}
       >
         {currentView === "login" && (
           <Box
             sx={{
               maxWidth: "500px",
+              width: "100%",
               margin: "auto",
               mt: 8,
               backgroundColor: "#1E1E1E",
               padding: 4,
               borderRadius: 2,
+              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+              "@media (max-width: 360px)": {
+                padding: 2,
+              },
             }}
           >
             <Typography
               variant="h4"
               align="center"
-              sx={{ mb: 3, color: "#FFB400" }}
+              sx={{
+                mb: 3,
+                color: "#FFB400",
+                fontSize: { xs: "1.5rem", sm: "2rem" },
+              }}
             >
               HI, Welcome
             </Typography>
@@ -137,10 +147,7 @@ const Login: React.FC = () => {
                     placeholder="Your Email"
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment
-                          position="start"
-                          style={{ borderColor: "#FFB400" }}
-                        >
+                        <InputAdornment position="start">
                           {/* <MailOutline style={{ color: "#666D80" }} /> */}
                         </InputAdornment>
                       ),
@@ -227,8 +234,8 @@ const Login: React.FC = () => {
                           borderColor: "#FFB400",
                         },
                       },
-                      "& .MuiInpyarn startutLabel-root": {
-                        color: "#fff",
+                      "@media (max-width: 360px)": {
+                        fontSize: "14px",
                       },
                     }}
                   />
@@ -251,6 +258,7 @@ const Login: React.FC = () => {
                   ":hover": { backgroundColor: "#FFA000" },
                   mb: 3,
                   padding: "10px 20px",
+                  fontSize: { xs: "14px", sm: "16px" },
                 }}
               >
                 Login
@@ -277,7 +285,6 @@ const Login: React.FC = () => {
                       color: "#666D80",
                     }}
                   >
-                    {" "}
                     Remember me
                   </Typography>
                 </div>
@@ -295,7 +302,6 @@ const Login: React.FC = () => {
                     cursor: "pointer",
                   }}
                 >
-                  {" "}
                   Forgot Password ?
                 </a>
               </div>
